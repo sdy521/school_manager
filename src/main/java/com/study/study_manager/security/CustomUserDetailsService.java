@@ -1,11 +1,11 @@
 package com.study.study_manager.security;
 
-import com.study.study_manager.entity.User;
-import com.study.study_manager.entity.role;
 import com.study.study_manager.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,32 +20,18 @@ import java.util.List;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {//（MyAuthenticationProvider需要调用）
 
+    private final static Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserService userService;
+    /**
+     * 授权的时候是对角色授权，而认证的时候应该基于资源，而不是角色，因为资源是不变的，而用户的角色是会变的
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        try {
-            User user = userService.findUserByName(username);
-            if(null==user){
-                throw new UsernameNotFoundException("UserName "+username+" not found");
-            }
-         // SecurityUser实现UserDetails并将SUser的Email映射为username
-        /*List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (role ur : user.getRoleBeans()) {
-            String name = ur.getRoleName();
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(name);
-            authorities.add(grantedAuthority);
-        }
-            return new User(
-                    user.getUsername(),
-                    user.getPassword(),
-                authorities);*/
-            return new User(
-                    user.getUsername(),
-                    user.getPassword());
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+        logger.info("用户的用户名: {}", username);
+        String password = "123456";
+        logger.info("password: {}", password);
+        User user = new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        return user;
     }
 }
