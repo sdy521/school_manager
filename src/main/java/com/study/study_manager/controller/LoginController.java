@@ -16,4 +16,10 @@ public class LoginController {
         mv.setViewName("login");
         return mv;
     }
+    @RequestMapping(value = "/log", method = RequestMethod.GET)
+    public ModelAndView log(@RequestParam(value = "error", required = false) String error){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("login");
+        return mv;
+    }
 }

@@ -39,10 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {//（主要
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    //对以下路径忽略过滤
     /*@Override
     public void configure(WebSecurity web) throws Exception {
-        //对以下路径忽略过滤
-        web.ignoring().antMatchers("/static/**", "/login", "/remote/**", "/test/**", "/checkextuser", "/stateinfo/singletree","/sms/send");
+        web.ignoring().antMatchers( "/login");
     }*/
 
     @Bean
