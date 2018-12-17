@@ -10,14 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/login1", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("login");
-        return mv;
-    }
-    @RequestMapping(value = "/log", method = RequestMethod.GET)
-    public ModelAndView log(@RequestParam(value = "error", required = false) String error){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("login");
         return mv;
