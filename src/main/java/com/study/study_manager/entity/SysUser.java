@@ -9,29 +9,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/***
- * 我们在定义用户的时候需要实现UserDetails接口，
- * 这样我们的用户实体即为Spring Security所使用的用户，
- * 定义好用户之后，我们还要配置用户和角色之间的多对多关系，
- * 正常情况下，角色和权限是两回事，所以我们还需要重写getAuthorities方法，
- * 将用户的角色和权限关联起来
- */
-@Entity
 public class SysUser implements UserDetails {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
-
-    @ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
     private List<SysRole> roles;
-    public Long getId() {
+
+    public SysUser() {
+    }
+
+    public SysUser(String username, String password, List<SysRole> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

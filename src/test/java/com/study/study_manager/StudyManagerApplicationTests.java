@@ -19,12 +19,7 @@ public class StudyManagerApplicationTests {
     private SysUserRepository sysUserRepository;
     @Test
     public void contextLoads() {
-        String password = "root";
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-        System.out.println(new BCryptPasswordEncoder().encode("sang"));
-//        SysUser sysUser = sysUserRepository.findByUsername("root");
-//        System.out.println(sysUser);
-//        System.out.println(new BCryptPasswordEncoder(Integer.parseInt(sysUser.getPassword())));
+        System.out.println(new BCryptPasswordEncoder().encode("root"));
     }
 
 }

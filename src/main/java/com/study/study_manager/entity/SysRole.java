@@ -1,22 +1,20 @@
 package com.study.study_manager.entity;
 //角色表
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
 public class SysRole{
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String name;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

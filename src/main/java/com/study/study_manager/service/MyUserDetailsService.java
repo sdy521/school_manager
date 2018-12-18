@@ -1,6 +1,8 @@
 package com.study.study_manager.service;
 
+import com.study.study_manager.dao.SysRolesDao;
 import com.study.study_manager.dao.SysUserRepository;
+import com.study.study_manager.entity.SysRole;
 import com.study.study_manager.entity.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,11 +12,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
-    SysUserRepository userRepository;
+    private SysUserRepository userRepository;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private SysRolesDao sysRolesDao;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -25,7 +29,8 @@ public class MyUserDetailsService implements UserDetailsService {
         if (sysUser == null) {
             throw new UsernameNotFoundException("该用户不存在：" + username);
         }
-        return sysUser;
+        List<SysRole> roles = sysRolesDao.getRoles(sysUser.getId());
+        return new SysUser(sysUser.getUsername(),sysUser.getPassword(),roles);
     }
 
 }
