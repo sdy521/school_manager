@@ -19,7 +19,7 @@ public class StudyManagerApplicationTests {
     private SysUserRepository sysUserRepository;
     @Test
     public void contextLoads() {
-        System.out.println(new BCryptPasswordEncoder().encode("root"));
+        System.out.println(new BCryptPasswordEncoder().encode("user"));
     }
 
 }
