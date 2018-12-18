@@ -1,52 +1,67 @@
 package com.study.study_manager.config;
 
-import com.study.study_manager.security.CustomUserDetailsService;
+import com.study.study_manager.security.LoginSuccessHandler;
+import com.study.study_manager.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.session.InvalidSessionStrategy;
 
+//配置Spring Security
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {//（主要配置文件）
+@EnableWebSecurity // 注解开启Spring Security的功能
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+        return new MyUserDetailsService();
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //在内存中比较
+//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("sdy").password(new BCryptPasswordEncoder().encode("123")).roles("USER");
+          auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        super.configure(http);
-        http.authorizeRequests()//该方法所返回的对象的方法来配置请求级别的安全细节
-        .antMatchers("/login").permitAll()//登录界面不拦截
-        .antMatchers("/api/**").permitAll()//调用api不需要拦截
-        .antMatchers(HttpMethod.POST, "/checkLogin").permitAll()// 对于登录路径不进行拦截
-        .and().formLogin()//配置登录界面
-        .loginPage("/login")//登录界面的访问路径
-        .loginProcessingUrl("/checkLogin")//登录界面下表单提交的路径
-        .failureForwardUrl("/login?error=true")//登录失败后的路径，为了给客户提示
-        .defaultSuccessUrl("/index");//登录成功后默认跳转的路径
+        //禁用csrf
+        http.csrf().disable();
+        http.formLogin().loginPage("/login")
+                //登录处理url
+                .loginProcessingUrl("/j_spring_security_check")
+                //登录时对应的用户名密码参数名
+//                .usernameParameter("username").passwordParameter("password")
+                .and()
+                .authorizeRequests()
+                .anyRequest()//任何请求登陆后都可以访问
+                .authenticated();
     }
+
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    public void configure(WebSecurity web) throws Exception {
+        //对以下路径忽略过滤
+        web.ignoring().antMatchers("/static/**", "/login");
     }
 
-    //对以下路径忽略过滤
-    /*@Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers( "/login");
-    }*/
-
+    // 处理密码加密解密逻辑
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
