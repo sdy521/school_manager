@@ -20,8 +20,8 @@ public class userDaoTest {
     private UserDao userDao;
     @Test
     public void selectAllUser() {
-//        List<User> userList = userDao.selectAllUser();
-//        assertEquals(1,userList.size());
-        System.out.println("1212");
+        /*List<User> userList = userDao.selectAllUser();
+        assertEquals(1,userList.size());*/
+        System.out.println("test");
     }
 }
