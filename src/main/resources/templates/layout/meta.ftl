@@ -5,3 +5,5 @@
     <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/animate.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+    <#--font awesome 图标-->
+    <link href="/static/css/plugins/social-buttons/social-buttons.css" rel="stylesheet">
