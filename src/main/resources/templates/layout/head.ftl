@@ -1,11 +1,11 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></i> </a>
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome to 学生管理系统.</span>
+                <span class="m-r-sm text-muted welcome-message">Welcome to 学生管理系统</span>
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -40,15 +40,15 @@
                 </ul>
             </li>
             <li>
-                <a href="login.ftl">
+                <a href="/j_spring_security_logout">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
-            <li>
+            <#--<li>
                 <a class="right-sidebar-toggle">
                     <i class="fa fa-tasks"></i>
                 </a>
-            </li>
+            </li>-->
         </ul>
 
     </nav>

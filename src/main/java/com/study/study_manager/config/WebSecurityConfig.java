@@ -36,6 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //登录处理url
                 .loginProcessingUrl("/j_spring_security_check")
                 .and()
+                .logout()
+                .logoutUrl("/j_spring_security_logout")
+                .and()
                 .authorizeRequests()
                 .anyRequest()//任何请求登陆后都可以访问
                 .authenticated();
