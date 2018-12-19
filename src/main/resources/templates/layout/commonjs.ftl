@@ -6,3 +6,5 @@
 <!-- Custom and plugin javascript -->
 <script src="/static/js/inspinia.js"></script>
 <script src="/static/js/plugins/pace/pace.min.js"></script>
+<#--jqGrid-->
+<script src="/static/js/plugins/jqGrid/jquery.jqGrid.min.js"></script>

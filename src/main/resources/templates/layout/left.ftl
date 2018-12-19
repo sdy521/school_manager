@@ -20,13 +20,13 @@
                 </div>
             </li>
             <li class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">操作</span> <span class="fa arrow"></span></a>
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">教师</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="index.html">操作1</a></li>
-                    <li class="active"><a href="dashboard_2.html">操作2</a></li>
+                    <li><a href="/teacher_nameList/list">教师名单</a></li>
+                    <#--<li class="active"><a href="dashboard_2.html">操作2</a></li>
                     <li><a href="dashboard_3.html">操作3</a></li>
                     <li><a href="dashboard_4_1.html">操作4</a></li>
-                    <li><a href="dashboard_5.html">操作5 </a></li>
+                    <li><a href="dashboard_5.html">操作5 </a></li>-->
                 </ul>
             </li>
         </ul>
