@@ -15,7 +15,8 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    <small>学生管理</small>
+                    <#--<small>学生管理</small>-->
+                        <i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 35px;"></i>
                 </div>
             </li>
             <li class="active">
