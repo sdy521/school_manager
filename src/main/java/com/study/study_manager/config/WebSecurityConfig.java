@@ -1,6 +1,6 @@
 package com.study.study_manager.config;
 
-import com.study.study_manager.service.MyUserDetailsService;
+import com.study.study_manager.service.security.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -1,9 +1,9 @@
-package com.study.study_manager.service;
+package com.study.study_manager.service.security;
 
 import com.study.study_manager.dao.SysRolesDao;
 import com.study.study_manager.dao.SysUserRepository;
-import com.study.study_manager.entity.SysRole;
-import com.study.study_manager.entity.SysUser;
+import com.study.study_manager.entity.security.SysRole;
+import com.study.study_manager.entity.security.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

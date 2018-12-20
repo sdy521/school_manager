@@ -6,21 +6,38 @@
 NameList.initJqGrid = function(){
     var tableInstance = $("#grid-table").jqGrid({
         caption: '手机产品列表',
-        url:'#',
+        url:'/teacher_nameList/grid',
         datatype: "json",
-        colNames:['编号','名称','主屏尺寸','操作系统','电池容量', '价格(￥)','操作'],
+        colNames:['编号','姓名','密码','创建时间','修改时间', '状态','操作'],
         colModel:[
-            {name:'sn',index:'sn', width:80,align:'center'},
-            {name:'title',index:'title', width:180},
-            {name:'size',index:'size', width:120},
-            {name:'os',index:'os', width:120},
-            {name:'charge',index:'charge', width:100,align:'center'},
-            {name:'price',index:'price', width:80,align:'center'},
-            {name:'opt',index:'opt', width:80, sortable:false, align:'center'}
+            {name:'id',index:'id', width:80,align:'center'},
+            {name:'name',index:'name', width:180},
+            {name:'password',index:'password', width:120},
+            {name:'createTime',index:'createTime', width:120},
+            {name:'updateTime',index:'updateTime', width:100},
+            {name:'deleted',index:'deleted', width:80},
+            {name:'operation',index:'operation', width:80, sortable:false,formatter:function (cellValue,index,ObjectRows) {
+                    return "11";
+                }}
         ],
+        jsonReader:{
+            root: function (data) {
+                return data.obj.rows;
+            },   // 实际模型数据
+            page: function (data) {
+                return data.obj.page;
+            },   // 当前页码
+            total: function (data) {
+                return data.obj.total;
+            }, // 页码总数
+            records: function (data) {
+                return data.obj.records;
+            }, // 数据总数
+            repeatitems:false
+        },
         rowNum:10,
         rowList:[10,20,30],
-        pager: '#pager',
+        pager: '#grid-pager',
         sortname: 'id',
         autowidth: true,
         height:280,

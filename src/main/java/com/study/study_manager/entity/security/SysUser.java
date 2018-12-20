@@ -1,4 +1,4 @@
-package com.study.study_manager.entity;
+package com.study.study_manager.entity.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
