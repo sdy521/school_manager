@@ -18,6 +18,14 @@ public class BaseEntity {
     @Column
     private boolean deleted=false;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }

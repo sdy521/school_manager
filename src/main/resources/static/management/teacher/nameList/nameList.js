@@ -10,7 +10,7 @@ NameList.initJqGrid = function(){
         datatype: "json",
         colNames:['编号','姓名','密码','创建时间','修改时间', '状态','操作'],
         colModel:[
-            {name:'id',index:'id', width:80,align:'center'},
+            {name:'id',index:'id', width:80,align:'center',formatter:'integer'},
             {name:'name',index:'name', width:180},
             {name:'password',index:'password', width:120},
             {name:'createTime',index:'createTime', width:120},
@@ -42,7 +42,7 @@ NameList.initJqGrid = function(){
         autowidth: true,
         height:280,
         viewrecords: true,
-        multiselect: true,
+        multiselect: false,
         multiselectWidth: 25,
         sortable:true,
         sortorder: "asc"
