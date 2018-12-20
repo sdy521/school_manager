@@ -5,7 +5,7 @@
 }
 NameList.initJqGrid = function(){
     var tableInstance = $("#grid-table").jqGrid({
-        caption: '手机产品列表',
+        caption: '老师列表',
         url:'/teacher_nameList/grid',
         datatype: "json",
         colNames:['编号','姓名','密码','创建时间','修改时间', '状态','操作'],
