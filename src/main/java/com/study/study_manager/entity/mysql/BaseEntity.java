@@ -11,9 +11,9 @@ public class BaseEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     //字段不能更新
-    @Column(name = "create_time",updatable = false)
+    @Column(updatable = false)
     private Date createTime;
-    @Column(name = "update_time")
+    @Column
     private Date updateTime;
     @Column
     private boolean deleted=false;

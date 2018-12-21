@@ -4,6 +4,10 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/animate.css" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet">
+    <#--jqGrid样式-->
+    <link href = "/static/css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <link href = "/static/css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet">
     <#--font awesome 图标-->
     <link href = "/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
