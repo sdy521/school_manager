@@ -16,7 +16,7 @@ public class NameListService {
 
     public PageInfo<Teacher> selectByPage(TeacherParam param){
         PageHelper.startPage(param.getPage(),param.getRows());
-        List<Teacher> list = teacherDao.selectByPage(param.getName());
+        List<Teacher> list = teacherDao.selectByPage(param.getName(),param.getSord());
         return new PageInfo<Teacher>(list);
     }
 }

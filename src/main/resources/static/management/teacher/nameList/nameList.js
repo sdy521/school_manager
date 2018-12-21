@@ -25,23 +25,23 @@ NameList.initJqGrid = function(){
         },
         colNames:['编号','姓名','密码','创建时间','修改时间', '状态','操作'],
         colModel:[
-            {name:'id',index:'id', width:80,align:'center',align:'center',search:false,formatter:'integer',key:true},
-            {name:'name',index:'name', width:80,align:'center',search:true, stype:'text'},
-            {name:'password',index:'password', width:100,align:'center',search:false},
-            {name:'createTime',index:'createTime', width:120,align:'center',search:false,formatter:function (cellValue) {
+            {name:'id',index:'id', width:80,align:'center',sortable:true,search:false,formatter:'integer',key:true},
+            {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
+            {name:'password',index:'password', width:100,align:'center',sortable:false,search:false},
+            {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
-            {name:'updateTime',index:'updateTime', width:120,align:'center',search:false,formatter:function (cellValue) {
+            {name:'updateTime',index:'updateTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
-            {name:'deleted',index:'deleted', width:80,align:'center',search:false,formatter:function (cellValue) {
+            {name:'deleted',index:'deleted', width:80,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     if(cellValue==0){
                         return "未删除";
                     }else {
                         return "已删除";
                     }
                 }},
-            {name:'operation',index:'operation', width:100, sortable:false,align:'center',search:false,formatter:function (cellValue,index,rowObject) {
+            {name:'operation',index:'operation', width:100, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var str="";
                     str +="<button type=\"button\" class=\"btn btn-primary btn-sm\">修改</button>&nbsp;&nbsp;";
                     str +="<button type=\"button\" class=\"btn btn-danger btn-sm\">删除</button>";
@@ -54,6 +54,8 @@ NameList.initJqGrid = function(){
         autowidth: true,
         height:280,
         viewrecords: true,
+        //loadonce:true//为true时，不请求后台，直接从界面上排序
+        // sortorder:"desc",//此属性只能用于loadonce为true时
         // multiselect: false,
         // multiselectWidth: 25,
         /*loadComplete : function() {
