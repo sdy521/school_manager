@@ -1,6 +1,6 @@
-package com.study.study_manager.dao;
+package com.study.study_manager.security.dao;
 
-import com.study.study_manager.entity.security.SysRole;
+import com.study.study_manager.security.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;

@@ -40,7 +40,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/j_spring_security_logout">
+                <a href="/logout">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>

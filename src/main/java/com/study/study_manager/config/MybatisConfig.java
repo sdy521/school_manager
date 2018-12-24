@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 @Configuration
 //配置mybatis mapper的扫描路径
-@MapperScan("com.study.study_manager.dao")
+@MapperScan({"com.study.study_manager.dao","com.study.study_manager.security.dao"})
 public class MybatisConfig {
    @Bean(name="datasource")
    @ConfigurationProperties("spring.datasource")

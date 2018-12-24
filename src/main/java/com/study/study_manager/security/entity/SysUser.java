@@ -1,4 +1,4 @@
-package com.study.study_manager.entity.security;
+package com.study.study_manager.security.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -59,6 +59,21 @@ public class SysUser implements UserDetails {
             auths.add(new SimpleGrantedAuthority(role.getName()));
         }
         return auths;
+    }
+
+    @Override
+    public int hashCode() {
+        return username.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.toString().equals(obj.toString());
+    }
+
+    @Override
+    public String toString() {
+        return this.username;
     }
 
     @Override

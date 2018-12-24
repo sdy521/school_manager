@@ -1,4 +1,4 @@
-package com.study.study_manager.entity.security;
+package com.study.study_manager.security.entity;
 //角色表
 
 import javax.persistence.GeneratedValue;
