@@ -66,7 +66,7 @@ NameList.initJqGrid = function(){
             }
         }*/
     });
-    NameList.jqSearch();
+    // NameList.jqSearch();
     return tableInstance;
 }
  //jqGrid自带搜索
@@ -75,6 +75,31 @@ NameList.jqSearch = function(){
     options.autosearch = true;
     $("#grid-table").jqGrid('filterToolbar',options);
 }
+//搜索
+ NameList.search = function () {
+    var name = $("#teacherName").val().trim();
+    var params = {};
+    params.name = name;
+    NameList.table.setGridParam({
+        url:"/teacher_nameList/grid",
+        postData:params
+    }).trigger("reloadGrid");
+ }
+ //重置
+ NameList.reset = function(){
+    var elem = $("#teacherName");
+    elem.val("");
+    var params = {};
+    params.name="";
+    NameList.table.setGridParam({
+        url:"/teacher_nameList/grid",
+        postData:params
+    }).trigger("reloadGrid");
+ }
+ //新增
+ NameList.add = function(){
+    $("#createModal").modal();
+ }
  $(function () {
     NameList.table = NameList.initJqGrid();
  });
