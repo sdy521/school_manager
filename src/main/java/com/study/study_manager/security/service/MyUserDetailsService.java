@@ -37,7 +37,7 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("该用户不存在：" + username);
         }
         //用户已经登录则此次登录失效
-       /* List<Object> o = sessionRegistry.getAllPrincipals();
+        /*List<Object> o = sessionRegistry.getAllPrincipals();
         for ( Object principal : o) {
             if (principal instanceof SysUser && (sysUser.getUsername().equals(((SysUser) principal).getUsername()))) {
                 throw new SessionAuthenticationException("当前用户已经在线，登录失败！！！");
