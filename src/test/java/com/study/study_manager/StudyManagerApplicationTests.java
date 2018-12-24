@@ -1,6 +1,6 @@
 package com.study.study_manager;
 
-import com.study.study_manager.dao.SysUserRepository;
+import com.study.study_manager.security.dao.SysUserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

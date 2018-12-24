@@ -9,6 +9,7 @@ import com.study.study_manager.entity.mysql.Teacher;
 import com.study.study_manager.service.teacher.NameListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,5 +37,16 @@ public class NameListController {
         result.setTotal(pageInfo.getPages());
         result.setRows(pageInfo.getList());
         return new JSONResult(result);
+    }
+
+    /***
+     * 增加
+     * @param teacher
+     * @return
+     */
+    @RequestMapping("/insert")
+    @ResponseBody
+    public Result insert(@RequestBody Teacher teacher){
+        return new Result(0,"增加成功");
     }
 }
