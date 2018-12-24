@@ -19,4 +19,8 @@ public class NameListService {
         List<Teacher> list = teacherDao.selectByPage(param.getName(),param.getSord());
         return new PageInfo<Teacher>(list);
     }
+
+    public void insert(Teacher teacher){
+        teacherDao.insert(teacher.getName(),teacher.getPassword());
+    }
 }

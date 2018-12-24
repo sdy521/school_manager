@@ -12,3 +12,5 @@
 <script type="text/javascript" src="/static/js/plugins/jqGrid/i18n/grid.locale-cn.js"></script>
 <script src="/static/js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/jqGrid/jqGrid.js"></script>
+<#--sweetalert-->
+<script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>

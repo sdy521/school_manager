@@ -104,15 +104,18 @@ NameList.jqSearch = function(){
     var elem = $("#createModal");
     var params = {};
     params.name = elem.find("input[name='name']").val().trim();
-    params.password = elem.find("input[name='password']").val().trim;
+    params.password = elem.find("input[name='password']").val().trim();
     $.ajax({
         url:"/teacher_nameList/insert",
+        data:JSON.stringify(params),
         type:"POST",
         dataType:"JSON",
         contentType:"application/json;charset=utf8",
         success:function (r) {
             if(r.code===0){
-                alert("增加成功");
+                elem.modal('hide');
+                success("添加成功");
+                NameList.search();
             }
         }
     });

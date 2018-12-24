@@ -47,6 +47,7 @@ public class NameListController {
     @RequestMapping("/insert")
     @ResponseBody
     public Result insert(@RequestBody Teacher teacher){
+        nameListService.insert(teacher);
         return new Result(0,"增加成功");
     }
 }

@@ -14,3 +14,11 @@ function setDateFormat(myDate) {
     var result = year + '-' + month + '-' + day + ' '+ hours + ':' + minutes + ':' + seconds //当前日期
     return result;
 }
+
+function success(msg,substr) {
+    swal({
+        title: msg,
+        text: substr,
+        type: "success"
+    });
+}

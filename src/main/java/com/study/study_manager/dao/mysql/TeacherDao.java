@@ -1,6 +1,7 @@
 package com.study.study_manager.dao.mysql;
 
 import com.study.study_manager.entity.mysql.Teacher;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,4 +15,7 @@ public interface TeacherDao {
              "order by id ${sort}",
             "</script>"})
     List<Teacher> selectByPage(@Param("name") String name,@Param("sort") String sort);
+
+    @Insert("insert into teacher(name,password,deleted) values(#{name},#{password},0)")
+    void insert(@Param("name") String name,@Param("password") String password);
 }
