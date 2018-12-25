@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class BaseEntity {
     @Id
+    //tk.mybatis只能用这一种主键生成策略
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     //字段不能更新
