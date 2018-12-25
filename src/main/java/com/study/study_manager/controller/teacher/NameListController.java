@@ -7,6 +7,7 @@ import com.study.study_manager.core.jqGrid.JqGridResult;
 import com.study.study_manager.dto.mysql.TeacherParam;
 import com.study.study_manager.entity.mysql.Teacher;
 import com.study.study_manager.service.teacher.NameListService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,6 +49,9 @@ public class NameListController {
     @RequestMapping("/insert")
     @ResponseBody
     public Result insert(@RequestBody Teacher teacher){
+        String pwd = teacher.getPassword();
+        String bcrypt = BCrypt.hashpw(pwd,BCrypt.gensalt());
+        teacher.setPassword(bcrypt);
         nameListService.insert(teacher);
         return new Result(0,"增加成功");
     }
