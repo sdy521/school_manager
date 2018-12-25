@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -49,5 +50,59 @@ public class NameListController {
     public Result insert(@RequestBody Teacher teacher){
         nameListService.insert(teacher);
         return new Result(0,"增加成功");
+    }
+
+    /***
+     * 根据id查找老师
+     * @param id
+     * @return
+     */
+    @RequestMapping("/selectOne")
+    @ResponseBody
+    public Result selectOne(@RequestParam Integer id){
+        Teacher teacher = new Teacher();
+        teacher.setId(id);
+        teacher = nameListService.selectOne(teacher);
+        return new JSONResult(teacher);
+    }
+
+    /***
+     * 修改
+     * @param teacher
+     * @return
+     */
+    @RequestMapping("/update")
+    @ResponseBody
+    public Result update(@RequestBody Teacher teacher){
+        nameListService.updateSelective(teacher);
+        return new Result(0,"修改成功");
+    }
+
+    /***
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Result delete(@RequestParam Integer id){
+        Teacher teacher = new Teacher();
+        teacher.setId(id);
+        nameListService.delete(teacher);
+        return new Result(0,"删除成功");
+    }
+
+    /***
+     * 恢复
+     * @param id
+     * @return
+     */
+    @RequestMapping("/recover")
+    @ResponseBody
+    public Result recover(@RequestParam Integer id){
+        Teacher teacher = new Teacher();
+        teacher.setId(id);
+        nameListService.recover(teacher);
+        return new Result(0,"恢复成功");
     }
 }

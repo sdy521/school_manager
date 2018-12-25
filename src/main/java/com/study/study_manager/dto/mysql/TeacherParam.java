@@ -5,6 +5,7 @@ import com.study.study_manager.core.jqGrid.JqGridParam;
 public class TeacherParam extends JqGridParam {
     private Integer id;
     private String name;
+    private Integer deleted;
     public Integer getId() {
         return id;
     }
@@ -19,5 +20,13 @@ public class TeacherParam extends JqGridParam {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 }

@@ -7,6 +7,7 @@ public class JSONResult extends Result{
 
     }
     public JSONResult(Object obj){
+        super(0,"操作成功");
         this.obj = obj;
     }
     public Object getObj() {

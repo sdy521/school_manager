@@ -29,6 +29,10 @@
                             <div class="bar search-bar">
                                 <div class="form-inline">
                                     <input id="teacherName" type="text" class="form-control" placeholder="请输入姓名...">
+                                    <select id="deleted" class="form-control" style="width: 100px;">
+                                        <option value="0" selected>未删除</option>
+                                        <option value="1">已删除</option>
+                                    </select>
                                     <button class="btn btn-primary"onclick="NameList.search();">搜索</button>
                                     <button class="btn btn-primary"onclick="NameList.reset();">重置</button>
                                     <button class="btn btn-primary"onclick="NameList.add();">增加</button>
@@ -76,6 +80,38 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-primary" onclick="NameList.insert();">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<#--修改弹框-->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="update-form">
+                    <input type="hidden" name="id"/>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="NameList.update();">确定</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div><!-- /.modal-content -->

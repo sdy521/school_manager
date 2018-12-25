@@ -12,9 +12,9 @@ import java.util.List;
 public interface TeacherDao extends BaseDao<Teacher> {
 
     @Select({"<script>",
-            "select * from teacher where deleted = 0 " +
+            "select * from teacher where deleted=${deleted} " +
             "<when test='name!=null'> and name like '%${name}%' </when>" +
              "order by id ${sort}",
             "</script>"})
-    List<Teacher> selectByPage(@Param("name") String name,@Param("sort") String sort);
+    List<Teacher> selectByPage(@Param("name") String name,@Param("deleted") Integer deleted,@Param("sort") String sort);
 }
