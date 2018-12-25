@@ -21,6 +21,6 @@ public class NameListService {
     }
 
     public void insert(Teacher teacher){
-        teacherDao.insert(teacher.getName(),teacher.getPassword());
+        teacherDao.insert(teacher);
     }
 }

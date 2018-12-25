@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class BaseEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     //字段不能更新
     @Column(updatable = false)

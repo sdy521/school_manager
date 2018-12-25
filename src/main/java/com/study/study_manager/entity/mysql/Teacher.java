@@ -1,7 +1,9 @@
 package com.study.study_manager.entity.mysql;
 
 import javax.persistence.Column;
+import javax.persistence.Table;
 
+@Table(name = "teacher")
 public class Teacher extends BaseEntity{
     @Column
     private String name;
