@@ -55,6 +55,7 @@ NameList.initJqGrid = function(){
                     return str;
                 }}
         ],
+        page: 1,    //初始页码
         rowNum:10,
         rowList:[10,20,30],
         pager: '#grid-pager',
@@ -91,6 +92,7 @@ NameList.jqSearch = function(){
     params.deleted = deleted;
     NameList.table.setGridParam({
         url:"/teacher_nameList/grid",
+        page:1,
         postData:params
     }).trigger("reloadGrid");
  }
@@ -104,6 +106,7 @@ NameList.jqSearch = function(){
     params.deleted=0;
     NameList.table.setGridParam({
         url:"/teacher_nameList/grid",
+        page:1,
         postData:params
     }).trigger("reloadGrid");
  }
