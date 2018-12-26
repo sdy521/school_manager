@@ -10,57 +10,72 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2018-12-19 15:37:46
+Date: 2018-12-26 16:22:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for sys_role
+-- Table structure for role
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_role`;
-CREATE TABLE `sys_role` (
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of sys_role
+-- Records of role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', 'ROLE_ADMIN');
-INSERT INTO `sys_role` VALUES ('2', 'ROLE_USER');
+INSERT INTO `role` VALUES ('1', 'ROLE_ADMIN');
+INSERT INTO `role` VALUES ('2', 'ROLE_USER');
 
 -- ----------------------------
--- Table structure for sys_user
+-- Table structure for user
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '教师名称',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT NULL COMMENT '1:删除 0:未删除',
+  `type` int(4) NOT NULL COMMENT '0:管理员1:老师2:学生',
+  `enable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0:禁用1:可用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of sys_user
+-- Records of user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'root', '$2a$10$kGH66YEK6P2UC2Kg/PsYBuQr27/lOLHfAPr3f6Yh0ZCSMXw68wDxS');
-INSERT INTO `sys_user` VALUES ('2', 'user', '$2a$10$5S2jEGXcJrJG2rj1K3v6z.Yt9CqQu1gNFT7HZVFxN9GRPjKgqUnhW');
+INSERT INTO `user` VALUES ('1', 'root', '$2a$10$kGH66YEK6P2UC2Kg/PsYBuQr27/lOLHfAPr3f6Yh0ZCSMXw68wDxS', '2018-12-20 13:52:47', '2018-12-20 13:52:49', '0', '0', '1');
+INSERT INTO `user` VALUES ('2', '李老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-20 16:32:30', '2018-12-20 16:32:32', '0', '1', '1');
+INSERT INTO `user` VALUES ('3', '孙老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2018-12-25 12:46:49', '0', '1', '0');
+INSERT INTO `user` VALUES ('4', '张老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1');
+INSERT INTO `user` VALUES ('5', '赵老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:54', '2018-12-25 12:46:56', '0', '1', '1');
+INSERT INTO `user` VALUES ('6', '占老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 11:22:20', '2018-12-25 11:22:20', '0', '1', '1');
+INSERT INTO `user` VALUES ('7', '钱老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:26', '2018-12-25 12:46:26', '0', '1', '1');
+INSERT INTO `user` VALUES ('8', '吴老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:37:32', '2018-12-25 13:37:32', '0', '1', '1');
+INSERT INTO `user` VALUES ('9', '周老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:38:33', '2018-12-25 15:27:06', '0', '1', '1');
+INSERT INTO `user` VALUES ('10', '郑老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:04', '2018-12-25 15:27:38', '0', '1', '1');
+INSERT INTO `user` VALUES ('11', '王老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:16', '2018-12-25 13:39:16', '1', '1', '1');
+INSERT INTO `user` VALUES ('12', '梅老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:49:54', '2018-12-26 16:16:05', '0', '1', '1');
 
 -- ----------------------------
--- Table structure for sys_user_roles
+-- Table structure for user_role
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_user_roles`;
-CREATE TABLE `sys_user_roles` (
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `sys_user_id` bigint(11) DEFAULT NULL,
+  `user_id` bigint(11) DEFAULT NULL,
   `roles_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of sys_user_roles
+-- Records of user_role
 -- ----------------------------
-INSERT INTO `sys_user_roles` VALUES ('1', '1', '1');
-INSERT INTO `sys_user_roles` VALUES ('2', '2', '2');
+INSERT INTO `user_role` VALUES ('1', '1', '1');
+INSERT INTO `user_role` VALUES ('2', '2', '2');
