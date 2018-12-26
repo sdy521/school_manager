@@ -2,6 +2,7 @@ package com.study.study_manager.core;
 
 import com.study.study_manager.entity.BaseEntity;
 import java.util.Date;
+import java.util.List;
 
 public abstract class BaseService<T extends BaseEntity>{
 
@@ -47,6 +48,14 @@ public abstract class BaseService<T extends BaseEntity>{
      */
     public T selectOne(T entity){
         return getDao().selectOne(entity);
+    }
+
+    /***
+     * 查询全部结果
+     * @return
+     */
+    public List<T> selectAll(){
+        return getDao().selectAll();
     }
     protected void saveBaseInfo(T entity){
         entity.setCreateTime(new Date());

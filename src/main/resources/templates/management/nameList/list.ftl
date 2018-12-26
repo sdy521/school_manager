@@ -118,6 +118,6 @@
     </div><!-- /.modal -->
 </div>
 <#include "/templates/layout/commonjs.ftl">
-<script src="/static/management/teacher/nameList/nameList.js"></script>
+<script src="/static/management/nameList/nameList.js"></script>
 </body>
 </html>

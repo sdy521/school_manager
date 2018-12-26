@@ -1,7 +1,7 @@
 package com.study.study_manager.security.service;
 
-import com.study.study_manager.dao.mysql.RolesDao;
-import com.study.study_manager.dao.mysql.UserDao;
+import com.study.study_manager.dao.RolesDao;
+import com.study.study_manager.dao.UserDao;
 import com.study.study_manager.security.entity.MGrantedAuthority;
 import com.study.study_manager.entity.Role;
 import com.study.study_manager.entity.User;

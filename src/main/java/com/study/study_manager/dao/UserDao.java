@@ -1,4 +1,4 @@
-package com.study.study_manager.dao.mysql;
+package com.study.study_manager.dao;
 
 import com.study.study_manager.core.BaseDao;
 import com.study.study_manager.entity.User;

@@ -1,4 +1,4 @@
-package com.study.study_manager.dao.mysql;
+package com.study.study_manager.dao;
 
 import com.study.study_manager.entity.Role;
 import org.apache.ibatis.annotations.Param;

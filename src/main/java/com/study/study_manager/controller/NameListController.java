@@ -1,4 +1,4 @@
-package com.study.study_manager.controller.teacher;
+package com.study.study_manager.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.study.study_manager.core.JSONResult;
@@ -6,7 +6,7 @@ import com.study.study_manager.core.Result;
 import com.study.study_manager.core.jqGrid.JqGridResult;
 import com.study.study_manager.dto.TeacherParam;
 import com.study.study_manager.entity.User;
-import com.study.study_manager.service.teacher.NameListService;
+import com.study.study_manager.service.NameListService;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

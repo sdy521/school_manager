@@ -2,18 +2,40 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50635
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : study
 
 Target Server Type    : MYSQL
-Target Server Version : 50635
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-12-26 16:22:57
+Date: 2018-12-26 23:25:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for menu
+-- ----------------------------
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `pcode` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of menu
+-- ----------------------------
+INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2018-12-26 20:51:07', '教师管理', '#', 'teacher', '0', '');
+INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2018-12-26 20:54:35', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher');
 
 -- ----------------------------
 -- Table structure for role
