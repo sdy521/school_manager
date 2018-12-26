@@ -1,10 +1,10 @@
-package com.study.study_manager.security.entity;
+package com.study.study_manager.entity;
 //角色表
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class SysRole{
+public class Role {
     @Id
     @GeneratedValue
     private Integer id;

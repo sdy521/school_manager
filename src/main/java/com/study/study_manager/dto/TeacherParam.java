@@ -1,4 +1,4 @@
-package com.study.study_manager.dto.mysql;
+package com.study.study_manager.dto;
 
 import com.study.study_manager.core.jqGrid.JqGridParam;
 

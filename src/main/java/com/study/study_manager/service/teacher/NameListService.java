@@ -4,32 +4,32 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.study.study_manager.core.BaseDao;
 import com.study.study_manager.core.BaseService;
-import com.study.study_manager.dao.mysql.TeacherDao;
-import com.study.study_manager.dto.mysql.TeacherParam;
-import com.study.study_manager.entity.mysql.Teacher;
+import com.study.study_manager.dao.mysql.UserDao;
+import com.study.study_manager.dto.TeacherParam;
+import com.study.study_manager.entity.User;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class NameListService extends BaseService<Teacher> {
+public class NameListService extends BaseService<User> {
     @Resource
-    private TeacherDao teacherDao;
+    private UserDao userDao;
 
     @Override
-    protected BaseDao<Teacher> getDao() {
-        return teacherDao;
+    protected BaseDao<User> getDao() {
+        return userDao;
     }
-    public PageInfo<Teacher> selectByPage(TeacherParam param){
+    public PageInfo<User> selectByPage(TeacherParam param){
         PageHelper.startPage(param.getPage(),param.getRows());
-        List<Teacher> list = teacherDao.selectByPage(param.getName(),param.getDeleted(),param.getSord());
-        return new PageInfo<Teacher>(list);
+        List<User> list = userDao.selectByPage(param.getName(),param.getDeleted(),param.getSord(),1);
+        return new PageInfo<User>(list);
     }
 
-    public void recover(Teacher teacher){
+    public void recover(User teacher){
         teacher.setDeleted(false);
         teacher.setUpdateTime(new Date());
-        teacherDao.updateByPrimaryKeySelective(teacher);
+        userDao.updateByPrimaryKeySelective(teacher);
     }
 }

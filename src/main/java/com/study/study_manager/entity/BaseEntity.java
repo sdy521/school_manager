@@ -1,4 +1,4 @@
-package com.study.study_manager.entity.mysql;
+package com.study.study_manager.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ public class BaseEntity {
     @Column
     private Date updateTime;
     @Column
-    private boolean deleted=false;
+    private Boolean deleted=false;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class BaseEntity {
         this.updateTime = updateTime;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 }

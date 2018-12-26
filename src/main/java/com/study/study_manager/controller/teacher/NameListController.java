@@ -4,8 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.study.study_manager.core.JSONResult;
 import com.study.study_manager.core.Result;
 import com.study.study_manager.core.jqGrid.JqGridResult;
-import com.study.study_manager.dto.mysql.TeacherParam;
-import com.study.study_manager.entity.mysql.Teacher;
+import com.study.study_manager.dto.TeacherParam;
+import com.study.study_manager.entity.User;
 import com.study.study_manager.service.teacher.NameListService;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Controller
 @RequestMapping("/teacher_nameList")
@@ -32,7 +31,7 @@ public class NameListController {
     @RequestMapping("/grid")
     @ResponseBody
     public Result grid(TeacherParam param){
-        PageInfo<Teacher> pageInfo = nameListService.selectByPage(param);
+        PageInfo<User> pageInfo = nameListService.selectByPage(param);
         JqGridResult result = new JqGridResult();
         result.setPage(pageInfo.getPageNum());
         result.setRecords(pageInfo.getTotal());
@@ -48,10 +47,11 @@ public class NameListController {
      */
     @RequestMapping("/insert")
     @ResponseBody
-    public Result insert(@RequestBody Teacher teacher){
+    public Result insert(@RequestBody User teacher){
         String pwd = teacher.getPassword();
         String bcrypt = BCrypt.hashpw(pwd,BCrypt.gensalt());
         teacher.setPassword(bcrypt);
+        teacher.setType(1);
         nameListService.insert(teacher);
         return new Result(0,"增加成功");
     }
@@ -64,7 +64,7 @@ public class NameListController {
     @RequestMapping("/selectOne")
     @ResponseBody
     public Result selectOne(@RequestParam Integer id){
-        Teacher teacher = new Teacher();
+        User teacher = new User();
         teacher.setId(id);
         teacher = nameListService.selectOne(teacher);
         return new JSONResult(teacher);
@@ -77,7 +77,7 @@ public class NameListController {
      */
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(@RequestBody Teacher teacher){
+    public Result update(@RequestBody User teacher){
         nameListService.updateSelective(teacher);
         return new Result(0,"修改成功");
     }
@@ -90,7 +90,7 @@ public class NameListController {
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id){
-        Teacher teacher = new Teacher();
+        User teacher = new User();
         teacher.setId(id);
         nameListService.delete(teacher);
         return new Result(0,"删除成功");
@@ -104,7 +104,7 @@ public class NameListController {
     @RequestMapping("/recover")
     @ResponseBody
     public Result recover(@RequestParam Integer id){
-        Teacher teacher = new Teacher();
+        User teacher = new User();
         teacher.setId(id);
         nameListService.recover(teacher);
         return new Result(0,"恢复成功");

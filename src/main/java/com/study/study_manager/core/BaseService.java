@@ -1,6 +1,6 @@
 package com.study.study_manager.core;
 
-import com.study.study_manager.entity.mysql.BaseEntity;
+import com.study.study_manager.entity.BaseEntity;
 import java.util.Date;
 
 public abstract class BaseService<T extends BaseEntity>{

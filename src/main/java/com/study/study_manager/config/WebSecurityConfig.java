@@ -1,9 +1,6 @@
 package com.study.study_manager.config;
 
-import com.study.study_manager.security.handler.LoginSuccessHandler;
-import com.study.study_manager.security.handler.LogoutSuccessHandler;
-import com.study.study_manager.security.handler.MyInvalidSessionStrategy;
-import com.study.study_manager.security.handler.MySessionInformationExpiredStrategy;
+import com.study.study_manager.security.handler.*;
 import com.study.study_manager.security.service.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,16 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.formLogin().loginPage("/login")
                 //登录处理url
-                .loginProcessingUrl("/j_spring_security_check")
-                .successHandler(loginSuccessHandler())
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessHandler(logoutSuccessHandler())
-                .and()
-                .authorizeRequests()
-                .anyRequest()//任何请求登陆后都可以访问
-                .authenticated()
+                .loginProcessingUrl("/j_spring_security_check").successHandler(loginSuccessHandler())
+                .and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler())
+                //设置无权限访问页
+                .and().exceptionHandling().accessDeniedHandler(new MyAccessDeniedHandler("/403"))
+                //任何请求登陆后都可以访问
+                .and().authorizeRequests().anyRequest().authenticated()
                 //失效处理政策
                 .and().sessionManagement().invalidSessionStrategy(invalidSessionStrategy())
                 //单用户登录

@@ -1,6 +1,6 @@
 package com.study.study_manager;
 
-import com.study.study_manager.security.dao.SysUserRepository;
+import com.study.study_manager.dao.mysql.UserDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class StudyManagerApplicationTests {
 
     @Autowired
-    private SysUserRepository sysUserRepository;
+    private UserDao userDao;
     @Test
     public void contextLoads() {
-        System.out.println(new BCryptPasswordEncoder().encode("user"));
+        System.out.println(new BCryptPasswordEncoder().encode("123"));
     }
 
 }

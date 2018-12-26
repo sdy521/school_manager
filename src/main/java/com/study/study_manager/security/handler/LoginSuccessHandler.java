@@ -1,8 +1,6 @@
 package com.study.study_manager.security.handler;
 
-import com.study.study_manager.security.entity.SysUser;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;

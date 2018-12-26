@@ -1,6 +1,4 @@
-package com.study.study_manager.security.entity;
-
-import com.study.study_manager.entity.mysql.BaseEntity;
+package com.study.study_manager.entity;
 
 import javax.persistence.Column;
 
@@ -15,6 +13,12 @@ public class User extends BaseEntity {
      */
     @Column
     private Integer type;
+
+    /***
+     * true:security可验证,false 不可验证身份
+     */
+    @Column
+    private Boolean enable;
 
     public String getName() {
         return name;
@@ -38,5 +42,13 @@ public class User extends BaseEntity {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 }
