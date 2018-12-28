@@ -19,12 +19,13 @@ import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("/teacher_nameList")
-public class NameListController {
+public class NameListController extends BaseController{
     @Resource
     private NameListService nameListService;
 
     @RequestMapping("/list")
     public String list(Model model){
+        model.addAttribute("menus",getMenus());
         return "/management/nameList/list";
     }
 

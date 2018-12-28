@@ -19,22 +19,31 @@
                         <i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 35px;"></i>
                 </div>
             </li>
-            <li class="active">
+            <#--<li class="active">
                 <a><i class="fa fa-th-large"></i> <span class="nav-label">教师管理</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/teacher_nameList/list">教师名单</a></li>
-                    <#--<li class="active"><a href="dashboard_2.html">操作2</a></li>
-                    <li><a href="dashboard_3.html">操作3</a></li>
-                    <li><a href="dashboard_4_1.html">操作4</a></li>
-                    <li><a href="dashboard_5.html">操作5 </a></li>-->
                 </ul>
-            </li>
-            <li>
+            </li>-->
+            <#list menus as menu>
+                <#assign children = menu.children />
+                    <li class="active">
+                        <a><i class="fa fa-th-large"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
+                        <#if children??&&(children?size>0)>
+                            <#list children as child>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="${child.url}">${child.name}</a></li>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </li>
+            </#list>
+            <#--<li>
                 <a><i class="fa fa-sun-o"></i> <span class="nav-label">系统设置</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/menu/list">菜单设置</a></li>
                 </ul>
-            </li>
+            </li>-->
         </ul>
 
     </div>

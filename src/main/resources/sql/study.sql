@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-12-26 23:25:36
+Date: 2018-12-29 00:20:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,13 +29,15 @@ CREATE TABLE `menu` (
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
   `pcode` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2018-12-26 20:51:07', '教师管理', '#', 'teacher', '0', '');
 INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2018-12-26 20:54:35', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher');
+INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2018-12-29 00:08:02', '系统设置', '#', 'systemSetup', '0', ' ');
+INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 00:09:49', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup');
 
 -- ----------------------------
 -- Table structure for role

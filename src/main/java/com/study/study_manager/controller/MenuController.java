@@ -5,6 +5,7 @@ import com.study.study_manager.core.Result;
 import com.study.study_manager.entity.Menu;
 import com.study.study_manager.service.MenuService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,12 +15,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/menu")
-public class MenuController {
+public class MenuController extends BaseController{
 
     @Resource
     private MenuService menuService;
     @RequestMapping("/list")
-    public String list(){
+    public String list(Model model){
+        model.addAttribute("menus",getMenus());
         return "/management/memu/list";
     }
 
