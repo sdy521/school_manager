@@ -20,7 +20,7 @@
                 </div>
             </li>
             <li class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">教师管理</span> <span class="fa arrow"></span></a>
+                <a><i class="fa fa-th-large"></i> <span class="nav-label">教师管理</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/teacher_nameList/list">教师名单</a></li>
                     <#--<li class="active"><a href="dashboard_2.html">操作2</a></li>
@@ -30,7 +30,7 @@
                 </ul>
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-sun-o"></i> <span class="nav-label">系统设置</span> <span class="fa arrow"></span></a>
+                <a><i class="fa fa-sun-o"></i> <span class="nav-label">系统设置</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/menu/list">菜单设置</a></li>
                 </ul>

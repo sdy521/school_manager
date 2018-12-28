@@ -14,6 +14,23 @@ function setDateFormat(myDate) {
     var result = year + '-' + month + '-' + day + ' '+ hours + ':' + minutes + ':' + seconds //当前日期
     return result;
 }
+//获取表单下的值得JSON对象
+function getFormJson(frm) {
+    var o = {};
+    var a = $(frm).serializeArray();//表单对象数组 [{name:xxx,value:xxx},{name:xxx,value:xxx},......]
+    $.each(a, function () {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';// ||表示 this.value没有值取后面‘’
+        }
+    });
+
+    return o;
+}
 //成功弹窗
 function success(msg,substr) {
     swal({

@@ -25,7 +25,7 @@ public class NameListController {
 
     @RequestMapping("/list")
     public String list(Model model){
-        return "/management/teacher/nameList/list";
+        return "/management/nameList/list";
     }
 
     @RequestMapping("/grid")
