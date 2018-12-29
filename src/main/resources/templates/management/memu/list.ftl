@@ -35,7 +35,7 @@
         <#include "/templates/layout/head.ftl">
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-9">
-                <h2>菜单管理</h2>
+                <h2>菜单设置</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="/main">首页</a>
