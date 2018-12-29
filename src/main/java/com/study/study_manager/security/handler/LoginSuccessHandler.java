@@ -1,7 +1,9 @@
 package com.study.study_manager.security.handler;
 
+import com.study.study_manager.dao.RolesDao;
 import com.study.study_manager.entity.LeftMenu;
 import com.study.study_manager.entity.Menu;
+import com.study.study_manager.entity.Role;
 import com.study.study_manager.security.entity.UserDetail;
 import com.study.study_manager.service.MenuService;
 import com.study.study_manager.util.Constans;
@@ -21,6 +23,8 @@ import java.util.List;
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Resource
     private MenuService menuService;
+    @Resource
+    private RolesDao rolesDao;
     @Override
     public void setDefaultTargetUrl(String defaultTargetUrl) {
         super.setDefaultTargetUrl(defaultTargetUrl);
@@ -29,10 +33,22 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         UserDetail user = SpringSecurity.getSysUser();
+        //获取对应菜单权限
+        Role role = rolesDao.getMenuRoles(user.getUsername());
         //获取所有能看到的菜单
         List<Menu> all = new ArrayList<>();
-        if(Constans.ROOT.equals(user.getUsername())){
-            all = menuService.selectAll();
+        if(Constans.ADMIN.equals(role.getName())){
+            Menu param = new Menu();
+            param.setDeleted(false);
+            all = menuService.select(param);
+        }else if(Constans.TEACHER.equals(role.getName())){
+            Menu menu = new Menu();
+            menu.setType(1);
+            all = menuService.select(menu);
+        }else if(Constans.STUDENTS.equals(role.getName())){
+            Menu menu = new Menu();
+            menu.setType(2);
+            all = menuService.select(menu);
         }
         //构造树
         List<LeftMenu> leftMenus = getLeftMenu(all);
@@ -48,6 +64,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 firstMenu.setName(menu.getName());
                 firstMenu.setUrl(menu.getUrl());
                 firstMenu.setCode(menu.getCode());
+                firstMenu.setIcon(menu.getIcon());
                 leftMenu.add(firstMenu);
             }
         }
@@ -60,6 +77,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                     secondMenu.setUrl(menu2.getUrl());
                     secondMenu.setCode(menu2.getCode());
                     secondMenu.setPcode(menu2.getPcode());
+                    secondMenu.setIcon(menu2.getIcon());
                     children.add(secondMenu);
                 }
             }

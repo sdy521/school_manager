@@ -28,22 +28,16 @@
             <#list menus as menu>
                 <#assign children = menu.children />
                     <li class="active">
-                        <a><i class="fa fa-th-large"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
+                        <a><i class="${menu.icon}"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
                         <#if children??&&(children?size>0)>
                             <#list children as child>
                                 <ul class="nav nav-second-level">
-                                    <li><a href="${child.url}">${child.name}</a></li>
+                                    <li><a href="${child.url}"><i class="${child.icon}"></i>${child.name}</a></li>
                                 </ul>
                             </#list>
                         </#if>
                     </li>
             </#list>
-            <#--<li>
-                <a><i class="fa fa-sun-o"></i> <span class="nav-label">系统设置</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="/menu/list">菜单设置</a></li>
-                </ul>
-            </li>-->
         </ul>
 
     </div>

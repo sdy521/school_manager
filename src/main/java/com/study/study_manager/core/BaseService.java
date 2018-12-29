@@ -1,6 +1,8 @@
 package com.study.study_manager.core;
 
 import com.study.study_manager.entity.BaseEntity;
+import com.study.study_manager.entity.Menu;
+
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +58,26 @@ public abstract class BaseService<T extends BaseEntity>{
      */
     public List<T> selectAll(){
         return getDao().selectAll();
+    }
+
+    /***
+     * 根据条件查询全部
+     * @param entity
+     * @return
+     */
+    public List<T> select(T entity){
+        return getDao().select(entity);
+    }
+
+    /***
+     * 更新  null也更新
+     * @param entity
+     * @return
+     */
+    public Integer update(T entity){
+        saveBaseInfo(entity);
+        getDao().updateByPrimaryKey(entity);
+        return entity.getId();
     }
     protected void saveBaseInfo(T entity){
         entity.setCreateTime(new Date());

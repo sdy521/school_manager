@@ -12,6 +12,13 @@ public class Menu extends BaseEntity{
     private String url;
     @Column
     private String pcode;
+    /***
+     * 1:老师2:学生
+     */
+    @Column
+    private Integer type;
+    @Column
+    private String icon;
 
     public String getName() {
         return name;
@@ -43,5 +50,21 @@ public class Menu extends BaseEntity{
 
     public void setPcode(String pcode) {
         this.pcode = pcode;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

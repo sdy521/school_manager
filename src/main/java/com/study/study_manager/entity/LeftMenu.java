@@ -7,6 +7,7 @@ public class LeftMenu {
     private String url;
     private String code;
     private String pcode;
+    private String icon;
     private List<LeftMenu> children;
 
     public String getName() {
@@ -39,6 +40,14 @@ public class LeftMenu {
 
     public void setPcode(String pcode) {
         this.pcode = pcode;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public List<LeftMenu> getChildren() {

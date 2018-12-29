@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -28,7 +29,9 @@ public class MenuController extends BaseController{
     @RequestMapping("/grid")
     @ResponseBody
     public List<Menu> grid(){
-        List<Menu> menu = menuService.selectAll();
+        Menu param = new Menu();
+        param.setDeleted(false);
+        List<Menu> menu = menuService.select(param);
         return menu;
     }
     @RequestMapping("/jstree")
@@ -47,5 +50,45 @@ public class MenuController extends BaseController{
     public Result insert(@RequestBody Menu params){
         menuService.insert(params);
         return new Result(0,"增加成功");
+    }
+
+    /***
+     * 查找一个对象
+     * @param id
+     * @return
+     */
+    @RequestMapping("/selectOne")
+    @ResponseBody
+    public Result selectOne(@RequestParam Integer id){
+        Menu menu = new Menu();
+        menu.setId(id);
+        menu = menuService.selectOne(menu);
+        return new JSONResult(menu);
+    }
+
+    /***
+     * 更新
+     * @param menu
+     * @return
+     */
+    @RequestMapping("/update")
+    @ResponseBody
+    public Result update(@RequestBody Menu menu){
+        menuService.update(menu);
+        return new Result(0,"更新成功");
+    }
+
+    /***
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Result delete(@RequestParam Integer id){
+        Menu menu = new Menu();
+        menu.setId(id);
+        menuService.delete(menu);
+        return new Result(0,"更新成功");
     }
 }

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50721
+Source Server Version : 50635
 Source Host           : localhost:3306
 Source Database       : study
 
 Target Server Type    : MYSQL
-Target Server Version : 50721
+Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2018-12-29 00:20:13
+Date: 2018-12-29 16:55:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,17 +27,21 @@ CREATE TABLE `menu` (
   `url` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
-  `pcode` varchar(255) DEFAULT NULL,
+  `pcode` varchar(255) NOT NULL DEFAULT '',
+  `type` int(4) NOT NULL DEFAULT '0' COMMENT '0：管理员1老师2学生',
+  `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2018-12-26 20:51:07', '教师管理', '#', 'teacher', '0', '');
-INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2018-12-26 20:54:35', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher');
-INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2018-12-29 00:08:02', '系统设置', '#', 'systemSetup', '0', ' ');
-INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 00:09:49', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup');
+INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2018-12-29 16:28:17', '教师管理', '#', 'teacher', '0', '', '1', 'fa fa-tasks');
+INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2018-12-26 20:54:35', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '1', 'fa fa-user');
+INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2018-12-29 16:13:03', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs');
+INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt');
+INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2018-12-29 16:11:58', '教师信息', '#', 'teacherInfo', '0', 'teacher', '1', 'fa fa-newspaper-o');
+INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust');
 
 -- ----------------------------
 -- Table structure for role
@@ -47,13 +51,14 @@ CREATE TABLE `role` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('1', 'ROLE_ADMIN');
-INSERT INTO `role` VALUES ('2', 'ROLE_USER');
+INSERT INTO `role` VALUES ('2', 'ROLE_TEACHER');
+INSERT INTO `role` VALUES ('3', 'ROLE_STUDENT');
 
 -- ----------------------------
 -- Table structure for user
@@ -74,7 +79,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'root', '$2a$10$kGH66YEK6P2UC2Kg/PsYBuQr27/lOLHfAPr3f6Yh0ZCSMXw68wDxS', '2018-12-20 13:52:47', '2018-12-20 13:52:49', '0', '0', '1');
+INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$FUnQmAbg5aEbPo8En6Hrs.ujrqv0E9WmY7tHwLYkP57O2VPnf79VW', '2018-12-20 13:52:47', '2018-12-20 13:52:49', '0', '0', '1');
 INSERT INTO `user` VALUES ('2', '李老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-20 16:32:30', '2018-12-20 16:32:32', '0', '1', '1');
 INSERT INTO `user` VALUES ('3', '孙老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2018-12-25 12:46:49', '0', '1', '0');
 INSERT INTO `user` VALUES ('4', '张老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1');
@@ -96,10 +101,19 @@ CREATE TABLE `user_role` (
   `user_id` bigint(11) DEFAULT NULL,
   `roles_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
 INSERT INTO `user_role` VALUES ('1', '1', '1');
 INSERT INTO `user_role` VALUES ('2', '2', '2');
+INSERT INTO `user_role` VALUES ('3', '3', '2');
+INSERT INTO `user_role` VALUES ('4', '4', '2');
+INSERT INTO `user_role` VALUES ('5', '5', '2');
+INSERT INTO `user_role` VALUES ('6', '6', '2');
+INSERT INTO `user_role` VALUES ('7', '7', '2');
+INSERT INTO `user_role` VALUES ('8', '8', '2');
+INSERT INTO `user_role` VALUES ('9', '9', '2');
+INSERT INTO `user_role` VALUES ('10', '10', '2');
+INSERT INTO `user_role` VALUES ('11', '11', '2');

@@ -1,6 +1,8 @@
  var Menu = {
     id:"menuTable",
-     table:null
+    table:null,
+    fontIconPicker:null,
+    fontIconPicker2:null
 }
  /**
   * 初始化表格的列
@@ -12,7 +14,18 @@
          {title: '菜单编号', field: 'code', align: 'center', valign: 'middle', sortable: true,width:'12%'},
          {title: '菜单父编号', field: 'pcode', align: 'center', valign: 'middle', sortable: true,width:'15%'},
          {title: '请求地址', field: 'url', align: 'center', valign: 'middle', sortable: true,width:'15%'},
-         // {title: '排序', field: 'sequence', align: 'center', valign: 'middle', sortable: true},
+         {title: '图标', field: 'icon', align: 'center', valign: 'middle', sortable: true,width:'10%',formatter:function (cellValue) {
+                 return cellValue+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class=\""+cellValue+"\"></i>";
+             }},
+         {title: '访问权限', field: 'type', align: 'center', valign: 'middle', sortable: true,width:'9%',formatter:function (cellValue) {
+                 if(cellValue==1){
+                     return "教师";
+                 }else if(cellValue==2){
+                     return "学生";
+                 }else if(cellValue==0){
+                     return "管理员";
+                 }
+             }},
          {title: '操作', field: 'operation', align: 'center', valign: 'middle', sortable: true, width:'15%', formatter: function(cellValue, rowObject) {
                  var id = rowObject["id"];
                  var str = "";
@@ -67,6 +80,27 @@
          }
      });
  }
+ Menu.jstree2 = function(){
+     //初始化菜单下拉树
+     $.ajax({
+         url: "/menu/jstree",
+         type: 'GET',
+         dataType: "json",
+         success: function (r) {
+             if (r.code === 0) {
+                 jstreeOptions.core.data = r.obj;
+                 //绑定点击事件
+                 $("#update-menu-panel").jstree(jstreeOptions).bind("changed.jstree", function (obj, e) {
+                     //input赋值
+                     $("#update-menu-input").val(e.node.text);
+                     $("#update-menu-input").attr("data-code", e.node.id);
+                     //隐藏div
+                     $("#update-menu-panel").fadeOut("fast");
+                 });
+             }
+         }
+     });
+ }
  //插入
  Menu.insert = function(){
      var params = getFormJson($("#create-form"));
@@ -87,6 +121,80 @@
          }
      });
  }
+ //编辑
+ Menu.edit = function(id){
+     $.ajax({
+         url:"/menu/selectOne?id="+id,
+         type:"GET",
+         dataType:"JSON",
+         success:function (r) {
+             if(r.code===0){
+                 var data = r.obj;
+                 var elem = $("#update-form");
+                 elem.find("input[name='id']").val(data.id);
+                 elem.find("input[name='name']").val(data.name);
+                 elem.find("input[name='url']").val(data.url);
+                 elem.find("input[name='code']").val(data.code);
+                 elem.find("input[name='pcode']").val(data.pcode);
+                 $("#fa").addClass(data.icon);
+                 elem.find("select[name='type']").val(data.type);
+                 $("#updateModal").modal();
+             }
+         }
+     });
+ }
+ Menu.update = function () {
+     var params = getFormJson($("#update-form"));
+     $.ajax({
+         url:"/menu/update",
+         data:JSON.stringify(params),
+         dataType:"JSON",
+         type:"POST",
+         contentType:"application/json;charset=utf8",
+         success:function (r) {
+             if(r.code===0){
+                 success("更新成功");
+                 $("#updateModal").modal('hide');
+                 Menu.search();
+             }
+         }
+     });
+ }
+ //删除
+ Menu.delete = function (id) {
+     warning("确定要删除吗？","",function () {
+         $.ajax({
+             url:"/menu/delete?id="+id,
+             type:"GET",
+             dataType:"JSON",
+             success:function (r) {
+                 if(r.code===0){
+                     success("删除成功");
+                     Menu.search();
+                 }
+             }
+         });
+     });
+ }
+ //fontawesome插件
+ function initFontIconPicker(){
+     Menu.fontIconPicker = $('#picker').fontIconPicker({
+         source: fa_icons,
+         searchSource: fa_icons,
+         //useAttribute: true,
+         theme: 'fip-bootstrap',
+         //attributeName: 'data-icomoon',
+         emptyIconValue: 'none',
+     });
+     Menu.fontIconPicker2 = $('#picker2').fontIconPicker({
+         source: fa_icons,
+         searchSource: fa_icons,
+         //useAttribute: true,
+         theme: 'fip-bootstrap',
+         //attributeName: 'data-icomoon',
+         emptyIconValue: 'none',
+     });
+ }
  $(function () {
     //初始化tree grid
      var table = new BSTreeTable(Menu.id, "/menu/grid", Menu.initColumn());
@@ -105,4 +213,7 @@
      });
      //初始化jstree
      Menu.jstree();
+     Menu.jstree2();
+     //fontawesome插件
+     initFontIconPicker();
  });

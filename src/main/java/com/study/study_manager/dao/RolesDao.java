@@ -13,4 +13,9 @@ public interface RolesDao {
             "SELECT roles_id FROM user_role where user_id=${userId}" +
             ")")
     List<Role> getRoles(@Param("userId") Integer userId);
+
+    @Select("SELECT * FROM `role` WHERE id = " +
+            "(SELECT roles_id FROM `user_role` WHERE user_id = " +
+            "(SELECT id FROM `user` WHERE name = #{username}))")
+    Role getMenuRoles(@Param("username") String username);
 }
