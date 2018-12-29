@@ -7,7 +7,6 @@ import com.study.study_manager.core.BaseService;
 import com.study.study_manager.dao.MenuDao;
 import com.study.study_manager.entity.Menu;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;

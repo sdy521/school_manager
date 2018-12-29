@@ -3,6 +3,7 @@ package com.study.study_manager.dao;
 import com.study.study_manager.entity.Role;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface RolesDao {
             "(SELECT roles_id FROM `user_role` WHERE user_id = " +
             "(SELECT id FROM `user` WHERE name = #{username}))")
     Role getMenuRoles(@Param("username") String username);
+
+    @Select("select roles_id from user_role where user_id = ${userid}")
+    Integer getRoleId(@Param("userid") Integer userid);
+
+    @Update("update user_role set roles_id = ${roleid} where user_id = ${userid}")
+    void updateUserRole(@Param("userid") Integer userid,@Param("roleid") Integer roleid);
 }
