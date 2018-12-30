@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController extends BaseController{
     @RequestMapping("/main")
     public String main(Model model) {
-        model.addAttribute("menus",getMenus());
+        model.addAttribute("menus",getMenus("main"));
         return "main";
     }
 }

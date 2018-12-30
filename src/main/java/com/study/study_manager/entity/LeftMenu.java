@@ -8,6 +8,7 @@ public class LeftMenu {
     private String code;
     private String pcode;
     private String icon;
+    private Boolean active;
     private List<LeftMenu> children;
 
     public String getName() {
@@ -48,6 +49,14 @@ public class LeftMenu {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public List<LeftMenu> getChildren() {
