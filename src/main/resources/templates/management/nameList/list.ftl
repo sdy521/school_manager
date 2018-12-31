@@ -2,6 +2,7 @@
 <html>
 <head>
 <#include "/templates/layout/meta.ftl">
+<link href="/static/css/plugins/switchery/switchery.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -76,6 +77,12 @@
                             <input type="text" class="form-control" name="password">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权限</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" id="switch"  name="hiden" class="js-switch"/>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -108,6 +115,12 @@
                             <input type="text" class="form-control" name="password">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权限</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" id="switch"  name="hiden" class="js-switch"/>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -118,6 +131,7 @@
     </div><!-- /.modal -->
 </div>
 <#include "/templates/layout/commonjs.ftl">
+<script src="/static/js/plugins/switchery/switchery.js"></script>
 <script src="/static/management/nameList/nameList.js"></script>
 </body>
 </html>

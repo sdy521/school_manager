@@ -76,3 +76,11 @@ function info(msg) {
 function error(msg,substr) {
     swal(msg, substr, "error");
 }
+
+//switchery
+function setSwitchery(switchElement, checkedBool) {
+    if ((checkedBool && !switchElement.isChecked()) || (!checkedBool && switchElement.isChecked())) {
+        switchElement.setPosition(true);
+        switchElement.handleOnchange(true);
+    }
+}

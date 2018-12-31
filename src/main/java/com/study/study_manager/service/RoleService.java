@@ -41,4 +41,7 @@ public class RoleService {
     public void update(RoleParam param){
         rolesDao.updateUserRole(param.getUserid(),param.getRoleid());
     }
+    public void insert(RoleParam param){
+        rolesDao.insertUserRole(param.getUserid(),param.getRoleid());
+    }
 }

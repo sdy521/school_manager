@@ -2,6 +2,8 @@
     tableId:"#grid-table",
     pagerId:"#grid-pager",
     table:null,
+    myswitchery:null,
+    myswitchery2:null
 }
 NameList.initJqGrid = function(){
     var tableInstance = $("#grid-table").jqGrid({
@@ -122,6 +124,7 @@ NameList.jqSearch = function(){
     var params = {};
     params.name = elem.find("input[name='name']").val().trim();
     params.password = elem.find("input[name='password']").val().trim();
+    params.enable = document.querySelector("#createModal .js-switch").checked;
     $.ajax({
         url:"/teacher_nameList/insert",
         data:JSON.stringify(params),
@@ -150,6 +153,7 @@ NameList.jqSearch = function(){
                 elem.find("input[name='id']").val(data.id);
                 elem.find("input[name='name']").val(data.name);
                 elem.find("input[name='password']").val(data.password);
+                setSwitchery(NameList.myswitchery2, data.enable);
                 elem.modal();
             }
         }
@@ -161,6 +165,7 @@ NameList.jqSearch = function(){
      params.id = elem.find("input[name='id']").val();
      params.name = elem.find("input[name='name']").val();
      params.password = elem.find("input[name='password']").val();
+     params.enable = document.querySelector("#updateModal .js-switch").checked;
      $.ajax({
          url:"/teacher_nameList/update",
          type:"POST",
@@ -210,4 +215,7 @@ NameList.jqSearch = function(){
  }
  $(function () {
     NameList.table = NameList.initJqGrid();
+    //switchery
+    NameList.myswitchery = new Switchery(document.querySelector('#createModal .js-switch'),{color:'#1AB394'});
+    NameList.myswitchery2 = new Switchery(document.querySelector('#updateModal .js-switch'),{color:'#1AB394'});
  });

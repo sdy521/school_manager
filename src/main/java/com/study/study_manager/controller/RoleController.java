@@ -50,7 +50,15 @@ public class RoleController extends BaseController {
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody RoleParam param){
-        roleService.update(param);
+        //先看是否已存在userid
+        Integer roleid = roleService.getRoleId(param.getUserid());
+        if(roleid!=null){
+            //修改
+            roleService.update(param);
+        }else {
+            //插入
+            roleService.insert(param);
+        }
         return new Result(0,"授权成功");
     }
 }

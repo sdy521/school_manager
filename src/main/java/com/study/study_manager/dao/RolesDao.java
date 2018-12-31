@@ -1,6 +1,7 @@
 package com.study.study_manager.dao;
 
 import com.study.study_manager.entity.Role;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -25,4 +26,7 @@ public interface RolesDao {
 
     @Update("update user_role set roles_id = ${roleid} where user_id = ${userid}")
     void updateUserRole(@Param("userid") Integer userid,@Param("roleid") Integer roleid);
+
+    @Insert("insert into user_role(user_id,roles_id) values(${userid},${roleid})")
+    void insertUserRole(@Param("userid") Integer userid,@Param("roleid") Integer roleid);
 }
