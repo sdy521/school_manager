@@ -9,6 +9,7 @@ import com.study.study_manager.service.MenuService;
 import com.study.study_manager.util.Constans;
 import com.study.study_manager.util.SpringSecurity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.util.StringUtils;
 
@@ -33,27 +34,33 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         UserDetail user = SpringSecurity.getSysUser();
-        //获取对应菜单权限
-        Role role = rolesDao.getMenuRoles(user.getUsername());
-        //获取所有能看到的菜单
-        List<Menu> all = new ArrayList<>();
-        if(Constans.ADMIN.equals(role.getName())){
-            Menu param = new Menu();
-            param.setDeleted(false);
-            all = menuService.select(param);
-        }else if(Constans.TEACHER.equals(role.getName())){
-            Menu menu = new Menu();
-            menu.setType(1);
-            all = menuService.select(menu);
-        }else if(Constans.STUDENTS.equals(role.getName())){
-            Menu menu = new Menu();
-            menu.setType(2);
-            all = menuService.select(menu);
+        //初始化密码
+        if(new BCryptPasswordEncoder().matches(Constans.DEFAULT_PASSWORD,user.getPassword())){
+            getRedirectStrategy().sendRedirect(request,response,"/initPassword");
+        }else {
+            //获取对应菜单权限
+            Role role = rolesDao.getMenuRoles(user.getUsername());
+            //获取所有能看到的菜单
+            List<Menu> all = new ArrayList<>();
+            if(Constans.ADMIN.equals(role.getName())){
+                Menu param = new Menu();
+                param.setDeleted(false);
+                all = menuService.select(param);
+            }else if(Constans.TEACHER.equals(role.getName())){
+                Menu menu = new Menu();
+                menu.setType(1);
+                all = menuService.select(menu);
+            }else if(Constans.STUDENTS.equals(role.getName())){
+                Menu menu = new Menu();
+                menu.setType(2);
+                all = menuService.select(menu);
+            }
+            //构造树
+            List<LeftMenu> leftMenus = getLeftMenu(all);
+            user.setLeftMenus(leftMenus);
+            request.getSession().setAttribute("leftname",user.getUsername());
+            super.onAuthenticationSuccess(request, response, authentication);
         }
-        //构造树
-        List<LeftMenu> leftMenus = getLeftMenu(all);
-        user.setLeftMenus(leftMenus);
-        super.onAuthenticationSuccess(request, response, authentication);
     }
 
     public List<LeftMenu> getLeftMenu(List<Menu> all){

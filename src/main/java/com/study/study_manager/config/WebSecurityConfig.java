@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-          auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
+          auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -38,7 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.formLogin().loginPage("/login")
                 //登录处理url
-                .loginProcessingUrl("/j_spring_security_check").successHandler(loginSuccessHandler())
+                .loginProcessingUrl("/j_spring_security_check")
+                //登录时对应的用户名密码参数名
+                .usernameParameter("username").passwordParameter("password")
+                .successHandler(loginSuccessHandler())
                 .and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler())
                 //设置无权限访问页
                 .and().exceptionHandling().accessDeniedHandler(new MyAccessDeniedHandler("/403"))

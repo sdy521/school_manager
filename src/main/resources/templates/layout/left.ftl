@@ -6,7 +6,7 @@
                             <img alt="image" class="img-circle" src="/static/img/a1.jpg" width="80px;"/>
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">管理员<b class="caret"></b></strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${leftname}<b class="caret"></b></strong>
                              </span></span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="mailbox.html">修改</a></li>

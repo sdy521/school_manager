@@ -5,7 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class SpringSecurity {
     public static UserDetail getSysUser(){
-        UserDetail userDetail = (UserDetail) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
+        UserDetail userDetail = (UserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userDetail;
     }
 }

@@ -31,4 +31,8 @@ public class LoginController {
         return "ok";
     }
 
+    @RequestMapping("/initPassword")
+    public String initPassword(){
+        return "/password";
+    }
 }
