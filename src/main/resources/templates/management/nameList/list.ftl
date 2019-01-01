@@ -109,12 +109,12 @@
                             <input type="text" class="form-control" name="name">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <#--<div class="form-group">
                         <label class="col-sm-3 control-label">密码</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="password">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label class="col-sm-3 control-label">权限</label>
                         <div class="col-sm-9">

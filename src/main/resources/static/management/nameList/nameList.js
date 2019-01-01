@@ -26,11 +26,11 @@ NameList.initJqGrid = function(){
             }, // 数据总数
             repeatitems:false
         },
-        colNames:['编号','姓名','密码','创建时间','修改时间', '状态','操作'],
+        colNames:['编号','姓名'/*,'密码'*/,'创建时间','修改时间', '状态','操作'],
         colModel:[
             {name:'id',index:'id', width:80,align:'center',sortable:true,search:false,formatter:'integer',key:true},
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
-            {name:'password',index:'password', width:100,align:'center',sortable:false,search:false},
+            // {name:'password',index:'password', width:100,align:'center',sortable:false,search:false},
             {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
@@ -44,13 +44,14 @@ NameList.initJqGrid = function(){
                         return "已删除";
                     }
                 }},
-            {name:'operation',index:'operation', width:100, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
+            {name:'operation',index:'operation', width:130, sortable:false,sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];
                     var deleted = rowObject['deleted'];
                     var str="";
                     if(deleted==0){
                         str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"NameList.updateModal("+id+");\">修改</button>&nbsp;&nbsp;";
-                        str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"NameList.delete("+id+");\">删除</button>";
+                        str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"NameList.delete("+id+");\">删除</button>&nbsp;&nbsp;";
+                        str +="<button type=\"button\" class=\"btn btn-success btn-sm\" onclick=\"NameList.initpassword("+id+");\">密码重置</button>";
                     }else{
                         str +="<button type=\"button\" class=\"btn btn-warning btn-sm\" onclick=\"NameList.recover("+id+");\">恢复</button>";
                     }
@@ -212,6 +213,21 @@ NameList.jqSearch = function(){
             }
         });
     })
+ }
+ //重置密码
+ NameList.initpassword = function(id){
+     init("确定要重置密码吗？","",function () {
+        $.ajax({
+            url:"/teacher_nameList/initpassword?id="+id,
+            type:"GET",
+            dataType:"JSON",
+            success:function (r) {
+                if(r.code===0){
+                    success("密码重置成功");
+                }
+            }
+        });
+    });
  }
  $(function () {
     NameList.table = NameList.initJqGrid();

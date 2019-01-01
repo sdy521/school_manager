@@ -68,6 +68,20 @@ function recoverWarning(msg,substr,fn) {
         confirmButtonColor: "#f3a50d"
     },fn);
 }
+function init(msg,substr,fn) {
+    swal({
+        title: msg,
+        text: substr,
+        type: "warning",
+        // timer:5000,//自动关闭弹窗，如果不关闭时间一到就自动执行function,单位毫秒
+        showCancelButton: true,
+        closeOnConfirm: false,
+        // animation:"slide-from-top",//提示框弹出时的动画效果
+        cancelButtonText:"取消",
+        confirmButtonText: "是的，我要重置",
+        confirmButtonColor: "#0db348"
+    },fn);
+}
 //信息框
 function info(msg) {
     swal(msg);

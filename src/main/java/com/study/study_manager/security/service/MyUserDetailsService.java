@@ -8,7 +8,6 @@ import com.study.study_manager.entity.User;
 import com.study.study_manager.security.entity.UserDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("表单登录用户名:" + username);
         User select = new User();
         select.setName(username);
@@ -43,8 +42,8 @@ public class MyUserDetailsService implements UserDetailsService {
                 System.out.println(role.getName());
             }
         }
-        UserDetails userDetails = new UserDetail(user.getName(),user.getPassword(),user.getEnable(),true,true,true,authorities);
-        return userDetails;
+        UserDetail userDetail = new UserDetail(user.getName(),user.getPassword(),user.getEnable(),true,true,true,authorities);
+        return userDetail;
     }
 
 }

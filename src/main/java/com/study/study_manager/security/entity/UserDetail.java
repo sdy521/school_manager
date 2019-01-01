@@ -25,4 +25,8 @@ public class UserDetail extends User {
     public void setLeftMenus(List<LeftMenu> leftMenus) {
         this.leftMenus = leftMenus;
     }
+    @Override
+    public void eraseCredentials() {
+
+    }
 }

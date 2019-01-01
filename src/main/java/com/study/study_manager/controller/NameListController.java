@@ -7,6 +7,7 @@ import com.study.study_manager.core.jqGrid.JqGridResult;
 import com.study.study_manager.dto.TeacherParam;
 import com.study.study_manager.entity.User;
 import com.study.study_manager.service.NameListService;
+import com.study.study_manager.util.Constans;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,5 +110,20 @@ public class NameListController extends BaseController{
         teacher.setId(id);
         nameListService.recover(teacher);
         return new Result(0,"恢复成功");
+    }
+
+    /***
+     * 恢复
+     * @param id
+     * @return
+     */
+    @RequestMapping("/initpassword")
+    @ResponseBody
+    public Result initpassword(@RequestParam Integer id){
+        User teacher = new User();
+        teacher.setId(id);
+        teacher.setPassword(BCrypt.hashpw(Constans.DEFAULT_PASSWORD,BCrypt.gensalt()));
+        nameListService.updateSelective(teacher);
+        return new Result(0,"密码重置成功");
     }
 }
