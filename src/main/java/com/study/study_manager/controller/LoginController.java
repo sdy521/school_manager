@@ -75,4 +75,10 @@ public class LoginController {
         initPasswordService.updateSelective(user);
         return new Result(0,"更新成功");
     }
+
+    @RequestMapping("/upload")
+    @ResponseBody
+    public Result upload(){
+        return new Result(0,"上传成功");
+    }
 }

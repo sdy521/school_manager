@@ -2,9 +2,12 @@
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element"> <span>
+                <div class="dropdown profile-element">
+                    <span>
+                        <a href="javascript:;" onclick="upImage();">
                             <img alt="image" class="img-circle" src="/static/img/a1.jpg" width="80px;"/>
-                             </span>
+                        </a>
+                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${leftname}<b class="caret"></b></strong>
                              </span></span> </a>
@@ -73,4 +76,23 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
+</div>
+<#--上传图片-->
+<div class="modal fade" id="upModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">上传头像</h4>
+            </div>
+            <div class="modal-body">
+                <div class="dropzoneimg"></div>
+                <#--<form action="/upload" class="dropzone" enctype="multipart/form-data"  method="post"></form>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="update();">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
 </div>

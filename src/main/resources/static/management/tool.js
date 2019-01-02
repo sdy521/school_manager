@@ -128,3 +128,7 @@ function update() {
         }
     });
 }
+//上传头像
+function upImage() {
+    $("#upModal").modal();
+}
