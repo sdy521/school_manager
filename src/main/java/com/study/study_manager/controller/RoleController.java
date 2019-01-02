@@ -24,6 +24,7 @@ public class RoleController extends BaseController {
     private RoleService roleService;
     @RequestMapping("/list")
     public String list(Model model){
+        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("role"));
         return "/management/role/list";
     }
@@ -59,6 +60,6 @@ public class RoleController extends BaseController {
             //插入
             roleService.insert(param);
         }
-        return new Result(0,"授权成功");
+        return OK;
     }
 }

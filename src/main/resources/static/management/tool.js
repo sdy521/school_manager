@@ -98,3 +98,33 @@ function setSwitchery(switchElement, checkedBool) {
         switchElement.handleOnchange(true);
     }
 }
+//用户编辑
+function leftModel() {
+    $.ajax({
+        url:"/leftmodal?id="+$("#left-form").find("input[name='userid']").val(),
+        type:"GET",
+        dataType:"JSON",
+        success:function (r) {
+            if(r.code===0){
+                var data = r.obj;
+                $("#left-form").find("input[name='name']").val(data.name);
+                $("#leftModal").modal();
+            }
+        }
+    });
+}
+function update() {
+    var id = $("#left-form").find("input[name='userid']").val();
+    var name = $("#left-form").find("input[name='name']").val();
+    $.ajax({
+        url:"/leftupdate?id="+id+"&name="+name,
+        type:"GET",
+        dataType:"JSON",
+        success:function (r) {
+            if(r.code===0){
+                $("#leftModal").modal('hide');
+                success("修改成功");
+            }
+        }
+    });
+}

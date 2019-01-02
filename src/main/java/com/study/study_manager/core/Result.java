@@ -5,6 +5,8 @@ public class Result {
     private String msg;
 
     public Result() {
+        this.code = 0;
+        this.msg = "操作成功";
     }
 
     public Result(int code, String msg) {

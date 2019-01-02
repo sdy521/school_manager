@@ -10,6 +10,7 @@ import java.util.List;
 public class UserDetail extends User {
 
     private List<LeftMenu> leftMenus;
+    private Integer id;
     public UserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
@@ -25,6 +26,15 @@ public class UserDetail extends User {
     public void setLeftMenus(List<LeftMenu> leftMenus) {
         this.leftMenus = leftMenus;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public void eraseCredentials() {
 

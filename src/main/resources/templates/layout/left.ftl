@@ -9,9 +9,9 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${leftname}<b class="caret"></b></strong>
                              </span></span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="mailbox.html">修改</a></li>
+                        <li><a href="javascripty:;" onclick="leftModel();"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a></li>
                         <li class="divider"></li>
-                        <li><a href="login.ftl">退出</a></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out"></i>&nbsp;退出</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -42,3 +42,35 @@
 
     </div>
 </nav>
+<#--修改弹框-->
+<div class="modal fade" id="leftModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="left-form">
+                    <input type="hidden" name="userid" value="${userid}"/>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <#--<div class="form-group">
+                        <label class="col-sm-3 control-label">密码</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="password">
+                        </div>
+                    </div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="update();">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

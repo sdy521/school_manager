@@ -1,5 +1,6 @@
 package com.study.study_manager.controller;
 
+import com.study.study_manager.core.Result;
 import com.study.study_manager.entity.LeftMenu;
 import com.study.study_manager.security.entity.UserDetail;
 import com.study.study_manager.util.SpringSecurity;
@@ -10,6 +11,11 @@ import java.util.List;
 
 public class BaseController {
 
+    protected static final Result OK = new Result();
+
+    public Integer getID(){
+        return SpringSecurity.getSysUser().getId();
+    }
     public List<LeftMenu> getMenus(String domain){
         UserDetail user = SpringSecurity.getSysUser();
         List<LeftMenu> menus = user.getLeftMenus();

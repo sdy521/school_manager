@@ -26,6 +26,7 @@ public class NameListController extends BaseController{
 
     @RequestMapping("/list")
     public String list(Model model){
+        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("teacher_nameList"));
         return "/management/nameList/list";
     }
@@ -55,7 +56,7 @@ public class NameListController extends BaseController{
         teacher.setPassword(bcrypt);
         teacher.setType(1);
         nameListService.insert(teacher);
-        return new Result(0,"增加成功");
+        return OK;
     }
 
     /***
@@ -81,7 +82,7 @@ public class NameListController extends BaseController{
     @ResponseBody
     public Result update(@RequestBody User teacher){
         nameListService.updateSelective(teacher);
-        return new Result(0,"修改成功");
+        return OK;
     }
 
     /***
@@ -95,7 +96,7 @@ public class NameListController extends BaseController{
         User teacher = new User();
         teacher.setId(id);
         nameListService.delete(teacher);
-        return new Result(0,"删除成功");
+        return OK;
     }
 
     /***
@@ -109,7 +110,7 @@ public class NameListController extends BaseController{
         User teacher = new User();
         teacher.setId(id);
         nameListService.recover(teacher);
-        return new Result(0,"恢复成功");
+        return OK;
     }
 
     /***
@@ -124,6 +125,6 @@ public class NameListController extends BaseController{
         teacher.setId(id);
         teacher.setPassword(BCrypt.hashpw(Constans.DEFAULT_PASSWORD,BCrypt.gensalt()));
         nameListService.updateSelective(teacher);
-        return new Result(0,"密码重置成功");
+        return OK;
     }
 }

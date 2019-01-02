@@ -26,7 +26,7 @@ NameList.initJqGrid = function(){
             }, // 数据总数
             repeatitems:false
         },
-        colNames:['编号','姓名'/*,'密码'*/,'创建时间','修改时间', '状态','操作'],
+        colNames:['编号','姓名'/*,'密码'*/,'创建时间','修改时间',/* '状态',*/'安全权限','操作'],
         colModel:[
             {name:'id',index:'id', width:80,align:'center',sortable:true,search:false,formatter:'integer',key:true},
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
@@ -37,11 +37,18 @@ NameList.initJqGrid = function(){
             {name:'updateTime',index:'updateTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
-            {name:'deleted',index:'deleted', width:80,align:'center',sortable:false,search:false,formatter:function (cellValue) {
+            /*{name:'deleted',index:'deleted', width:80,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     if(cellValue==0){
-                        return "未删除";
+                        return "<span class=\"label label-primary\">未删除</span>";
                     }else {
-                        return "已删除";
+                        return "<span class=\"label label-danger\">已删除</span>";
+                    }
+                }},*/
+            {name:'enable',index:'enable', width:80,align:'center',sortable:false,search:false,formatter:function (cellValue) {
+                    if(cellValue==1){
+                        return "<span class=\"label label-primary\">已激活</span>";
+                    }else {
+                        return "<span class=\"label label-danger\">未激活</span>";
                     }
                 }},
             {name:'operation',index:'operation', width:130, sortable:false,sortable:false,search:false,formatter:function (cellValue,index,rowObject) {

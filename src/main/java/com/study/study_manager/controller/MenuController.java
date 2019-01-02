@@ -22,6 +22,7 @@ public class MenuController extends BaseController{
     private MenuService menuService;
     @RequestMapping("/list")
     public String list(Model model){
+        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("menu"));
         return "/management/memu/list";
     }
@@ -49,7 +50,7 @@ public class MenuController extends BaseController{
     @ResponseBody
     public Result insert(@RequestBody Menu params){
         menuService.insert(params);
-        return new Result(0,"增加成功");
+        return OK;
     }
 
     /***
@@ -75,7 +76,7 @@ public class MenuController extends BaseController{
     @ResponseBody
     public Result update(@RequestBody Menu menu){
         menuService.update(menu);
-        return new Result(0,"更新成功");
+        return OK;
     }
 
     /***
@@ -89,6 +90,6 @@ public class MenuController extends BaseController{
         Menu menu = new Menu();
         menu.setId(id);
         menuService.delete(menu);
-        return new Result(0,"更新成功");
+        return OK;
     }
 }
