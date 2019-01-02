@@ -136,7 +136,9 @@
                  elem.find("input[name='url']").val(data.url);
                  elem.find("input[name='code']").val(data.code);
                  elem.find("input[name='pcode']").val(data.pcode);
-                 $("#fa").addClass(data.icon);
+                 elem.find("input[name='iconbackup']").val(data.icon);
+                 $("#fa").attr("class","");
+                 $("#fa").addClass("fa-lg "+data.icon);
                  elem.find("select[name='type']").val(data.type);
                  $("#updateModal").modal();
              }
@@ -145,6 +147,9 @@
  }
  Menu.update = function () {
      var params = getFormJson($("#update-form"));
+     if(params.icon==''){
+         params.icon = $("#update-form").find("input[name = 'iconbackup']").val();
+     }
      $.ajax({
          url:"/menu/update",
          data:JSON.stringify(params),

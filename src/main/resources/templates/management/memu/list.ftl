@@ -184,7 +184,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">图标</label>
                         <div class="col-sm-9">
-                            <i id="fa" class="fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="hidden" name="iconbackup"/>
+                            <i id="fa" class=""></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="text" id="picker2" name="icon"/>
                             <span class="help-block m-b-none">注：左边为当前使用图标</span>
                         </div>

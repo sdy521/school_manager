@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2018-12-29 16:55:14
+Date: 2019-01-02 10:59:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,11 +37,12 @@ CREATE TABLE `menu` (
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2018-12-29 16:28:17', '教师管理', '#', 'teacher', '0', '', '1', 'fa fa-tasks');
-INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2018-12-26 20:54:35', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '1', 'fa fa-user');
+INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-01-02 10:59:17', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '0', 'fa fa-user');
 INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2018-12-29 16:13:03', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs');
 INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt');
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2018-12-29 16:11:58', '教师信息', '#', 'teacherInfo', '0', 'teacher', '1', 'fa fa-newspaper-o');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust');
+INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-01-02 09:32:04', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key');
 
 -- ----------------------------
 -- Table structure for role
