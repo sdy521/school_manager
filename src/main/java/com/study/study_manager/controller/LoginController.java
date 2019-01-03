@@ -30,8 +30,6 @@ import java.util.UUID;
 public class LoginController {
     @Resource
     private InitPasswordService initPasswordService;
-    @Resource
-    private UploadFile uploadFile;
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView mv = new ModelAndView();
@@ -90,7 +88,7 @@ public class LoginController {
     @RequestMapping("/upload")
     @ResponseBody
     public void upload(@RequestParam("file")MultipartFile uploadimg){
-        String imgPath = uploadFile.uploadImg(uploadimg);
+        String imgPath = UploadFile.uploadImg(uploadimg);
         Integer userid = SpringSecurity.getSysUser().getId();
         User user = new User();
         user.setId(userid);

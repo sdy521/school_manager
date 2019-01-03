@@ -1,26 +1,26 @@
 package com.study.study_manager.util;
 
-import com.study.study_manager.controller.LoginController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-@Component
 public class UploadFile {
-    private Logger logger = LoggerFactory.getLogger(UploadFile.class);
-    @Value("${img.location}")
-    private String location;
+    private static Logger logger = LoggerFactory.getLogger(UploadFile.class);
 
-    public String uploadImg(MultipartFile uploadImg){
+    /***
+     * 上传图片
+     * @param uploadImg
+     * @return
+     */
+    public static String uploadImg(MultipartFile uploadImg){
         String contentType = uploadImg.getContentType();
         String fileName = uploadImg.getOriginalFilename();
-        logger.info("上传图片:name={},type={}", fileName, contentType);
+        logger.info("上传图片:name={"+fileName+"},type={"+contentType+"}");
+        String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
         String filePath = location; // 上传后的路径
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         fileName = UUID.randomUUID() + suffixName; // 新文件名
