@@ -20,6 +20,9 @@ public class User extends BaseEntity {
     @Column
     private Boolean enable;
 
+    @Column
+    private String img;
+
     public String getName() {
         return name;
     }
@@ -50,5 +53,13 @@ public class User extends BaseEntity {
 
     public void setEnable(Boolean enable) {
         this.enable = enable;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

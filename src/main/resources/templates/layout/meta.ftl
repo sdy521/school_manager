@@ -12,7 +12,7 @@
     <#--sweetalert-->
     <link href="/static/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <#--dropzone-->
-    <link href="/static/css/plugins/dropzone/basic.css" rel="stylesheet">
     <link href="/static/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/static/css/plugins/dropzone/basic.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
 

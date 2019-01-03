@@ -5,7 +5,7 @@
                 <div class="dropdown profile-element">
                     <span>
                         <a href="javascript:;" onclick="upImage();">
-                            <img alt="image" class="img-circle" src="/static/img/a1.jpg" width="80px;"/>
+                            <img alt="image" class="img-circle" src="${userImg}" width="80px;"/>
                         </a>
                      </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -86,11 +86,9 @@
                 <h4 class="modal-title" id="modalTitle">上传头像</h4>
             </div>
             <div class="modal-body">
-                <div class="dropzoneimg"></div>
-                <#--<form action="/upload" class="dropzone" enctype="multipart/form-data"  method="post"></form>-->
+                <form action="/upload" class="dropzone"></form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary" onclick="update();">确定</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div>

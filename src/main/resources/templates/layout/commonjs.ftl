@@ -16,24 +16,3 @@
 <script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
 <#--dropzone-->
 <script type="text/javascript" src="/static/js/plugins/dropzone/dropzone.js"></script>
-<script>
-    $(function () {
-        $("div .dropzoneimg").dropzone({
-            url: "/upload",//上传文件的地址，
-            maxFiles: 1,//最多上传几个图片
-            maxFilesize: 5,//图片的大小，单位是M
-            addRemoveLinks:true,//是否有删除图片的功能
-            dictRemoveFile:"",//删除图片的文字
-            acceptedFiles: ".jpg,.jpeg,.png,.gif",//支持的格式
-            paramName:'dropimage',//上传的FILE名称，即服务端可以通过此来获取上传的图片，如$_FILES['dropimage']
-            init: function() {//初始化是的事件
-                this.on("success", function(file) {
-                    console.log("File " + file.name + "uploaded");
-                });
-                this.on("removedfile", function(file) {
-                    console.log("File " + file.name + "removed");
-                });
-            }
-        });
-    });
-</script>

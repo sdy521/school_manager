@@ -11,6 +11,7 @@ public class UserDetail extends User {
 
     private List<LeftMenu> leftMenus;
     private Integer id;
+    private String img;
     public UserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
@@ -33,6 +34,14 @@ public class UserDetail extends User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

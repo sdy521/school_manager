@@ -5,22 +5,33 @@ import com.study.study_manager.core.Result;
 import com.study.study_manager.dto.UpdatePasswordParam;
 import com.study.study_manager.entity.User;
 import com.study.study_manager.service.InitPasswordService;
+import com.study.study_manager.util.SpringSecurity;
+import com.study.study_manager.util.UploadFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ClassUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.UUID;
 
 @Controller
 public class LoginController {
-
     @Resource
     private InitPasswordService initPasswordService;
+    @Resource
+    private UploadFile uploadFile;
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView mv = new ModelAndView();
@@ -78,7 +89,12 @@ public class LoginController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public Result upload(){
-        return new Result(0,"上传成功");
+    public void upload(@RequestParam("file")MultipartFile uploadimg){
+        String imgPath = uploadFile.uploadImg(uploadimg);
+        Integer userid = SpringSecurity.getSysUser().getId();
+        User user = new User();
+        user.setId(userid);
+        user.setImg(imgPath);
+        initPasswordService.updateSelective(user);
     }
 }

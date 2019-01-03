@@ -8,6 +8,7 @@ import com.study.study_manager.security.entity.UserDetail;
 import com.study.study_manager.service.MenuService;
 import com.study.study_manager.util.Constans;
 import com.study.study_manager.util.SpringSecurity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+    @Value("${img.location}")
+    private String location;
     @Resource
     private MenuService menuService;
     @Resource
@@ -59,6 +62,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             List<LeftMenu> leftMenus = getLeftMenu(all);
             user.setLeftMenus(leftMenus);
             request.getSession().setAttribute("leftname",user.getUsername());
+            request.getSession().setAttribute("userImg","/imgPath/"+user.getImg());
             super.onAuthenticationSuccess(request, response, authentication);
         }
     }
