@@ -133,7 +133,5 @@ function upImage() {
     $("#uploadModal").modal();
 }
 function destroyDropZone() {
-    $("#uploadModal").find("div.modal-body").empty();
-    $("#uploadModal").find("div.modal-body").append("<form action=\"/upload\" class=\"dropzone\"></form>");
     $("#uploadModal").modal('hide');
 }
