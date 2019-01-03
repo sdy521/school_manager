@@ -78,7 +78,7 @@
     </div><!-- /.modal -->
 </div>
 <#--上传图片-->
-<div class="modal fade" id="upModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -89,7 +89,7 @@
                 <form action="/upload" class="dropzone"></form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-sm btn-default" onclick="destroyDropZone();">关闭</button>
             </div>
         </div>
     </div>

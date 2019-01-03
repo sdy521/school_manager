@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-01-02 10:59:55
+Date: 2019-01-03 17:19:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,24 +74,25 @@ CREATE TABLE `user` (
   `deleted` tinyint(1) DEFAULT NULL COMMENT '1:删除 0:未删除',
   `type` int(4) NOT NULL COMMENT '0:管理员1:老师2:学生',
   `enable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0:禁用1:可用',
+  `img` varchar(255) DEFAULT NULL COMMENT '图片',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$FUnQmAbg5aEbPo8En6Hrs.ujrqv0E9WmY7tHwLYkP57O2VPnf79VW', '2018-12-20 13:52:47', '2018-12-20 13:52:49', '0', '0', '1');
-INSERT INTO `user` VALUES ('2', '李老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-20 16:32:30', '2018-12-20 16:32:32', '0', '1', '1');
-INSERT INTO `user` VALUES ('3', '孙老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2018-12-25 12:46:49', '0', '1', '0');
-INSERT INTO `user` VALUES ('4', '张老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1');
-INSERT INTO `user` VALUES ('5', '赵老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:54', '2018-12-25 12:46:56', '0', '1', '1');
-INSERT INTO `user` VALUES ('6', '占老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 11:22:20', '2018-12-25 11:22:20', '0', '1', '1');
-INSERT INTO `user` VALUES ('7', '钱老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:26', '2018-12-25 12:46:26', '0', '1', '1');
-INSERT INTO `user` VALUES ('8', '吴老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:37:32', '2018-12-25 13:37:32', '0', '1', '1');
-INSERT INTO `user` VALUES ('9', '周老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:38:33', '2018-12-25 15:27:06', '0', '1', '1');
-INSERT INTO `user` VALUES ('10', '郑老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:04', '2018-12-25 15:27:38', '0', '1', '1');
-INSERT INTO `user` VALUES ('11', '王老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:16', '2018-12-25 13:39:16', '1', '1', '1');
-INSERT INTO `user` VALUES ('12', '梅老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:49:54', '2018-12-26 16:16:05', '0', '1', '1');
+INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$onBleK8v36y2k55lW/Zybuo8oW/SVSkTie8nyWmmsmavVEUKHDhcW', '2018-12-20 13:52:47', '2019-01-03 17:06:34', '0', '0', '1', 'aca673bc-7fb0-4e0a-be1a-13ae2ab1536b.jpg');
+INSERT INTO `user` VALUES ('2', '李老师', '$2a$10$PpXy0.e29/1SlPCVNjApquwaDbjsYe8CTrnCm9tyTt7D7X8ucjtbi', '2018-12-20 16:32:30', '2019-01-03 16:31:25', '0', '1', '1', 'cf511708-5901-4865-8cc4-ff9d55f2eeb7.jpg');
+INSERT INTO `user` VALUES ('3', '孙老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
+INSERT INTO `user` VALUES ('4', '张老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('5', '赵老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:54', '2018-12-25 12:46:56', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('6', '占老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 11:22:20', '2018-12-25 11:22:20', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('7', '钱老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:26', '2018-12-25 12:46:26', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('8', '吴老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:37:32', '2018-12-25 13:37:32', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('9', '周老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:38:33', '2018-12-25 15:27:06', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('10', '郑老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:04', '2018-12-25 15:27:38', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('11', '王老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:16', '2018-12-25 13:39:16', '1', '1', '1', null);
+INSERT INTO `user` VALUES ('12', '梅老师', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:49:54', '2018-12-26 16:16:05', '0', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for user_role

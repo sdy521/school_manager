@@ -130,5 +130,10 @@ function update() {
 }
 //上传头像
 function upImage() {
-    $("#upModal").modal();
+    $("#uploadModal").modal();
+}
+function destroyDropZone() {
+    $("#uploadModal").find("div.modal-body").empty();
+    $("#uploadModal").find("div.modal-body").append("<form action=\"/upload\" class=\"dropzone\"></form>");
+    $("#uploadModal").modal('hide');
 }
