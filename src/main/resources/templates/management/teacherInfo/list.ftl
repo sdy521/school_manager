@@ -2,7 +2,6 @@
 <html>
 <head>
 <#include "/templates/layout/meta.ftl">
-<link href="/static/css/plugins/switchery/switchery.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -31,17 +30,12 @@
                                 <div class="form-inline">
                                     <input id="teacherName" type="text" class="form-control" placeholder="请输入姓名...">
                                     <select id="deleted" class="form-control" style="width: 100px;">
-                                        <option value="0" selected>未删除</option>
-                                        <option value="1">已删除</option>
+                                        <option value="0" selected>男</option>
+                                        <option value="1">女</option>
                                     </select>
                                     <button class="btn btn-primary"onclick="NameList.search();">搜索</button>
                                     <button class="btn btn-primary"onclick="NameList.reset();">重置</button>
-                                    <button class="btn btn-primary"onclick="NameList.add();">增加</button>
                                 </div>
-                            </div>
-                            <div class="jqGrid_wrapper" style="margin-top: 10px;">
-                            <#--jqgrid 表格栏-->
-                                <table id="grid-table"></table>
                             </div>
                         </div>
                     </div>
@@ -131,7 +125,6 @@
     </div><!-- /.modal -->
 </div>
 <#include "/templates/layout/commonjs.ftl">
-<script src="/static/js/plugins/switchery/switchery.js"></script>
-<script src="/static/management/nameList/nameList.js"></script>
+<script src="/static/management/teacherInfo/teacherInfo.js"></script>
 </body>
 </html>
