@@ -69,9 +69,9 @@ public class LoginController {
 
     @RequestMapping("/leftmodal")
     @ResponseBody
-    public Result leftmodal(@RequestParam Integer id){
+    public Result leftmodal(){
         User user = new User();
-        user.setId(id);
+        user.setId(SpringSecurity.getSysUser().getId());
         user = initPasswordService.selectOne(user);
         return new JSONResult(user);
     }

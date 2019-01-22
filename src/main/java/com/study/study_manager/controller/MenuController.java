@@ -22,7 +22,6 @@ public class MenuController extends BaseController{
     private MenuService menuService;
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("menu"));
         return "/management/memu/list";
     }

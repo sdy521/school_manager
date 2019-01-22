@@ -13,9 +13,7 @@ public class BaseController {
 
     protected static final Result OK = new Result();
 
-    public Integer getID(){
-        return SpringSecurity.getSysUser().getId();
-    }
+
     public List<LeftMenu> getMenus(String domain){
         UserDetail user = SpringSecurity.getSysUser();
         List<LeftMenu> menus = user.getLeftMenus();

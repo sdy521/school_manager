@@ -101,7 +101,7 @@ function setSwitchery(switchElement, checkedBool) {
 //用户编辑
 function leftModel() {
     $.ajax({
-        url:"/leftmodal?id="+$("#left-form").find("input[name='userid']").val(),
+        url:"/leftmodal",
         type:"GET",
         dataType:"JSON",
         success:function (r) {

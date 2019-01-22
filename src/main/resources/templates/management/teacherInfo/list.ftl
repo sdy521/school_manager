@@ -132,6 +132,6 @@
 </div>
 <#include "/templates/layout/commonjs.ftl">
 <script src="/static/js/plugins/switchery/switchery.js"></script>
-<script src="/static/management/teacherInfo/teacherInfo.js"></script>
+<script src="/static/management/nameList/nameList.js"></script>
 </body>
 </html>

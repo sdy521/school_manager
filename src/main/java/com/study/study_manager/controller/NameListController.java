@@ -26,7 +26,6 @@ public class NameListController extends BaseController{
 
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("teacher_nameList"));
         return "/management/nameList/list";
     }

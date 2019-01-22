@@ -24,7 +24,6 @@ public class RoleController extends BaseController {
     private RoleService roleService;
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("role"));
         return "/management/role/list";
     }

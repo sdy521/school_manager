@@ -55,7 +55,7 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="left-form">
-                    <input type="hidden" name="userid" value="${userid}"/>
+                    <#--<input type="hidden" name="userid" value="${userid}"/>-->
                     <div class="form-group">
                         <label class="col-sm-3 control-label">名称</label>
                         <div class="col-sm-6">

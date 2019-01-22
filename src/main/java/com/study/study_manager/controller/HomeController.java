@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController extends BaseController{
     @RequestMapping("/main")
     public String main(Model model) {
-        model.addAttribute("userid",getID());
         model.addAttribute("menus",getMenus("main"));
         return "main";
     }
