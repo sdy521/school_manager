@@ -29,12 +29,13 @@
                             <div class="bar search-bar">
                                 <div class="form-inline">
                                     <input id="teacherName" type="text" class="form-control" placeholder="请输入姓名...">
-                                    <select id="deleted" class="form-control" style="width: 100px;">
-                                        <option value="0" selected>男</option>
-                                        <option value="1">女</option>
+                                    <select id="sex" class="form-control" style="width: 100px;">
+                                        <option value="" selected>全部</option>
+                                        <option value="1">男</option>
+                                        <option value="0">女</option>
                                     </select>
-                                    <button class="btn btn-primary"onclick="NameList.search();">搜索</button>
-                                    <button class="btn btn-primary"onclick="NameList.reset();">重置</button>
+                                    <button class="btn btn-primary"onclick="TeacherInfo.search();">搜索</button>
+                                    <button class="btn btn-primary"onclick="TeacherInfo.reset();">重置</button>
                                 </div>
                             </div>
                         </div>

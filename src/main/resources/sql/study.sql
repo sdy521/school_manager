@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-01-22 17:11:58
+Date: 2019-01-23 11:18:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,7 +101,7 @@ DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL COMMENT '用户id',
-  `sex` varchar(10) DEFAULT NULL COMMENT '性别',
+  `sex` int(11) DEFAULT NULL COMMENT '性别(1男 0女)',
   `type` int(11) DEFAULT NULL COMMENT '类别(1老师 2学生)',
   `address` varchar(255) DEFAULT NULL COMMENT '住址',
   `phone` varchar(255) DEFAULT NULL COMMENT '手机号',
@@ -114,7 +114,7 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1', '2', '女', '1', '江苏省常州市新北区', '15236326963', '2019-01-22 15:50:20', '2019-01-22 16:42:39', '0');
+INSERT INTO `user_info` VALUES ('1', '2', '0', '1', '江苏省常州市新北区', '15236326963', '2019-01-22 15:50:20', '2019-01-23 10:11:33', '0');
 
 -- ----------------------------
 -- Table structure for user_role

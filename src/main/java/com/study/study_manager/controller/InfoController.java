@@ -28,6 +28,12 @@ public class InfoController extends BaseController{
     @RequestMapping("/grid")
     @ResponseBody
     public Result gird(InfoParam param){
+        if("".equals(param.getName())){
+            param.setName(null);
+        }
+        if("".equals(param.getSex())){
+            param.setSex(null);
+        }
         PageInfo pageInfo = infoService.selectByType(param);
         JqGridResult result = new JqGridResult();
         result.setTotal(pageInfo.getPages());

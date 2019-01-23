@@ -12,8 +12,11 @@ import java.util.Map;
 @Component
 public interface InfoDao extends BaseDao<Info> {
 
-    @Select("SELECT i.*,u.name,u.img FROM user_info i " +
+    @Select({"<script>",
+            "SELECT i.*,u.name,u.img FROM user_info i " +
             "LEFT JOIN user u ON i.userid=u.id " +
-            "WHERE i.type=${type}")
-    List<Map> selectByType(@Param("type") Integer type);
+            "WHERE i.type=${type} <when test='name!=null'> and u.name = #{name}</when>" +
+             "<when test='sex!=null'> and i.sex=${sex} </when>",
+            "</script>"})
+    List<Map> selectByType(@Param("type") Integer type,@Param("name") String name,@Param("sex") Integer sex);
 }

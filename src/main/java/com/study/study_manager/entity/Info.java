@@ -6,7 +6,7 @@ public class Info extends BaseEntity{
     @Column
     private Integer userid;
     @Column
-    private String sex;
+    private Integer sex;
     @Column
     private Integer type;
     @Column
@@ -22,11 +22,11 @@ public class Info extends BaseEntity{
         this.userid = userid;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

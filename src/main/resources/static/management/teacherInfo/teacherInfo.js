@@ -27,7 +27,13 @@ TeacherInfo.initJqGrid = function(){
         colModel:[
             {name:'id',index:'id', width:80,align:'center',sortable:true,search:false,formatter:'integer',key:true},
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
-            {name:'sex',index:'sex', width:80,align:'center',sortable:false,search:true, stype:'text'},
+            {name:'sex',index:'sex', width:80,align:'center',sortable:false,search:true, stype:'text',formatter:function (cellValue) {
+                    if(cellValue==1){
+                        return '男';
+                    }else {
+                        return '女';
+                    }
+                }},
             {name:'create_time',index:'create_time', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
@@ -38,8 +44,7 @@ TeacherInfo.initJqGrid = function(){
                     var id = rowObject['id'];
                     var deleted = rowObject['deleted'];
                     var str="";
-                    str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"TeacherInfo.updateModal("+id+");\">修改</button>&nbsp;&nbsp;";
-                    str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"TeacherInfo.delete("+id+");\">删除</button>&nbsp;&nbsp;";
+                    str +="<button type=\"button\" class=\"btn btn-success btn-sm\" style='width: 80px;' onclick=\"TeacherInfo.detailInfo("+id+");\">详情</button>&nbsp;&nbsp;";
                     return str;
                 }}
         ],
@@ -56,29 +61,32 @@ TeacherInfo.initJqGrid = function(){
 //搜索
  TeacherInfo.search = function () {
     var name = $("#teacherName").val().trim();
-    var deleted = $("#deleted").val();
+    var sex = $("#sex").val();
     var params = {};
     params.name = name;
-    params.deleted = deleted;
+    params.sex = sex;
+    params.type=1;
     TeacherInfo.table.setGridParam({
-        url:"/teacher_nameList/grid",
+        url:"/teacher_info/grid",
         page:1,
         postData:params
     }).trigger("reloadGrid");
  }
  //重置
  TeacherInfo.reset = function(){
-    var elem = $("#teacherName");
-    elem.val("");
-    $("#deleted").val(0);
+    $("#teacherName").val("");
+    $("#sex").val("");
     var params = {};
+    params.type=1;
     params.name="";
-    params.deleted=0;
+    params.sex="";
     TeacherInfo.table.setGridParam({
-        url:"/teacher_nameList/grid",
-        page:1,
         postData:params
     }).trigger("reloadGrid");
+ }
+ //详情
+ TeacherInfo.detailInfo = function(){
+    info("暂未开发");
  }
  $(function () {
     TeacherInfo.table = TeacherInfo.initJqGrid();
