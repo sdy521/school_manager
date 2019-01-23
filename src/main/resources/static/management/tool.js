@@ -79,7 +79,7 @@ function init(msg,substr,fn) {
         // animation:"slide-from-top",//提示框弹出时的动画效果
         cancelButtonText:"取消",
         confirmButtonText: "是的，我要重置",
-        confirmButtonColor: "#0db348"
+        confirmButtonColor: "#1768b3"
     },fn);
 }
 //信息框
