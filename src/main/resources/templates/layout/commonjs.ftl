@@ -16,3 +16,27 @@
 <script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
 <#--dropzone-->
 <script type="text/javascript" src="/static/js/plugins/dropzone/dropzone.js"></script>
+<#--websocket-->
+<script src="/static/js/stomp.min.js"></script>
+<script src="/static/js/sockjs.min.js"></script>
+<script type="text/javascript">
+    var stompClient = null;
+    $(function () {
+        var socket = new SockJS('/endpointSang');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected:' + frame);
+            stompClient.subscribe('/topic/getResponse', function (response) {
+                showResponse(JSON.parse(response.body).responseMessage);
+            })
+        });
+    });
+    function sendName() {
+        var title = $('#onlyTitle').val();
+        console.log('title:' + title);
+        stompClient.send("/welcome", {}, JSON.stringify({'title': title}));
+    }
+    function showResponse(message) {
+        $("#response").html(message);
+    }
+</script>

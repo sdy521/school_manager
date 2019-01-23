@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-01-23 11:18:18
+Date: 2019-01-23 17:04:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `menu` (
   `type` int(4) NOT NULL DEFAULT '0' COMMENT '0：管理员1老师2学生',
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -43,6 +43,7 @@ INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '�
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2018-12-29 16:11:58', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '1', 'fa fa-newspaper-o');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-01-02 09:32:04', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key');
+INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-01-23 17:00:50', '发送公告', '/send/list', 'send', '0', 'systemSetup', '0', 'fa fa-bullhorn');
 
 -- ----------------------------
 -- Table structure for role
