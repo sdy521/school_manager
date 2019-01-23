@@ -9,7 +9,8 @@
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope"></i>  <span class="label label-warning"><#--2--></span>
+                    <#--<i class="fa fa-envelope"></i>  <span class="label label-warning">&lt;#&ndash;2&ndash;&gt;</span>-->
+                    <i class="fa fa-bullhorn fa-lg"></i>  <span class="label label-warning"><#--2--></span>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
