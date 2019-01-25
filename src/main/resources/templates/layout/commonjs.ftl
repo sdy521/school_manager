@@ -39,7 +39,7 @@
         var params = {};
         params.title = title;
         params.content = content;
-        stompClient.send("/welcome", {}, JSON.stringify(params));
+        stompClient.send("/websocket", {}, JSON.stringify(params));
     }
     function showResponse(message) {
         // $("#response").html(message);

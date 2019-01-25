@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-01-23 17:04:25
+Date: 2019-01-25 17:57:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,6 +44,25 @@ INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2018-12-29 16:11:58', '�
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-01-02 09:32:04', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key');
 INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-01-23 17:00:50', '发送公告', '/send/list', 'send', '0', 'systemSetup', '0', 'fa fa-bullhorn');
+
+-- ----------------------------
+-- Table structure for notice
+-- ----------------------------
+DROP TABLE IF EXISTS `notice`;
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `content` text COMMENT '内容',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` tinyint(1) DEFAULT NULL COMMENT '0未删除 1已删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of notice
+-- ----------------------------
+INSERT INTO `notice` VALUES ('1', '广播测试', '<p><strong>第一条广播测试&nbsp; </strong>测试1</p>', '2019-01-25 17:54:05', '2019-01-25 17:54:05', '0');
 
 -- ----------------------------
 -- Table structure for role
