@@ -10,35 +10,35 @@
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <#--<i class="fa fa-envelope"></i>  <span class="label label-warning">&lt;#&ndash;2&ndash;&gt;</span>-->
-                    <i class="fa fa-bullhorn fa-lg"></i>  <span class="label label-warning"><#--2--></span>
+                    <i class="fa fa-bullhorn fa-lg"></i>  <span class="label label-warning" id="tip"><#--2--></span>
                 </a>
-                <ul class="dropdown-menu dropdown-messages">
+                <#--<ul class="dropdown-menu dropdown-messages">
                     <li>
                         <div class="dropdown-messages-box">
                             <a href="profile.html" class="pull-left">
                                 <img alt="image" class="img-circle" src="/static/img/a7.jpg">
                             </a>
                             <div id="response">
-                                <#--<small class="pull-right">46h ago</small>-->
-                                <#--<strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>-->
-                                <#--<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>-->
+                                &lt;#&ndash;<small class="pull-right">46h ago</small>&ndash;&gt;
+                                &lt;#&ndash;<strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>&ndash;&gt;
+                                &lt;#&ndash;<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>&ndash;&gt;
                             </div>
                         </div>
                     </li>
                     <li class="divider"></li>
-                    <#--<li>-->
-                        <#--<div class="dropdown-messages-box">-->
-                            <#--<a href="profile.html" class="pull-left">-->
-                                <#--<img alt="image" class="img-circle" src="/static/img/a4.jpg">-->
-                            <#--</a>-->
-                            <#--<div>-->
-                                <#--<small class="pull-right text-navy">5h ago</small>-->
-                                <#--<strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>-->
-                                <#--<small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>-->
-                            <#--</div>-->
-                        <#--</div>-->
-                    <#--</li>-->
-                </ul>
+                    &lt;#&ndash;<li>&ndash;&gt;
+                        &lt;#&ndash;<div class="dropdown-messages-box">&ndash;&gt;
+                            &lt;#&ndash;<a href="profile.html" class="pull-left">&ndash;&gt;
+                                &lt;#&ndash;<img alt="image" class="img-circle" src="/static/img/a4.jpg">&ndash;&gt;
+                            &lt;#&ndash;</a>&ndash;&gt;
+                            &lt;#&ndash;<div>&ndash;&gt;
+                                &lt;#&ndash;<small class="pull-right text-navy">5h ago</small>&ndash;&gt;
+                                &lt;#&ndash;<strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>&ndash;&gt;
+                                &lt;#&ndash;<small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>&ndash;&gt;
+                            &lt;#&ndash;</div>&ndash;&gt;
+                        &lt;#&ndash;</div>&ndash;&gt;
+                    &lt;#&ndash;</li>&ndash;&gt;
+                </ul>-->
             </li>
             <li>
                 <a href="/logout">

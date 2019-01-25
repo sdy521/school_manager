@@ -12,7 +12,7 @@ public class WsController {
     @MessageMapping("/welcome")
     @SendTo("/topic/getResponse")
     public ResponseMessage say(RequestMessage message) {
-        System.out.println(message.getTitle());
-        return new ResponseMessage("<strong>"+message.getTitle()+"</strong>");
+//        System.out.println(message.getTitle());
+        return new ResponseMessage("1");
     }
 }

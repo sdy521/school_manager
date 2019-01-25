@@ -33,10 +33,16 @@
     });
     function sendName() {
         var title = $('#onlyTitle').val();
+        var content = UE.getEditor('editor').getContent();
         console.log('title:' + title);
-        stompClient.send("/welcome", {}, JSON.stringify({'title': title}));
+        console.log('content:' + content);
+        var params = {};
+        params.title = title;
+        params.content = content;
+        stompClient.send("/welcome", {}, JSON.stringify(params));
     }
     function showResponse(message) {
-        $("#response").html(message);
+        // $("#response").html(message);
+        $("#tip").html(message);
     }
 </script>
