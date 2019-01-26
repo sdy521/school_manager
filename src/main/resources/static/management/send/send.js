@@ -37,11 +37,12 @@ Send.initJqGrid = function(){
             {name:'updateTime',index:'updateTime', width:100,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return setDateFormat(new Date(cellValue));
                 }},
-            {name:'operation',index:'operation', width:50, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
+            {name:'operation',index:'operation', width:80, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];
                     var deleted = rowObject['deleted'];
                     var str="";
-                    str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"NameList.updateModal("+id+");\">修改</button>";
+                    str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"NameList.updateModal("+id+");\">修改</button>&nbsp;&nbsp;";
+                    str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"NameList.updateModal("+id+");\">删除</button>";
                     return str;
                 }}
         ],
