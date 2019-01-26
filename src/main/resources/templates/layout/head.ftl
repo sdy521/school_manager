@@ -7,49 +7,16 @@
             <li>
                 <span class="m-r-sm text-muted welcome-message">Welcome to 学生管理系统</span>
             </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <#--<i class="fa fa-envelope"></i>  <span class="label label-warning">&lt;#&ndash;2&ndash;&gt;</span>-->
-                    <i class="fa fa-bullhorn fa-lg"></i>  <span class="label label-warning" id="tip"><#--2--></span>
+            <li>
+                <a href="/main">
+                    <i class="fa fa-volume-down fa-lg"></i><span class="label label-warning" id="tip"><#--2--></span>
                 </a>
-                <#--<ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <div class="dropdown-messages-box">
-                            <a href="profile.html" class="pull-left">
-                                <img alt="image" class="img-circle" src="/static/img/a7.jpg">
-                            </a>
-                            <div id="response">
-                                &lt;#&ndash;<small class="pull-right">46h ago</small>&ndash;&gt;
-                                &lt;#&ndash;<strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>&ndash;&gt;
-                                &lt;#&ndash;<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>&ndash;&gt;
-                            </div>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    &lt;#&ndash;<li>&ndash;&gt;
-                        &lt;#&ndash;<div class="dropdown-messages-box">&ndash;&gt;
-                            &lt;#&ndash;<a href="profile.html" class="pull-left">&ndash;&gt;
-                                &lt;#&ndash;<img alt="image" class="img-circle" src="/static/img/a4.jpg">&ndash;&gt;
-                            &lt;#&ndash;</a>&ndash;&gt;
-                            &lt;#&ndash;<div>&ndash;&gt;
-                                &lt;#&ndash;<small class="pull-right text-navy">5h ago</small>&ndash;&gt;
-                                &lt;#&ndash;<strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>&ndash;&gt;
-                                &lt;#&ndash;<small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>&ndash;&gt;
-                            &lt;#&ndash;</div>&ndash;&gt;
-                        &lt;#&ndash;</div>&ndash;&gt;
-                    &lt;#&ndash;</li>&ndash;&gt;
-                </ul>-->
             </li>
             <li>
                 <a href="/logout">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
-            <#--<li>
-                <a class="right-sidebar-toggle">
-                    <i class="fa fa-tasks"></i>
-                </a>
-            </li>-->
         </ul>
 
     </nav>

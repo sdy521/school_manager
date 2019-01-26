@@ -27,4 +27,8 @@ public class NoticeService extends BaseService<Notice> {
         List<Notice> list = noticeDao.selectByPage();
         return new PageInfo<>(list);
     }
+
+    public List<Notice> selectAll(){
+        return noticeDao.selectByPage();
+    }
 }

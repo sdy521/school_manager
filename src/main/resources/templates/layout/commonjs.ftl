@@ -34,22 +34,19 @@
     function sendName() {
         var title = $('#onlyTitle').val();
         var content = Send.ue.getContent();
-        console.log('title:' + title);
-        console.log('content:' + content);
         var params = {};
         params.title = title;
         params.content = content;
         stompClient.send("/websocket", {}, JSON.stringify(params));
     }
     function showResponse(message) {
-        // $("#response").html(message);
-        success("发布成功");
+        // success("发布成功");
         $("#tip").html(message);
         Send.reload();
         $("#onlyTitle").val("");
         setContent();
     }
     function setContent(isAppendTo) {
-        Send.ue.setContent('', isAppendTo);
+        Send.ue.setContent('发布成功...', isAppendTo);
     }
 </script>

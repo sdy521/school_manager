@@ -9,6 +9,19 @@
     <#include "/templates/layout/left.ftl">
     <div id="page-wrapper" class="gray-bg">
         <#include "/templates/layout/head.ftl">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-9">
+                <h2>发布公告</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/main">首页</a>
+                    </li>
+                    <li class="active">
+                        <strong>编辑</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
         <div class="wrapper wrapper-content">
             <div class="row">
                 <div class="col-lg-12">
@@ -28,7 +41,7 @@
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group"><label class="col-sm-2 control-label">内容：</label>
-                                    <div id="editor" type="text/plain" style="margin-left:290px;width:1200px;height:300px;"></div>
+                                    <div id="editor" type="text/plain" style="margin-left:17%;width:90%;height:300px;"></div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
