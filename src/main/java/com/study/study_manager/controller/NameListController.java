@@ -27,7 +27,7 @@ public class NameListController extends BaseController{
     @RequestMapping("/list")
     public String list(Model model){
         model.addAttribute("menus",getMenus("teacher_nameList"));
-        return "/management/nameList/list";
+        return "/modular/nameList/list";
     }
 
     @RequestMapping("/grid")

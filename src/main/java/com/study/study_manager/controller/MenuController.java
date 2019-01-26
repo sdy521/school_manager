@@ -23,7 +23,7 @@ public class MenuController extends BaseController{
     @RequestMapping("/list")
     public String list(Model model){
         model.addAttribute("menus",getMenus("menu"));
-        return "/management/memu/list";
+        return "/modular/memu/list";
     }
 
     @RequestMapping("/grid")

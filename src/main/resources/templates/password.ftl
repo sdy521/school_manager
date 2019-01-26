@@ -75,7 +75,7 @@
 <script src="/static/js/jquery-3.1.1.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
-<script src="/static/management/tool.js"></script>
+<script src="/static/modular/tool.js"></script>
 </body>
 <script>
     function updateInitPassword() {

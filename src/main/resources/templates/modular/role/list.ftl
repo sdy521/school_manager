@@ -83,6 +83,6 @@
     </div><!-- /.modal -->
 </div>
 <#include "/templates/layout/commonjs.ftl">
-<script src="/static/management/role/role.js"></script>
+<script src="/static/modular/role/role.js"></script>
 </body>
 </html>

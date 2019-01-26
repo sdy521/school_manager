@@ -8,7 +8,7 @@
     <link href = "/static/css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet">
     <#--font awesome 图标-->
     <#--<link href = "/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-    <link href = "/static/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href = "/static/plugins/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <#--sweetalert-->
     <link href="/static/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <#--dropzone-->

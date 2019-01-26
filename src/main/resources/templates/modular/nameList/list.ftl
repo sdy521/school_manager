@@ -128,6 +128,6 @@
 </div>
 <#include "/templates/layout/commonjs.ftl">
 <script src="/static/js/plugins/switchery/switchery.js"></script>
-<script src="/static/management/nameList/nameList.js"></script>
+<script src="/static/modular/nameList/nameList.js"></script>
 </body>
 </html>

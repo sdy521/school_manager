@@ -25,7 +25,7 @@ public class RoleController extends BaseController {
     @RequestMapping("/list")
     public String list(Model model){
         model.addAttribute("menus",getMenus("role"));
-        return "/management/role/list";
+        return "/modular/role/list";
     }
 
     @RequestMapping("/grid")

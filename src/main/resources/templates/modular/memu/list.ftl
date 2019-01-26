@@ -219,7 +219,7 @@
 <script src="/static/js/plugins/jquery-treegrid/tree-table-object.js"></script>
 <#--jstree-->
 <script src="/static/js/plugins/jsTree/jstree.min.js"></script>
-<script src="/static/management/memu/memu.js"></script>
+<script src="/static/modular/memu/memu.js"></script>
 <!-- icon picker -->
 <script type="text/javascript" src="/static/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/jquery.fonticonpicker.min.js"></script>
 <!-- font-awesome icon source -->

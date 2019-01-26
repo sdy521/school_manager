@@ -11,6 +11,6 @@ public class SendController extends BaseController{
     @RequestMapping("/list")
     public String list(Model model) {
         model.addAttribute("menus",getMenus("send"));
-        return "/management/send/list";
+        return "/modular/send/list";
     }
 }

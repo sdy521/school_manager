@@ -22,7 +22,7 @@ public class InfoController extends BaseController{
     @RequestMapping("/list")
     public String list(Model model){
         model.addAttribute("menus",getMenus("teacher_info"));
-        return "/management/teacherInfo/list";
+        return "/modular/teacherInfo/list";
     }
 
     @RequestMapping("/grid")

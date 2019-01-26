@@ -4,7 +4,7 @@
 <script src="/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <#--工具js-->
-<script src="/static/management/tool.js"></script>
+<script src="/static/modular/tool.js"></script>
 <!-- Custom and plugin javascript -->
 <script src="/static/js/inspinia.js"></script>
 <script src="/static/js/plugins/pace/pace.min.js"></script>

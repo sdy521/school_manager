@@ -126,6 +126,6 @@
     </div><!-- /.modal -->
 </div>
 <#include "/templates/layout/commonjs.ftl">
-<script src="/static/management/teacherInfo/teacherInfo.js"></script>
+<script src="/static/modular/teacherInfo/teacherInfo.js"></script>
 </body>
 </html>
