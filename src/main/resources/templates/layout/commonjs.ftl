@@ -33,7 +33,7 @@
     });
     function sendName() {
         var title = $('#onlyTitle').val();
-        var content = UE.getEditor('editor').getContent();
+        var content = Send.ue.getContent();
         console.log('title:' + title);
         console.log('content:' + content);
         var params = {};
@@ -43,6 +43,13 @@
     }
     function showResponse(message) {
         // $("#response").html(message);
+        success("发布成功");
         $("#tip").html(message);
+        Send.reload();
+        $("#onlyTitle").val("");
+        setContent();
+    }
+    function setContent(isAppendTo) {
+        UE.getEditor('editor').setContent('', isAppendTo);
     }
 </script>

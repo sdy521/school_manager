@@ -39,10 +39,6 @@
                                     <button class="btn btn-primary"onclick="NameList.add();">增加</button>
                                 </div>
                             </div>
-                            <div class="jqGrid_wrapper" style="margin-top: 10px;">
-                            <#--jqgrid 表格栏-->
-                                <table id="grid-table"></table>
-                            </div>
                         </div>
                     </div>
                     <div class="ibox">

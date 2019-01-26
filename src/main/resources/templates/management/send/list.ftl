@@ -39,6 +39,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="ibox">
+                        <table id="grid-table"></table>
+                        <div id="grid-pager"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,9 +56,5 @@
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
 <#include "/templates/layout/commonjs.ftl"/>
-<script>
-   $(function () {
-        var ue = UE.getEditor('editor');
-    })
-</script>
+<script src="/static/management/send/send.js"></script>
 </html>
