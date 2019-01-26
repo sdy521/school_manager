@@ -50,6 +50,6 @@
         setContent();
     }
     function setContent(isAppendTo) {
-        UE.getEditor('editor').setContent('', isAppendTo);
+        Send.ue.setContent('', isAppendTo);
     }
 </script>
