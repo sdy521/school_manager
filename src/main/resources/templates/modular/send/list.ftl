@@ -62,6 +62,33 @@
         <#include "/templates/layout/foot.ftl">
     </div>
 </div>
+<#--修改弹窗-->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog" style="width:800px;height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="update-form">
+                    <input type="hidden" id="noticeid">
+                    <div class="form-group"><label class="col-sm-2 control-label">标题：</label>
+                        <div class="col-sm-10"><input type="text" id="updateTitle" class="form-control"></div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">内容：</label>
+                        <div id="editor2" type="text/plain" style="margin-left:17%;width:90%;height:150px;"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="Send.update();">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 </body>
 <script type="text/javascript" charset="utf-8" src="/static/plugins/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/plugins/ueditor/ueditor.all.min.js"> </script>

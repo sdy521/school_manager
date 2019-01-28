@@ -2,7 +2,8 @@ var Send = {
     tableId:"#grid-table",
     pagerId:"#grid-pager",
     table:null,
-    ue:null
+    ue:null,
+    ue2:null
 }
 
 Send.initJqGrid = function(){
@@ -79,7 +80,53 @@ Send.delete = function(id){
         });
     });
 }
+//修改弹窗
+Send.updateModal = function(id){
+    $.ajax({
+        url:"/send/updateModal?id="+id,
+        type:"GET",
+        dataType:"JSON",
+        success:function (r) {
+            if(r.code===0){
+                var data = r.obj;
+                var elem = $("#updateModal");
+                elem.find("#updateTitle").val(data.title);
+                $("#noticeid").val(data.id);
+                var content = data.content;
+                Ue2setContent(content,false);
+                $("#updateModal").modal();
+            }
+        }
+    });
+}
+//修改
+Send.update = function () {
+    var elem = $("#updateModal");
+    var params = {};
+    params.title = elem.find("#updateTitle").val();
+    params.content = Send.ue2.getContent();
+    params.id = parseInt($("#noticeid").val());
+    $.ajax({
+        url:"/send/update",
+        data:JSON.stringify(params),
+        type:"POST",
+        dataType:"JSON",
+        contentType:"application/json;charset=utf8",
+        success:function (r) {
+            if(r.code===0){
+                $("#updateModal").modal('hide');
+                Send.reload();
+                success("修改成功");
+            }
+        }
+    });
+}
+//富文本框赋值
+function Ue2setContent(content,isAppendTo){
+    Send.ue2.setContent(content,isAppendTo);
+}
 $(function () {
     Send.ue = UE.getEditor('editor');
+    Send.ue2 = UE.getEditor('editor2');
     Send.table = Send.initJqGrid();
 });
