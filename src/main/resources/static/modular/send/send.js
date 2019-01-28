@@ -41,8 +41,8 @@ Send.initJqGrid = function(){
                     var id = rowObject['id'];
                     var deleted = rowObject['deleted'];
                     var str="";
-                    str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"NameList.updateModal("+id+");\">修改</button>&nbsp;&nbsp;";
-                    str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"NameList.updateModal("+id+");\">删除</button>";
+                    str +="<button type=\"button\" class=\"btn btn-primary btn-sm\" onclick=\"Send.updateModal("+id+");\">修改</button>&nbsp;&nbsp;";
+                    str +="<button type=\"button\" class=\"btn btn-danger btn-sm\" onclick=\"Send.delete("+id+");\">删除</button>";
                     return str;
                 }}
         ],
@@ -62,6 +62,22 @@ Send.initJqGrid = function(){
 //刷新
 Send.reload = function(){
     Send.table.setGridParam().trigger('reloadGrid');
+}
+//删除
+Send.delete = function(id){
+    warning("确定要删除吗？","",function() {
+        $.ajax({
+            url:"/notice/delete?id="+id,
+            type:"GET",
+            dataType:"JSON",
+            success:function (r) {
+                if(r.code===0){
+                    success("删除成功");
+                    Send.reload();
+                }
+            }
+        });
+    });
 }
 $(function () {
     Send.ue = UE.getEditor('editor');

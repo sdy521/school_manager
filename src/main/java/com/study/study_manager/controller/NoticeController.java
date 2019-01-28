@@ -30,4 +30,18 @@ public class NoticeController extends BaseController {
         result.setRows(pageInfo.getList());
         return new JSONResult(result);
     }
+
+    /***
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Result delete(Integer id){
+        Notice notice = new Notice();
+        notice.setId(id);
+        noticeService.delete(notice);
+        return OK;
+    }
 }
