@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 public interface NoticeDao extends BaseDao<Notice> {
 
-    @Select("select * from notice where deleted = 0 ORDER BY id DESC")
+    @Select("select * from notice where deleted = 0 ORDER BY update_time DESC")
     List<Notice> selectByPage();
 }
