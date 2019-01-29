@@ -13,6 +13,8 @@ public class Info extends BaseEntity{
     private String address;
     @Column
     private String phone;
+    @Column
+    private Integer age;
 
     public Integer getUserid() {
         return userid;
@@ -52,5 +54,13 @@ public class Info extends BaseEntity{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

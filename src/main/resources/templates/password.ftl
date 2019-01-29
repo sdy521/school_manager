@@ -11,6 +11,7 @@
     <link href = "/static/plugins/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="/static/plugins/bootstrapFileUpload/css/fileinput.min.css" rel="stylesheet">
+    <link href="/static/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
@@ -25,7 +26,7 @@
                 </div>
                 <div class="row">
                     <div class="ibox-content">
-                        <form id="form" action="#" class="wizard-big">
+                        <form id="form" class="wizard-big">
                             <h1>初始化密码</h1>
                             <fieldset>
                                 <div class="row">
@@ -87,8 +88,8 @@
 
                             <h1>完成</h1>
                             <fieldset>
-                                <h2>Terms and Conditions</h2>
-                                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                                <h2>基本信息填写已完成</h2>
+                                <label for="acceptTerms">完成后需重新登入.</label>
                             </fieldset>
                         </form>
                     </div>
@@ -113,6 +114,7 @@
 <script src="/static/js/jquery-3.1.1.min.js"></script>
 <script src="/static/js/plugins/steps/jquery.steps.min.js"></script>
 <script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="/static/plugins/bootstrapFileUpload/js/fileinput.min.js"></script>
 <script src="/static/modular/tool.js"></script>
 <script>
@@ -177,8 +179,47 @@
             },
             onFinished: function (event, currentIndex)
             {
-                var form = $(this);
-                form.submit();
+                // var form = $(this);
+                // form.submit();
+                var username = $("#userName").val();
+                var oldPassword = $("#oldPassword").val();
+                var newPassword = $("#newPassword").val();
+                var repeatNewPassword = $("#confirmPassword").val();
+                var sex = $("#sex").val();
+                var phone = $("#phone").val();
+                var address = $("#address").val();
+                var age = $("#age").val();
+                $.ajax({
+                    url: "/perfectInfo",
+                    type: 'POST',
+                    data: JSON.stringify({
+                        username:username,
+                        oldPassword:oldPassword,
+                        newPassword:newPassword,
+                        repeatNewPassword:repeatNewPassword,
+                        sex:sex,
+                        phone:phone,
+                        address:address,
+                        age:age
+                    }),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (r) {
+                        if (r.code === 0) {
+                            success("修改密码成功");
+                            window.location.href = ("/login");
+                        }
+                        else if (r.code === 405) {
+                            info("两次密码输入不一致");
+                        }
+                        else if (r.code === 406) {
+                            info("旧密码输入错误");
+                        }
+                        else if (r.code === 407) {
+                            info("用户不存在");
+                        }
+                    }
+                })
             }
         }).validate({
             errorPlacement: function (error, element)

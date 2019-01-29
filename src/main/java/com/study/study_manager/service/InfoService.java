@@ -19,8 +19,6 @@ import java.util.Map;
 public class InfoService extends BaseService<Info> {
     @Resource
     private InfoDao infoDao;
-    @Resource
-    private UserDao userDao;
     @Override
     protected BaseDao<Info> getDao() {
         return infoDao;
