@@ -3,10 +3,10 @@
 <head>
 <#include "/templates/layout/meta.ftl">
     <!-- fontIconPicker Style -->
-    <link rel="stylesheet" href="/static/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/css/jquery.fonticonpicker.min.css" />
-    <link rel="stylesheet" href="/static/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/plugins/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/css/jquery.fonticonpicker.min.css" />
+    <link rel="stylesheet" href="/static/plugins/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
     <!-- Font -->
-    <link rel="stylesheet" type="text/css" href="/static/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/plugins/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" />
     <!-- treegrid -->
     <link href="/static/css/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet">
     <link href="/static/css/plugins/jsTree/style.min.css" rel="stylesheet">
@@ -221,8 +221,8 @@
 <script src="/static/js/plugins/jsTree/jstree.min.js"></script>
 <script src="/static/modular/memu/memu.js"></script>
 <!-- icon picker -->
-<script type="text/javascript" src="/static/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/jquery.fonticonpicker.min.js"></script>
+<script type="text/javascript" src="/static/plugins/font-awesome-jquery-fontIconPicker/jquery-fontIconPicker/jquery.fonticonpicker.min.js"></script>
 <!-- font-awesome icon source -->
-<script type="text/javascript" src="/static/font-awesome-jquery-fontIconPicker/fa-icon-source.js" ></script>
+<script type="text/javascript" src="/static/plugins/font-awesome-jquery-fontIconPicker/fa-icon-source.js" ></script>
 </body>
 </html>
