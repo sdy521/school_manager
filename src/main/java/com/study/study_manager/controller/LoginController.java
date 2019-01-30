@@ -10,6 +10,7 @@ import com.study.study_manager.service.InfoService;
 import com.study.study_manager.service.InitPasswordService;
 import com.study.study_manager.util.SpringSecurity;
 import com.study.study_manager.util.UploadFile;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +23,16 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.nio.file.Files;
+import java.util.*;
 
 @Controller
 public class LoginController {
@@ -134,7 +137,7 @@ public class LoginController {
         return new Result(0,"更新成功");
     }
 
-    @RequestMapping("/upload")
+    /*@RequestMapping("/upload")
     @ResponseBody
     public void upload(@RequestParam("file")MultipartFile uploadimg){
         String imgPath = UploadFile.uploadImg(uploadimg);
@@ -143,5 +146,30 @@ public class LoginController {
         user.setId(userid);
         user.setImg(imgPath);
         initPasswordService.updateSelective(user);
+    }*/
+
+    @ResponseBody
+    @RequestMapping(value = "/upload" ,method = RequestMethod.POST)
+    public Map<String, Object> upload(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        request.setCharacterEncoding("UTF-8");
+        Map<String, Object> json = new HashMap<String, Object>();
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        /** 页面控件的文件流* */
+        MultipartFile multipartFile = null;
+        Map map =multipartRequest.getFileMap();
+        for (Iterator i = map.keySet().iterator(); i.hasNext();) {
+            Object obj = i.next();
+            multipartFile=(MultipartFile) map.get(obj);
+
+        }
+        String imgPath = UploadFile.uploadImg(multipartFile);
+        Integer userid = SpringSecurity.getSysUser().getId();
+        User user = new User();
+        user.setId(userid);
+        user.setImg(imgPath);
+        initPasswordService.updateSelective(user);
+        json.put("message", "上传成功");
+        return json;
     }
 }

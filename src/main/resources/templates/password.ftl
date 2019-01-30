@@ -10,7 +10,6 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href = "/static/plugins/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/plugins/steps/jquery.steps.css" rel="stylesheet">
-    <link href="/static/plugins/bootstrapFileUpload/css/fileinput.min.css" rel="stylesheet">
     <link href="/static/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
 </head>
@@ -102,24 +101,11 @@
         </div>
     </div>
 </div>
-<#--<form enctype="multipart/form-data">
-    <div class="file-loading">
-        <input id="kv-explorer" type="file" multiple>
-    </div>
-    <br>
-    <div class="file-loading">
-        <input id="file-0a" class="file" type="file" multiple data-min-file-count="1" data-theme="fas">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="reset" class="btn btn-outline-secondary">Reset</button>
-</form>-->
 </body>
 <script src="/static/js/jquery-3.1.1.min.js"></script>
 <script src="/static/js/plugins/steps/jquery.steps.min.js"></script>
 <script src="/static/js/plugins/validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/static/js/plugins/sweetalert/sweetalert.min.js"></script>
-<script src="/static/plugins/bootstrapFileUpload/js/fileinput.min.js"></script>
 <script src="/static/modular/tool.js"></script>
 <script>
     $(document).ready(function(){

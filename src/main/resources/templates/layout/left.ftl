@@ -86,7 +86,11 @@
                 <h4 class="modal-title" id="modalTitle">上传头像</h4>
             </div>
             <div class="modal-body">
-                <form action="/upload" class="dropzone"></form>
+               <form enctype="multipart/form-data">
+                   <div class="file-loading">
+                       <input id="uploadfile" type="file" multiple>
+                   </div>
+               </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-default" onclick="destroyDropZone();">关闭</button>
