@@ -62,7 +62,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             List<LeftMenu> leftMenus = getLeftMenu(all);
             user.setLeftMenus(leftMenus);
             request.getSession().setAttribute("leftname",user.getUsername());
-            request.getSession().setAttribute("userImg","/imgPath/"+user.getImg());
+            request.getSession().setAttribute("userImg",user.getImg());
             super.onAuthenticationSuccess(request, response, authentication);
         }
     }

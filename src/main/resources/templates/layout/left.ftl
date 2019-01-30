@@ -5,7 +5,11 @@
                 <div class="dropdown profile-element">
                     <span>
                         <a href="javascript:;" onclick="upImage();">
-                            <img alt="image" class="img-circle" src="${userImg}" width="80px;"/>
+                            <#if userImg??>
+                                <img alt="image" class="img-circle" src="/imgPath/${userImg}" width="80px;"/>
+                                <#else >
+                                <img alt="image" class="img-circle" src="/static/img/5.jpg" width="80px;"/>
+                            </#if>
                         </a>
                      </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
