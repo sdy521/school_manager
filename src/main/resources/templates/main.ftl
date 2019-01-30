@@ -67,7 +67,7 @@
 
         $(".ibox").resizable({
             helper: "ui-resizable-helper",
-            grid: 20
+            grid: 20// 设置调整大小时候x y 轴每次移动多少像素。
         });
 
         //日期控件
