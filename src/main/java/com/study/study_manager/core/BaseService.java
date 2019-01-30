@@ -31,10 +31,6 @@ public abstract class BaseService<T extends BaseEntity>{
         getDao().updateByPrimaryKeySelective(entity);
         return entity.getId();
     }
-    public void updateSelective2(T entity){
-        saveBaseInfo(entity);
-        getDao().updateByPrimaryKeySelective(entity);
-    }
 
     /***
      * 删除  其实是更新

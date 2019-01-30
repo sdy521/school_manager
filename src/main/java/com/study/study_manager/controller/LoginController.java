@@ -92,11 +92,12 @@ public class LoginController {
                     info.setDeleted(false);
                     List<Info> list = infoService.select(info);
                     if(list!=null&&list.size()>0){
+                        info.setId(list.get(0).getId());
                         info.setAddress(param.getAddress());
                         info.setPhone(param.getPhone());
                         info.setSex(param.getSex());
                         info.setAge(param.getAge());
-                        infoService.updateSelective2(info);
+                        infoService.updateSelective(info);
                     }else {
                         info.setAddress(param.getAddress());
                         info.setPhone(param.getPhone());

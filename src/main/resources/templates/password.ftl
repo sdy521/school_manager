@@ -37,15 +37,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>旧密码 *</label>
-                                            <input id="oldPassword" name="oldPassword" type="text" class="form-control required">
+                                            <input id="oldPassword" name="oldPassword" type="password" class="form-control required">
                                         </div>
                                         <div class="form-group">
                                             <label>新密码 *</label>
-                                            <input id="newPassword" name="newPassword" type="text" class="form-control required">
+                                            <input id="newPassword" name="newPassword" type="password" class="form-control required">
                                         </div>
                                         <div class="form-group">
                                             <label>确认密码 *</label>
-                                            <input id="confirmPassword" name="confirmPassword" type="text" class="form-control required">
+                                            <input id="confirmPassword" name="confirmPassword" type="password" class="form-control required">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -66,11 +66,15 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>性别 *</label>
-                                            <input id="sex" name="sex" type="text" class="form-control required">
+                                            <select id="sex" name="sex" class="form-control required">
+                                                <option value="" selected>请选择性别</option>
+                                                <option value="0" selected>女</option>
+                                                <option value="1">男</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>年龄 *</label>
-                                            <input id="age" name="age" type="text" class="form-control required">
+                                            <input id="age" name="age" type="number" class="form-control required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
