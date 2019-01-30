@@ -28,7 +28,7 @@ public class NoticeService extends BaseService<Notice> {
         return new PageInfo<>(list);
     }
 
-    public List<Notice> selectAll(){
-        return noticeDao.selectByPage();
+    public List<Notice> selectByTime(String dateTime){
+        return noticeDao.selectNotice(dateTime);
     }
 }

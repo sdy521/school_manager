@@ -1,4 +1,5 @@
 // 格式化时间  参数为Date类型
+//yyyy-MM-dd HH:mm:ss
 function setDateFormat(myDate) {
     var year = myDate.getFullYear();
     var month = myDate.getMonth() + 1;
@@ -12,6 +13,16 @@ function setDateFormat(myDate) {
     var seconds = myDate.getSeconds();
     seconds = (seconds.toString().length == 1)?("0"+seconds):seconds;
     var result = year + '-' + month + '-' + day + ' '+ hours + ':' + minutes + ':' + seconds //当前日期
+    return result;
+}
+//yyyy-MM-dd
+function setDate(myDate) {
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth() + 1;
+    month = (month.toString().length == 1) ? ("0" + month) : month;
+    var day = myDate.getDate();
+    day = (day.toString().length == 1) ? ("0" + day) : day;
+    var result = year + '-' + month + '-' + day//当前日期
     return result;
 }
 //获取表单下的值得JSON对象
