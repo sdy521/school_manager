@@ -15,40 +15,38 @@
         <div class="wrapper wrapper-content">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="bar search-bar">
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <#--<label>&nbsp;&nbsp;日期：</label>-->
-                                    &nbsp;&nbsp;
-                                    <div class="input-group date">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="dateTime" style="width: 120px;"/>
-                                    </div>
+                    <div class="bar search-bar">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <#--<label>&nbsp;&nbsp;日期：</label>-->
+                                &nbsp;&nbsp;
+                                <div class="input-group date">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    <input type="text" class="form-control" id="dateTime" style="width: 120px;"/>
                                 </div>
                             </div>
                         </div>
-                        <div class="animated fadeInRight">
-                            <div class="resizable-panels">
-                                <#if listnotice??>
-                                    <#list listnotice as notice>
-                                        <div class="ibox" style="width: 100%;height: 50px;">
-                                            <div class="ibox-title">
-                                                <h5>${notice.title}</h5>
-                                                <div class="ibox-tools">
-                                                    <label class="label">${notice.createTime?string('yyyy-MM-dd')}</label>
-                                                </div>
-                                            </div>
-                                            <div class="ibox-content">
-                                                ${notice.content}
+                    </div>
+                    <div class="animated fadeInRight">
+                        <div class="resizable-panels">
+                            <#if listnotice??>
+                                <#list listnotice as notice>
+                                    <div class="ibox" style="width: 100%;height: 50px;">
+                                        <div class="ibox-title">
+                                            <h5>${notice.title}</h5>
+                                            <div class="ibox-tools">
+                                                <label class="label">${notice.createTime?string('yyyy-MM-dd')}</label>
                                             </div>
                                         </div>
-                                    </#list>
-                                </#if>
-                                <div class="clearfix"></div>
-                            </div>
+                                        <div class="ibox-content">
+                                            ${notice.content}
+                                        </div>
+                                    </div>
+                                </#list>
+                            </#if>
+                            <#--<div class="clearfix"></div>-->
                         </div>
                     </div>
                 </div>
@@ -129,8 +127,7 @@
                                "        </div>\n" +
                                "     </div>\n" +
                                "     <div class=\"ibox-content\">"+item.content+"</div>\n" +
-                               "  </div>\n" +
-                               "      <div class=\"clearfix\"></div>\n" +
+                               "  </div>\n"+
                                "  </div>");
                    });
                }
