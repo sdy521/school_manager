@@ -115,10 +115,10 @@
            dataType:"JSON",
            success:function (r) {
                if(r.code===0){
-                   $(".animated").empty();
+                   $(".resizable-panels").empty();
                    var data = r.obj;
                    $.each(data,function (i,item) {
-                       $(".animated").append("<div class=\"resizable-panels\">\n" +
+                       $(".resizable-panels").append(
                                " <div class=\"ibox\" style=\"width: 100%;height: 50px;\">\n" +
                                "    <div class=\"ibox-title\">\n" +
                                "        <h5>"+item.title+"</h5>\n" +
@@ -127,8 +127,11 @@
                                "        </div>\n" +
                                "     </div>\n" +
                                "     <div class=\"ibox-content\">"+item.content+"</div>\n" +
-                               "  </div>\n"+
                                "  </div>");
+                   });
+                   $(".ibox").resizable({
+                       helper: "ui-resizable-helper",
+                       grid: 20
                    });
                }
            }
