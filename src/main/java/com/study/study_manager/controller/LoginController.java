@@ -148,9 +148,9 @@ public class LoginController {
         initPasswordService.updateSelective(user);
     }*/
 
+    @RequestMapping(value = "/upload")
     @ResponseBody
-    @RequestMapping(value = "/upload" ,method = RequestMethod.POST)
-    public Map<String, Object> upload(HttpServletRequest request, HttpServletResponse response)
+    public Map<String, Object> upload(HttpServletRequest request)
             throws Exception {
         request.setCharacterEncoding("UTF-8");
         Map<String, Object> json = new HashMap<String, Object>();
