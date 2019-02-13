@@ -36,12 +36,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //禁用csrf
         http.csrf().disable();
-        //使用HTTP 响应头信息中的 X-Frame-Options属性
-        //使用 X-Frame-Options 有三个可选的值：
-        //DENY：浏览器拒绝当前页面加载任何Frame页面
-        //SAMEORIGIN：frame页面的地址只能为同源域名下的页面
-        //ALLOW-FROM：origin为允许frame加载的页面地址
-        http.headers().frameOptions().sameOrigin();
         http.formLogin().loginPage("/login")
                 //登录处理url
                 .loginProcessingUrl("/j_spring_security_check")

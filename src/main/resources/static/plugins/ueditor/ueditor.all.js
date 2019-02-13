@@ -2839,7 +2839,7 @@ var domUtils = dom.domUtils = {
      * ```
      */
     isBody:function (node) {
-        return  node && node.nodeType == 1 && node.tagName && node.tagName.toLowerCase && node.tagName.toLowerCase() == 'body';
+        return  node && node.nodeType == 1 && node.tagName.toLowerCase() == 'body';
     },
     /**
      * 以node节点为分界，将该节点的指定祖先节点parent拆分成两个独立的节点，
@@ -8018,20 +8018,15 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          */
         getActionUrl: function(action){
             var actionName = this.getOpt(action) || action,
-            	imageUrl = this.getOpt('imageUrl'),
-            	uploadUrl = this.getOpt('uploadUrl'),
+                imageUrl = this.getOpt('imageUrl'),
                 serverUrl = this.getOpt('serverUrl');
 
             if(!serverUrl && imageUrl) {
                 serverUrl = imageUrl.replace(/^(.*[\/]).+([\.].+)$/, '$1controller$2');
             }
 
-            if(serverUrl) {            
-            	 if (actionName != 'config' && (uploadUrl || actionName == 'JS_DEFINE')){
-            		 serverUrl = uploadUrl;
-            	 }else{
-            		 serverUrl = serverUrl + (serverUrl.indexOf('?') == -1 ? '?':'&') + 'action=' + (actionName || '');
-            	 }
+            if(serverUrl) {
+                serverUrl = serverUrl + (serverUrl.indexOf('?') == -1 ? '?':'&') + 'action=' + (actionName || '');
                 return utils.formatUrl(serverUrl);
             } else {
                 return '';
@@ -8059,7 +8054,7 @@ UE.Editor.defaultOptions = function(editor){
         autoClearEmptyNode: true,
         fullscreen: false,
         readonly: false,
-        zIndex: 0,
+        zIndex: 999,
         imagePopup: true,
         enterTag: 'p',
         customDomain: false,
@@ -17656,13 +17651,6 @@ UE.plugins['video'] = function (){
         height = parseInt(height, 10) || 0;
 
         var str;
-        var _temp_url =/\.[^\.]+/.exec(url.toLowerCase());
-        var regFile = /.*(.mp4|.avi|.3gp|.mkv|.flv|.wmv)$/;
-        //console.log("_temp_url"+_temp_url);
-        if(regFile.test(_temp_url)){
-        	type = 'video';
-        }
-        //console.log("_temp_url:"+type);
         switch (type){
             case 'image':
                 str = '<img ' + (id ? 'id="' + id+'"' : '') + ' width="'+ width +'" height="' + height + '" _url="'+url+'" class="' + classname.replace(/\bvideo-js\b/, '') + '"'  +
@@ -17677,7 +17665,7 @@ UE.plugins['video'] = function (){
                 var ext = url.substr(url.lastIndexOf('.') + 1);
                 if(ext == 'ogv') ext = 'ogg';
                 str = '<video' + (id ? ' id="' + id + '"' : '') + ' class="' + classname + ' video-js" ' + (align ? ' style="float:' + align + '"': '') +
-                    ' controls preload="auto" width="' + width + '" height="' + height + '" src="' + url + '" data-setup="{}">' +
+                    ' controls preload="none" width="' + width + '" height="' + height + '" src="' + url + '" data-setup="{}">' +
                     '<source src="' + url + '" type="video/' + ext + '" /></video>';
                 break;
         }
