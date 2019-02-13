@@ -66,6 +66,9 @@ Send.reload = function(){
 }
 //删除
 Send.delete = function(id){
+    if($("#a").find("i").hasClass("fa-chevron-up")){
+        $("#a").trigger("click");
+    }
     warning("确定要删除吗？","",function() {
         $.ajax({
             url:"/notice/delete?id="+id,
@@ -82,6 +85,9 @@ Send.delete = function(id){
 }
 //修改弹窗
 Send.updateModal = function(id){
+    if($("#a").find("i").hasClass("fa-chevron-up")){
+        $("#a").trigger("click");
+    }
     $.ajax({
         url:"/send/updateModal?id="+id,
         type:"GET",

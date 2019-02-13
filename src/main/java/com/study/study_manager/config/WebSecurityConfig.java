@@ -34,6 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //frame页面的地址只能为同源域名下的页面
+        http.headers().frameOptions().sameOrigin();
         //禁用csrf
         http.csrf().disable();
         http.formLogin().loginPage("/login")

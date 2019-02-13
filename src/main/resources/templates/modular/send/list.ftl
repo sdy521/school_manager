@@ -29,7 +29,7 @@
                         <div class="ibox-title">
                             <h5>消息通知 <small>发布学校公告.</small></h5>
                             <div class="ibox-tools">
-                                <a class="collapse-link">
+                                <a class="collapse-link" id="a">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
                             </div>
