@@ -33,7 +33,7 @@
                         <div class="resizable-panels">
                             <#if listnotice??>
                                 <#list listnotice as notice>
-                                    <div class="ibox" style="width: 100%;height: 50px;">
+                                    <div class="ibox" style="width: 100%;">
                                         <div class="ibox-title">
                                             <h5>${notice.title}</h5>
                                             <div class="ibox-tools">
