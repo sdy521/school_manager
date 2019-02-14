@@ -119,7 +119,7 @@
                    var data = r.obj;
                    $.each(data,function (i,item) {
                        $(".resizable-panels").append(
-                               " <div class=\"ibox\" style=\"width: 100%;height: 50px;\">\n" +
+                               " <div class=\"ibox\" style=\"width: 100%;\">\n" +
                                "    <div class=\"ibox-title\">\n" +
                                "        <h5>"+item.title+"</h5>\n" +
                                "        <div class=\"ibox-tools\">\n" +
