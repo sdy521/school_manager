@@ -29,15 +29,28 @@ public class UeditorController {
             if(upfile!=null){
                 //{state：”数据状态信息”，url：”图片回显路径”，title：”文件title”，original：”文件名称”，···}
                 try {
-                    return uploadImg(upfile,request);
+                    return uploadFile(upfile,request);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
-                    ueditor.setState("出现异常");
+                    ueditor.setState("上传图片出现异常");
                     return JSON.toJSONString(ueditor);
                 }
             }else{
-                ueditor.setState("文件为空");
+                ueditor.setState("上传图片文件为空");
+                return JSON.toJSONString(ueditor);
+            }
+        }else if (param!=null&param.equals("uploadvideo")){
+            if(param!=null){
+                try {
+                    return uploadFile(upfile,request);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    ueditor.setState("上传视频出现异常");
+                    return JSON.toJSONString(ueditor);
+                }
+            }else {
+                ueditor.setState("上传视频文件为空");
                 return JSON.toJSONString(ueditor);
             }
         }else{
@@ -46,7 +59,7 @@ public class UeditorController {
         }
     }
 
-    public String uploadImg(MultipartFile file,
+    public String uploadFile(MultipartFile file,
                             HttpServletRequest request) throws IOException {
         UeditorParam ueditor = new UeditorParam();
         String path=PATH;
