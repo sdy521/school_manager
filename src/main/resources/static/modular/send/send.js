@@ -85,9 +85,6 @@ Send.delete = function(id){
 }
 //修改弹窗
 Send.updateModal = function(id){
-    if($("#a").find("i").hasClass("fa-chevron-up")){
-        $("#a").trigger("click");
-    }
     $.ajax({
         url:"/send/updateModal?id="+id,
         type:"GET",
@@ -131,8 +128,16 @@ Send.update = function () {
 function Ue2setContent(content,isAppendTo){
     Send.ue2.setContent(content,isAppendTo);
 }
+var clock;
 $(function () {
     Send.ue = UE.getEditor('editor');
     Send.ue2 = UE.getEditor('editor2');
     Send.table = Send.initJqGrid();
+    clock = setInterval(function () {
+        if($('body').hasClass('modal-open')){
+            if($("#a").find("i").hasClass("fa-chevron-up")){
+                $("#a").trigger('click');
+            }
+        }
+    },100);
 });
