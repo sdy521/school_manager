@@ -1,4 +1,3 @@
-<#--模板实例-->
 <!DOCTYPE html>
 <html>
 <head>
