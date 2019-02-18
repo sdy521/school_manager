@@ -88,7 +88,11 @@ public class NameListService extends BaseService<User> {
                 cell.setCellType(Cell.CELL_TYPE_STRING);//设置单元格类型为字符串
                 content = cell.getStringCellValue();
                 if(!StringUtils.isEmpty(content)){//内容不为空就解析
-                    user.setName(content);
+                    if(j==0){
+                        user.setName(content);
+                    }else {
+                        user.setType(Integer.parseInt(content));
+                    }
                 }else {
                     break;
                 }
@@ -96,7 +100,6 @@ public class NameListService extends BaseService<User> {
             if(user.getName()==null)continue;
             user.setEnable(enable);
             user.setPassword(BCrypt.hashpw("123",BCrypt.gensalt()));
-            user.setType(1);
             user.setCreateTime(new Date());
             user.setUpdateTime(new Date());
             user.setDeleted(false);

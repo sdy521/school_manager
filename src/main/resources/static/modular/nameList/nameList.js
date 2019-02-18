@@ -73,6 +73,7 @@ NameList.initJqGrid = function(){
         autowidth: true,
         height:380,
         viewrecords: true,
+        sortorder:'desc'
         //loadonce:true//为true时，不请求后台，直接从界面上排序
         // sortorder:"desc",//此属性只能用于loadonce为true时
         // multiselect: false,
