@@ -158,7 +158,7 @@ public class NameListController extends BaseController{
             InputStream inStream = new FileInputStream(excelPath);//文件的存放路径
             // 设置输出的格式
             response.reset();
-            response.setContentType("bin");
+            response.setContentType("bin");//设置文件类型的，bin这个文件类型是不存在的。。浏览器遇到不存在的文件类型就会出现一个下载提示
             response.addHeader("Content-Disposition",
                     "attachment;filename=" + URLEncoder.encode("姓名导入模板.xls", "UTF-8"));
             // 循环取出流中的数据
