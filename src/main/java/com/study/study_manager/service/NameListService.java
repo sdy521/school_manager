@@ -14,6 +14,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -60,10 +61,10 @@ public class NameListService extends BaseService<User> {
         File newFile = new File(filePath);
         try {
             book = new XSSFWorkbook(new FileInputStream(newFile));//2007和之后的版本
-        } catch (IOException e) {
+        } catch (Exception e) {
             try {
                 book = new HSSFWorkbook(new FileInputStream(newFile));//2007之前的版本
-            } catch (IOException e1) {
+            } catch (Exception e1) {
                 e1.printStackTrace();
                 return false;
             }
@@ -94,6 +95,12 @@ public class NameListService extends BaseService<User> {
             }
             if(user.getName()==null)continue;
             user.setEnable(enable);
+            user.setPassword(BCrypt.hashpw("123",BCrypt.gensalt()));
+            user.setType(1);
+            user.setCreateTime(new Date());
+            user.setUpdateTime(new Date());
+            user.setDeleted(false);
+            user.setImg(null);
             //插入结果
             /*Cell createCell = row.createCell(2);
             createCell.setCellType(Cell.CELL_TYPE_STRING);*/

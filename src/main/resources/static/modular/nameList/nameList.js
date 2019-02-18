@@ -256,6 +256,7 @@ NameList.jqSearch = function(){
         success:function (r) {
             if(r.code===0){
                 $("#importModal").modal('hide');
+                NameList.search();
                 success("导入完成");
             }
         }
