@@ -263,6 +263,10 @@ NameList.jqSearch = function(){
         }
     });
  }
+ //下载模板
+ NameList.downloadTemplate = function(){
+    window.open("/teacher_nameList/downloadTemplate");
+ }
  $(function () {
     NameList.table = NameList.initJqGrid();
     //switchery

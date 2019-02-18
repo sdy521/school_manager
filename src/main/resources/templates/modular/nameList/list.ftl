@@ -138,7 +138,13 @@
             <div class="modal-body">
                 <div class="form-horizontal" id="import-form">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">名称</label>
+                        <label class="col-sm-3 control-label">模板</label>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary" onclick="NameList.downloadTemplate();">下载模板</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">文件</label>
                         <div class="col-sm-6">
                             <input id="fileinput" type="file">
                         </div>

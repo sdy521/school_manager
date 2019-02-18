@@ -12,10 +12,17 @@ import com.study.study_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLEncoder;
 
 @Controller
 @RequestMapping("/teacher_nameList")
@@ -138,5 +145,32 @@ public class NameListController extends BaseController{
         String filename = UploadFile.uploadFile(file);
         boolean result = nameListService.importExcel(filename,enable);
         return OK;
+    }
+
+    @RequestMapping(value = "/downloadTemplate")
+    @ResponseBody
+    public void downloadExcel(HttpServletResponse response, HttpServletRequest request) {
+        try {
+            //获取文件的路径
+            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+            String excelPath = path+"static/excel/姓名导入模板.xls";
+            // 读到流中
+            InputStream inStream = new FileInputStream(excelPath);//文件的存放路径
+            // 设置输出的格式
+            response.reset();
+            response.setContentType("bin");
+            response.addHeader("Content-Disposition",
+                    "attachment;filename=" + URLEncoder.encode("姓名导入模板.xls", "UTF-8"));
+            // 循环取出流中的数据
+            byte[] b = new byte[200];
+            int len;
+
+            while ((len = inStream.read(b)) > 0){
+                response.getOutputStream().write(b, 0, len);
+            }
+            inStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
