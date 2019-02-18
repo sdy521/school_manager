@@ -37,6 +37,7 @@
                                     <button class="btn btn-primary"onclick="NameList.search();">搜索</button>
                                     <button class="btn btn-primary"onclick="NameList.reset();">重置</button>
                                     <button class="btn btn-primary"onclick="NameList.add();">增加</button>
+                                    <button class="btn btn-success"onclick="NameList.importExcel();">批量导入</button>
                                 </div>
                             </div>
                         </div>
@@ -121,6 +122,37 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-primary" onclick="NameList.update();">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<#--导入弹框-->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">批量导入</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" id="import-form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-6">
+                            <input id="fileinput" type="file">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">权限</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" id="switch" class="js-switch"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="NameList.import();">确定</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div><!-- /.modal-content -->

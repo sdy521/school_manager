@@ -3,7 +3,8 @@
     pagerId:"#grid-pager",
     table:null,
     myswitchery:null,
-    myswitchery2:null
+    myswitchery2:null,
+    myswitchery3:null
 }
 NameList.initJqGrid = function(){
     var tableInstance = $("#grid-table").jqGrid({
@@ -236,9 +237,50 @@ NameList.jqSearch = function(){
         });
     });
  }
+ //批量导入
+ NameList.importExcel = function(){
+    $("#importModal").modal();
+ }
+ NameList.import = function(){
+    var formData = new FormData();
+    formData.append("file",$("#fileinput")[0].files[0]);
+    formData.append("enable",document.querySelector('#importModal .js-switch').checked);
+    $.ajax({
+        url:"/teacher_nameList/importExcel",
+        type:"POST",
+        dataType:"JSON",
+        contentType:false,
+        processData:false,//是否序列化
+        data:formData,
+        catch:false,
+        success:function (r) {
+            if(r.code===0){
+                $("#importModal").modal('hide');
+                success("导入完成");
+            }
+        }
+    });
+ }
  $(function () {
     NameList.table = NameList.initJqGrid();
     //switchery
     NameList.myswitchery = new Switchery(document.querySelector('#createModal .js-switch'),{color:'#1AB394'});
     NameList.myswitchery2 = new Switchery(document.querySelector('#updateModal .js-switch'),{color:'#1AB394'});
+    NameList.myswitchery3 = new Switchery(document.querySelector('#importModal .js-switch'),{color:'#1AB394'});
+    //bootstrap fileinput
+     $("#fileinput").fileinput({
+         language: 'zh', //设置语言
+         uploadUrl: "/upload", //上传的地址
+         allowedFileExtensions: ['xls'],//接收的文件后缀
+         uploadAsync: true, //默认异步上传
+         showUpload: false, //是否显示上传按钮
+         showRemove : false, //显示移除按钮
+         showPreview : false, //是否显示预览
+         showCaption: true,//是否显示标题
+         browseClass: "btn btn-primary", //按钮样式
+         dropZoneEnabled: false,//是否显示拖拽区域
+         maxFileCount: 1, //表示允许同时上传的最大文件个数
+         enctype: 'multipart/form-data',
+         validateInitialCount:true
+     });
  });

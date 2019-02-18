@@ -10,7 +10,6 @@ import java.util.UUID;
 
 public class UploadFile {
     private static Logger logger = LoggerFactory.getLogger(UploadFile.class);
-
     /***
      * 上传图片
      * @param uploadImg
@@ -31,5 +30,32 @@ public class UploadFile {
             e.printStackTrace();
         }
         return fileName;
+    }
+
+    /***
+     * 上传文件
+     * @param uploadfile
+     * @return
+     */
+    public static String uploadFile(MultipartFile uploadfile){
+        String contentType = uploadfile.getContentType();
+        String filename = uploadfile.getOriginalFilename();
+        logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
+        String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
+        String filePath = location; // 上传后的路径
+        String suffixName = filename.substring(filename.lastIndexOf("."));
+        filename = UUID.randomUUID()+suffixName;
+        File newFile = new File(filePath+filename);
+        try {
+            uploadfile.transferTo(newFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return filename;
+    }
+
+    public static String uploadRoute(){
+        String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
+        return location;
     }
 }

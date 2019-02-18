@@ -35,7 +35,7 @@
         $("#uploadfile").fileinput({
             language: 'zh', //设置语言
             uploadUrl: "/upload", //上传的地址
-            allowedFileExtensions: ['jpg','png'],//接收的文件后缀
+            allowedFileExtensions: ['jpg','png','jpeg'],//接收的文件后缀
             uploadAsync: true, //默认异步上传
             showUpload: true, //是否显示上传按钮
             showRemove : true, //显示移除按钮

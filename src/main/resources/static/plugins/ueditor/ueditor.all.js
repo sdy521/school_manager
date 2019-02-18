@@ -17774,7 +17774,7 @@ UE.plugins['video'] = function (){
                 var img = this.document.getElementById('tmpVedio'+i);
                 domUtils.removeAttributes(img,'id');
                 rng.selectNode(img).select();
-                me.execCommand('imagefloat',videoObjs[i].align)
+                me.execCommand('imagefloat',videoObjs[i].align);
             }
         },
         queryCommandState : function(){

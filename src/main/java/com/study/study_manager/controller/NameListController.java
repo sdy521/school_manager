@@ -8,13 +8,12 @@ import com.study.study_manager.dto.TeacherParam;
 import com.study.study_manager.entity.User;
 import com.study.study_manager.service.NameListService;
 import com.study.study_manager.util.Constans;
+import com.study.study_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 
@@ -124,6 +123,20 @@ public class NameListController extends BaseController{
         teacher.setId(id);
         teacher.setPassword(BCrypt.hashpw(Constans.DEFAULT_PASSWORD,BCrypt.gensalt()));
         nameListService.updateSelective(teacher);
+        return OK;
+    }
+
+    /***
+     * 批量导入
+     * @param file
+     * @param enable
+     * @return
+     */
+    @RequestMapping(value = "/importExcel")
+    @ResponseBody
+    public Result importExcel(MultipartFile file,boolean enable){
+        String filename = UploadFile.uploadFile(file);
+        boolean result = nameListService.importExcel(filename,enable);
         return OK;
     }
 }
