@@ -19,7 +19,7 @@ public interface UserDao extends BaseDao<User> {
 
     @Select({"<script>",
             "select * from user where deleted=0 and id !=1 " +
-            "<when test='name!=null'> and name like '%${name}%' </when>",
+            "<when test='name!=null'> and name like '%${name}%' </when> order by id desc",
             "</script>"})
     List<User> selectByPage2(@Param("name") String name);
 }

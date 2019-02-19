@@ -7,7 +7,7 @@ import com.study.study_manager.core.jqGrid.JqGridResult;
 import com.study.study_manager.dto.TeacherParam;
 import com.study.study_manager.entity.User;
 import com.study.study_manager.service.InfoService;
-import com.study.study_manager.service.NameListService;
+import com.study.study_manager.service.StudentListService;
 import com.study.study_manager.util.Constans;
 import com.study.study_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -15,8 +15,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ClassUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,24 +30,25 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 
 @Controller
-@RequestMapping("/teacher_nameList")
-public class NameListController extends BaseController{
+@RequestMapping("/student_nameList")
+public class StudentListController extends BaseController {
+
     @Resource
-    private NameListService nameListService;
+    private StudentListService studentListService;
 
     @Resource
     private InfoService infoService;
 
     @RequestMapping("/list")
     public String list(Model model){
-        model.addAttribute("menus",getMenus("teacher_nameList"));
-        return "/modular/nameList/list";
+        model.addAttribute("menus",getMenus("student_nameList"));
+        return "/modular/studentList/list";
     }
 
     @RequestMapping("/grid")
     @ResponseBody
     public Result grid(TeacherParam param){
-        PageInfo<User> pageInfo = nameListService.selectByPage(param);
+        PageInfo<User> pageInfo = studentListService.selectByPage(param);
         JqGridResult result = new JqGridResult();
         result.setPage(pageInfo.getPageNum());
         result.setRecords(pageInfo.getTotal());
@@ -51,7 +56,6 @@ public class NameListController extends BaseController{
         result.setRows(pageInfo.getList());
         return new JSONResult(result);
     }
-
     /***
      * 增加
      * @param teacher
@@ -63,8 +67,8 @@ public class NameListController extends BaseController{
         String pwd = teacher.getPassword();
         String bcrypt = BCrypt.hashpw(pwd,BCrypt.gensalt());
         teacher.setPassword(bcrypt);
-        teacher.setType(1);
-        nameListService.insert(teacher);
+        teacher.setType(2);
+        studentListService.insert(teacher);
         return OK;
     }
 
@@ -78,7 +82,7 @@ public class NameListController extends BaseController{
     public Result selectOne(@RequestParam Integer id){
         User teacher = new User();
         teacher.setId(id);
-        teacher = nameListService.selectOne(teacher);
+        teacher = studentListService.selectOne(teacher);
         return new JSONResult(teacher);
     }
 
@@ -90,7 +94,7 @@ public class NameListController extends BaseController{
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody User teacher){
-        nameListService.updateSelective(teacher);
+        studentListService.updateSelective(teacher);
         return OK;
     }
 
@@ -105,7 +109,7 @@ public class NameListController extends BaseController{
     public Result delete(@RequestParam Integer id){
         User teacher = new User();
         teacher.setId(id);
-        nameListService.delete(teacher);
+        studentListService.delete(teacher);
         infoService.deleteInfo(id);
         return OK;
     }
@@ -120,7 +124,7 @@ public class NameListController extends BaseController{
     public Result recover(@RequestParam Integer id){
         User teacher = new User();
         teacher.setId(id);
-        nameListService.recover(teacher);
+        studentListService.recover(teacher);
         return OK;
     }
 
@@ -135,7 +139,7 @@ public class NameListController extends BaseController{
         User teacher = new User();
         teacher.setId(id);
         teacher.setPassword(BCrypt.hashpw(Constans.DEFAULT_PASSWORD,BCrypt.gensalt()));
-        nameListService.updateSelective(teacher);
+        studentListService.updateSelective(teacher);
         return OK;
     }
 
@@ -147,9 +151,9 @@ public class NameListController extends BaseController{
      */
     @RequestMapping(value = "/importExcel")
     @ResponseBody
-    public Result importExcel(MultipartFile file,boolean enable){
+    public Result importExcel(MultipartFile file, boolean enable){
         String filename = UploadFile.uploadFile(file);
-        boolean result = nameListService.importExcel(filename,enable);
+        boolean result = studentListService.importExcel(filename,enable);
         return OK;
     }
 
