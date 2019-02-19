@@ -17,7 +17,7 @@ public class StudyManagerApplicationTests {
     @Test
     public void contextLoads() {
 //        System.out.println(BCrypt.hashpw("123",BCrypt.gensalt()));
-        System.out.println(TestEnum.SECRECY.getCode());
+        System.out.println(TestEnum.SECRECY.getValue());
     }
 
 }

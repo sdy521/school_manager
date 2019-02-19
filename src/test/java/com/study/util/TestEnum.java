@@ -1,7 +1,7 @@
 package com.study.util;
 
 public enum TestEnum {
-    SECRECY(1, "保密"), SINGLE(2, "单身"), MARRIED(3, "已婚");
+    SECRECY(1, "测试1"), SINGLE(2, "测试2"), MARRIED(3, "测试3");
     int code;
     String value;
 
