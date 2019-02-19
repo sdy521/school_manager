@@ -20,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -94,7 +95,7 @@ public class LoginController {
                     info.setUserid(userid);
                     info.setDeleted(false);
                     List<Info> list = infoService.select(info);
-                    if(list!=null&&list.size()>0){
+                    if(!CollectionUtils.isEmpty(list)){
                         info.setId(list.get(0).getId());
                         info.setAddress(param.getAddress());
                         info.setPhone(param.getPhone());
@@ -105,6 +106,7 @@ public class LoginController {
                         info.setAddress(param.getAddress());
                         info.setPhone(param.getPhone());
                         info.setSex(param.getSex());
+                        info.setAge(param.getAge());
                         infoService.insert(info);
                     }
                     return new Result(0,"修改成功");

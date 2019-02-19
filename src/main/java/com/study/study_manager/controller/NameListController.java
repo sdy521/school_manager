@@ -5,12 +5,15 @@ import com.study.study_manager.core.JSONResult;
 import com.study.study_manager.core.Result;
 import com.study.study_manager.core.jqGrid.JqGridResult;
 import com.study.study_manager.dto.TeacherParam;
+import com.study.study_manager.entity.Info;
 import com.study.study_manager.entity.User;
+import com.study.study_manager.service.InfoService;
 import com.study.study_manager.service.NameListService;
 import com.study.study_manager.util.Constans;
 import com.study.study_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +32,9 @@ import java.net.URLEncoder;
 public class NameListController extends BaseController{
     @Resource
     private NameListService nameListService;
+
+    @Resource
+    private InfoService infoService;
 
     @RequestMapping("/list")
     public String list(Model model){
@@ -97,10 +103,12 @@ public class NameListController extends BaseController{
      */
     @RequestMapping("/delete")
     @ResponseBody
+    @Transactional
     public Result delete(@RequestParam Integer id){
         User teacher = new User();
         teacher.setId(id);
         nameListService.delete(teacher);
+        infoService.deleteInfo(id);
         return OK;
     }
 

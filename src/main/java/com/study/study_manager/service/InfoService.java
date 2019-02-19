@@ -34,4 +34,8 @@ public class InfoService extends BaseService<Info> {
         List<Map> list = infoDao.selectByType(param.getType(),param.getName(),param.getSex());
         return new PageInfo(list);
     }
+
+    public void deleteInfo(Integer userid){
+        infoDao.deleteInfo(userid);
+    }
 }

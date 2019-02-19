@@ -8,8 +8,6 @@ public class Info extends BaseEntity{
     @Column
     private Integer sex;
     @Column
-    private Integer type;
-    @Column
     private String address;
     @Column
     private String phone;
@@ -30,14 +28,6 @@ public class Info extends BaseEntity{
 
     public void setSex(Integer sex) {
         this.sex = sex;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public String getAddress() {
