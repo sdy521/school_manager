@@ -14,7 +14,7 @@ import java.util.Map;
 public interface InfoDao extends BaseDao<Info> {
 
     @Select({"<script>",
-            "SELECT i.*,u.name,u.img FROM info i " +
+            "SELECT i.sex,i.create_time,i.update_time,u.name,u.id FROM info i " +
             "LEFT JOIN user u ON i.userid=u.id " +
             "WHERE u.type=${type} <when test='name!=null'> and u.name = #{name}</when>" +
              "<when test='sex!=null'> and i.sex=${sex} </when> and i.deleted=0",
@@ -23,4 +23,9 @@ public interface InfoDao extends BaseDao<Info> {
 
     @Update("update info set deleted=1 where userid = ${userid}")
     void deleteInfo(@Param("userid") Integer userid);
+
+    @Select("SELECT u.name,u.img,i.age,i.address,i.phone,i.sex FROM user u " +
+            "LEFT JOIN info i ON i.userid=u.id " +
+            "WHERE u.id=${userid}")
+    Map selectDetailOne(@Param("userid") Integer userid);
 }

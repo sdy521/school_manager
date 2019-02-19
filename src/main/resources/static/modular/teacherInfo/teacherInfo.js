@@ -85,8 +85,33 @@ TeacherInfo.initJqGrid = function(){
     }).trigger("reloadGrid");
  }
  //详情
- TeacherInfo.detailInfo = function(){
-    info("暂未开发");
+ TeacherInfo.detailInfo = function(id){
+    var elem = $("#detail-form");
+    $.ajax({
+        url:"/teacher_info/detail?userid="+id,
+        type:"GET",
+        dataType:"JSON",
+        success:function (r) {
+            if(r.code===0){
+                var data = r.obj;
+                if(data.img==undefined){
+                    elem.find(".img-circle").attr('src','/static/img/5.jpg');
+                }else{
+                    elem.find(".img-circle").attr('src','/imgPath/'+data.img);
+                }
+                elem.find("input[name='name']").val(data.name);
+                if(data.sex==0){
+                    elem.find("input[name='sex']").val('女');
+                }else {
+                    elem.find("input[name='sex']").val('男');
+                }
+                elem.find("input[name='age']").val(data.age);
+                elem.find("input[name='phone']").val(data.phone);
+                elem.find("input[name='address']").val(data.address);
+                $("#detailsModal").modal();
+            }
+        }
+    });
  }
  $(function () {
     TeacherInfo.table = TeacherInfo.initJqGrid();

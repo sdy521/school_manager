@@ -10,7 +10,7 @@
         <#include "/templates/layout/head.ftl">
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-9">
-                <h2>教师名单</h2>
+                <h2>教师信息</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="/main">首页</a>
@@ -50,77 +50,56 @@
         <#include "/templates/layout/foot.ftl">
     </div>
 </div>
-<#--新增弹框-->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+<#--详情弹框-->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle">新增</h4>
+                <h4 class="modal-title" id="modalTitle">详情</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="create-form">
+                <form class="form-horizontal" id="detail-form">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">名称</label>
+                        <figure style="width: 100px;height: 100px;">
+                            <img class="img-circle " src="" alt="未上传头像" width="100px;"/>
+                        </figure>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">密码</label>
+                        <label class="col-sm-3 control-label">性别</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="password">
+                            <input type="text" class="form-control" name="sex">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">权限</label>
-                        <div class="col-sm-9">
-                            <input type="checkbox" id="switch"  name="hiden" class="js-switch"/>
+                        <label class="col-sm-3 control-label">年龄</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="age">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">住址</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="address">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary" onclick="NameList.insert();">确定</button>
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<#--修改弹框-->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle">修改</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="update-form">
-                    <input type="hidden" name="id"/>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">名称</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="name">
-                        </div>
-                    </div>
-                    <#--<div class="form-group">
-                        <label class="col-sm-3 control-label">密码</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="password">
-                        </div>
-                    </div>-->
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">权限</label>
-                        <div class="col-sm-9">
-                            <input type="checkbox" id="switch"  name="hiden" class="js-switch"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary" onclick="NameList.update();">确定</button>
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">确定</button>
+                <#--<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>-->
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

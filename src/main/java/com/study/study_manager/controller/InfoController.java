@@ -9,8 +9,10 @@ import com.study.study_manager.service.InfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/teacher_info")
@@ -41,5 +43,17 @@ public class InfoController extends BaseController{
         result.setPage(pageInfo.getPageNum());
         result.setRows(pageInfo.getList());
         return new JSONResult(result);
+    }
+
+    /***
+     * 获取用户信息详情
+     * @param userid
+     * @return
+     */
+    @RequestMapping("/detail")
+    @ResponseBody
+    public Result detail(@RequestParam Integer userid){
+        Map map = infoService.selectDetailOne(userid);
+        return new JSONResult(map);
     }
 }

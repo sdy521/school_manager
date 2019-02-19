@@ -35,7 +35,20 @@ public class InfoService extends BaseService<Info> {
         return new PageInfo(list);
     }
 
+    /***
+     * 删除用户详情
+     * @param userid
+     */
     public void deleteInfo(Integer userid){
         infoDao.deleteInfo(userid);
+    }
+
+    /***
+     * 获取用户详情
+     * @param userid
+     * @return
+     */
+    public Map selectDetailOne(Integer userid){
+        return infoDao.selectDetailOne(userid);
     }
 }
