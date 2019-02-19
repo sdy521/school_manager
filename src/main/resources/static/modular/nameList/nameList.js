@@ -259,6 +259,8 @@ NameList.jqSearch = function(){
                 $("#importModal").modal('hide');
                 NameList.search();
                 success("导入完成");
+                $("#fileinput").fileinput('refresh').fileinput('enable');//清空上传文件框并设置可用
+                setSwitchery(NameList.myswitchery3,false);
             }
         }
     });
