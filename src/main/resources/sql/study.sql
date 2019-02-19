@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50635
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : study
 
 Target Server Type    : MYSQL
-Target Server Version : 50635
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2019-02-19 11:22:43
+Date: 2019-02-19 19:36:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `info` (
 -- Records of info
 -- ----------------------------
 INSERT INTO `info` VALUES ('1', '2', '0', '江苏省常州市', '15961170771', '2019-01-22 15:50:20', '2019-02-18 11:18:10', '0', '22');
-INSERT INTO `info` VALUES ('2', '10', '0', '上海市', '15961170770', '2019-02-19 09:54:30', '2019-02-19 10:06:31', '0', null);
+INSERT INTO `info` VALUES ('2', '10', '0', '上海市', '15961170770', '2019-02-19 09:54:30', '2019-02-19 19:25:58', '0', '23');
 INSERT INTO `info` VALUES ('5', '1', '1', '江苏省常州市', '15961170770', '2019-02-19 10:15:58', '2019-02-19 10:20:33', '0', '22');
 INSERT INTO `info` VALUES ('8', '9', '0', '江苏省南京市', '15961170771', '2019-02-19 10:34:01', '2019-02-19 10:56:13', '1', '25');
 
@@ -56,7 +56,7 @@ CREATE TABLE `menu` (
   `type` int(4) NOT NULL DEFAULT '0' COMMENT '0：管理员1老师2学生',
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -69,6 +69,8 @@ INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-01-31 10:48:52', '�
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-01-02 09:32:04', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key');
 INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-01-23 17:00:50', '发送公告', '/send/list', 'send', '0', 'systemSetup', '0', 'fa fa-bullhorn');
+INSERT INTO `menu` VALUES ('9', '2019-02-19 19:33:33', '2019-02-19 19:33:33', '学生管理', '#', 'student', '0', '', '0', 'fa fa-reorder');
+INSERT INTO `menu` VALUES ('10', '2019-02-19 19:35:29', '2019-02-19 19:35:29', '学生名单', '/student_nameList/list', 'student_namelist', '0', 'student', '0', 'fa fa-graduation-cap');
 
 -- ----------------------------
 -- Table structure for notice
@@ -179,7 +181,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$eqXmAm3KGcX5Ioh6IbCPEuS4WkPxsXSgmGMRoBXVqy2V6srUbN6o.', '2018-12-20 13:52:47', '2019-02-19 10:16:42', '0', '0', '1', '804a4e91-b154-4a44-9daa-5e84497c91ef.jpg');
+INSERT INTO `user` VALUES ('1', 'admin', '$2a$10$eqXmAm3KGcX5Ioh6IbCPEuS4WkPxsXSgmGMRoBXVqy2V6srUbN6o.', '2018-12-20 13:52:47', '2019-02-19 19:24:51', '0', '0', '1', 'c64e8797-208d-441e-a072-f75654af5229.jpg');
 INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-02-18 11:19:02', '0', '1', '1', '276f98f2-e111-45c9-80f4-c8a4e4fd85f6.jpg');
 INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
 INSERT INTO `user` VALUES ('4', '张梅', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);
