@@ -16,8 +16,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/report")
-public class ReportFormController extends BaseController{
+@RequestMapping(value = "/excel")
+public class ExcelController extends BaseController{
     @Resource
     private InfoService infoService;
 
