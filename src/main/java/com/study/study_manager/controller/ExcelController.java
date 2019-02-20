@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/excel")
@@ -22,34 +23,39 @@ public class ExcelController extends BaseController{
     private InfoService infoService;
 
     /**
-     * 导出报表
+     * 导出教师信息
      * @return
      */
     @RequestMapping(value = "/export")
     @ResponseBody
     public void export(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //获取数据
-        List<Info> list = infoService.selectAll();
+        List<Map> list = infoService.selectInfoDetail(1);
 
         //excel标题
-        String[] title = {"名称","性别","年龄","地址","手机号"};
+        String[] title = {"姓名","性别","年龄","手机号","地址"};
 
          //excel文件名
-         String fileName = "学生信息表"+System.currentTimeMillis()+".xls";
+         String fileName = "教师信息表"+System.currentTimeMillis()+".xls";
 
           //sheet名
-            String sheetName = "学生信息表";
+            String sheetName = "教师信息表";
 
             String[][] content = new String[title.length][5] ;
 
             for (int i = 0; i < list.size(); i++) {
 //                    content[i] = new String[title.length];
-                    Info info = list.get(i);
-                    content[i][0] = info.getUserid().toString();
-                    content[i][1] = info.getSex().toString();
-                    content[i][2] = info.getAge().toString();
-                    content[i][3] = info.getAddress().toString();
-                    content[i][4] = info.getPhone().toString();
+                    Map map = list.get(i);
+                    content[i][0] = map.get("name").toString();
+                    Integer sex = (Integer) map.get("sex");
+                    if(sex==0){
+                        content[i][1] = "女";
+                    }else {
+                        content[i][1] = "男";
+                    }
+                    content[i][2] = map.get("age").toString();
+                    content[i][3] = map.get("phone").toString();
+                    content[i][4] = map.get("address").toString();
             }
 
             //创建HSSFWorkbook

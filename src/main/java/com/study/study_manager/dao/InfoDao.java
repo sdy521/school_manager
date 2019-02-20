@@ -28,4 +28,9 @@ public interface InfoDao extends BaseDao<Info> {
             "LEFT JOIN info i ON i.userid=u.id " +
             "WHERE u.id=${userid}")
     Map selectDetailOne(@Param("userid") Integer userid);
+
+    @Select("SELECT u.name,i.address,i.age,i.phone,i.sex FROM info i " +
+            "LEFT JOIN user u ON u.id=i.userid " +
+            "WHERE i.deleted=0 AND u.type=${type}")
+    List<Map> selectInfoDetail(@Param("type") Integer type);
 }

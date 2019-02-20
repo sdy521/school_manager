@@ -51,4 +51,13 @@ public class InfoService extends BaseService<Info> {
     public Map selectDetailOne(Integer userid){
         return infoDao.selectDetailOne(userid);
     }
+
+    /***
+     * 获取用户详情
+     * @param type
+     * @return
+     */
+    public List<Map> selectInfoDetail(Integer type){
+        return infoDao.selectInfoDetail(type);
+    }
 }
