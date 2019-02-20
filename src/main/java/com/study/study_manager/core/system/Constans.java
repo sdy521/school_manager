@@ -1,4 +1,4 @@
-package com.study.study_manager.util;
+package com.study.study_manager.core.system;
 
 public class Constans {
     public static final String ADMIN="ROLE_ADMIN";

@@ -113,6 +113,10 @@ TeacherInfo.initJqGrid = function(){
         }
     });
  }
+ //下载信息excel
+ TeacherInfo.downloadExcel = function () {
+    window.open("/report/export");
+ }
  $(function () {
     TeacherInfo.table = TeacherInfo.initJqGrid();
  });

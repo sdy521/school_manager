@@ -8,7 +8,7 @@ import com.study.study_manager.dto.TeacherParam;
 import com.study.study_manager.entity.User;
 import com.study.study_manager.service.InfoService;
 import com.study.study_manager.service.NameListService;
-import com.study.study_manager.util.Constans;
+import com.study.study_manager.core.system.Constans;
 import com.study.study_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;

@@ -36,6 +36,7 @@
                                     </select>
                                     <button class="btn btn-primary"onclick="TeacherInfo.search();">搜索</button>
                                     <button class="btn btn-primary"onclick="TeacherInfo.reset();">重置</button>
+                                    <button class="btn btn-success"onclick="TeacherInfo.downloadExcel();">下载信息</button>
                                 </div>
                             </div>
                         </div>

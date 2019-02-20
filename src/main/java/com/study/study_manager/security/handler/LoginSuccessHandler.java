@@ -6,7 +6,7 @@ import com.study.study_manager.entity.Menu;
 import com.study.study_manager.entity.Role;
 import com.study.study_manager.security.entity.UserDetail;
 import com.study.study_manager.service.MenuService;
-import com.study.study_manager.util.Constans;
+import com.study.study_manager.core.system.Constans;
 import com.study.study_manager.util.SpringSecurity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
