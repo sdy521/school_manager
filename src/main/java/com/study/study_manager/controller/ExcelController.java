@@ -73,6 +73,57 @@ public class ExcelController extends BaseController{
             }
     }
 
+    /**
+     * 导出学生信息
+     * @return
+     */
+    @RequestMapping(value = "/exportStudent")
+    @ResponseBody
+    public void exportStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //获取数据
+        List<Map> list = infoService.selectInfoDetail(2);
+
+        //excel标题
+        String[] title = {"姓名","性别","年龄","手机号","地址"};
+
+        //excel文件名
+        String fileName = "学生信息表"+System.currentTimeMillis()+".xls";
+
+        //sheet名
+        String sheetName = "学生信息表";
+
+        String[][] content = new String[title.length][5] ;
+
+        for (int i = 0; i < list.size(); i++) {
+//                    content[i] = new String[title.length];
+            Map map = list.get(i);
+            content[i][0] = map.get("name").toString();
+            Integer sex = (Integer) map.get("sex");
+            if(sex==0){
+                content[i][1] = "女";
+            }else {
+                content[i][1] = "男";
+            }
+            content[i][2] = map.get("age").toString();
+            content[i][3] = map.get("phone").toString();
+            content[i][4] = map.get("address").toString();
+        }
+
+        //创建HSSFWorkbook
+        HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, content, null);
+
+        //响应到客户端
+        try {
+            this.setResponseHeader(response, fileName);
+            OutputStream os = response.getOutputStream();
+            wb.write(os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //发送响应流方法
     public void setResponseHeader(HttpServletResponse response, String fileName) {
         try {

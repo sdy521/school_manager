@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-02-21 14:57:22
+Date: 2019-02-21 17:18:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `info` (
   `deleted` tinyint(1) DEFAULT NULL COMMENT '是否被删除',
   `age` int(11) DEFAULT NULL COMMENT '年龄',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of info
@@ -40,6 +40,7 @@ INSERT INTO `info` VALUES ('2', '10', '0', '上海市', '15961170770', '2019-02-
 INSERT INTO `info` VALUES ('5', '1', '1', '江苏省常州市', '15961170770', '2019-02-19 10:15:58', '2019-02-19 10:20:33', '0', '22');
 INSERT INTO `info` VALUES ('8', '9', '0', '江苏省南京市', '15961170771', '2019-02-19 10:34:01', '2019-02-19 10:56:13', '1', '25');
 INSERT INTO `info` VALUES ('9', '25', '0', '121212', '15961170771', '2019-02-19 17:13:27', '2019-02-19 17:17:16', '1', '12');
+INSERT INTO `info` VALUES ('10', '26', '1', '江苏省常州市', '15961170770', '2019-02-21 17:13:50', '2019-02-21 17:13:50', '0', '22');
 
 -- ----------------------------
 -- Table structure for menu
@@ -58,7 +59,7 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -74,6 +75,7 @@ INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-02-21 14:57:01', '�
 INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-02-19 16:36:04', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '2');
 INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-02-19 16:48:34', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '0', 'fa fa-graduation-cap', '1');
 INSERT INTO `menu` VALUES ('11', '2019-02-21 14:51:12', '2019-02-21 14:51:35', '测试菜单', '#', 'ceshi', '1', '', '0', 'fa fa-adjust', '3');
+INSERT INTO `menu` VALUES ('12', '2019-02-21 16:07:38', '2019-02-21 16:07:38', '学生信息', '/student_info/list', 'student_info', '0', 'student', '0', 'fa fa-newspaper-o', '2');
 
 -- ----------------------------
 -- Table structure for notice
@@ -208,7 +210,7 @@ INSERT INTO `user` VALUES ('22', '某某', '$2a$10$9KIejyTVmUwZlSQMWpmKv.vpjY13f
 INSERT INTO `user` VALUES ('23', '某某2', '$2a$10$i6wHuWZpfxRGppV7GXT/L.RG4VBn8irsEAZ2TLhC5dEyq/mKTfQ7S', '2019-02-19 09:47:48', '2019-02-19 09:47:48', '0', '1', '1', null);
 INSERT INTO `user` VALUES ('24', '某某2', '$2a$10$RV5hbKmX5xOtfIVcnsbCyuzn7xrG0vpwWwGp6WA0KuPTDwgL0jK8e', '2019-02-19 09:48:04', '2019-02-19 09:48:15', '1', '1', '0', null);
 INSERT INTO `user` VALUES ('25', '测试', '$2a$10$J8PT5xRry95vjnbfiIboA.zlwXqrvcGcOfzKt9gsAwCQfIHMQvFyK', '2019-02-19 17:12:46', '2019-02-19 17:17:17', '1', '2', '1', null);
-INSERT INTO `user` VALUES ('26', '张学生', '$2a$10$dfLD3lmYWEK79AsQp7YMmO95oaCiXSsOcAk30Tx93KnjFqB/nJOky', '2019-02-19 17:15:35', '2019-02-19 17:15:41', '0', '2', '1', null);
+INSERT INTO `user` VALUES ('26', '张学生', '$2a$10$Kw3BbqQJvd/IzM5bfmronO9e0s6.X1JJz8iLuyefdgUNBakcc5EKq', '2019-02-19 17:15:35', '2019-02-21 17:13:50', '0', '2', '1', null);
 INSERT INTO `user` VALUES ('27', '某某1', '$2a$10$gveUErRZel.z8zqIE/dgDuwxnLIOJ7XNVudokD.6G6oSJG6RLDdxG', '2019-02-21 11:11:08', '2019-02-21 11:11:08', '0', '1', '1', null);
 INSERT INTO `user` VALUES ('28', '某某1', '$2a$10$/h8FnmyWMsiCBOqUqZtPcOtTbThUVZq1Pry02T5HdZvroci0cykAa', '2019-02-21 11:16:42', '2019-02-21 11:16:42', '0', '2', '1', null);
 INSERT INTO `user` VALUES ('29', '121', '$2a$10$.IE3RXGYZ7t4zEp4NFT0/.TJXTlsWyqb.wJECnWSwl3QEsj6WsD.q', '2019-02-21 11:16:42', '2019-02-21 11:16:42', '0', '2', '1', null);
