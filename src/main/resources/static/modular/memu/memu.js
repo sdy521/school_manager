@@ -17,6 +17,7 @@
          {title: '图标', field: 'icon', align: 'center', valign: 'middle', sortable: true,width:'10%',formatter:function (cellValue) {
                  return cellValue+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class=\""+cellValue+"\"></i>";
              }},
+         {title: '排序', field: 'sort', align: 'center', valign: 'middle', sortable: true,width:'10%'},
          {title: '访问权限', field: 'type', align: 'center', valign: 'middle', sortable: true,width:'9%',formatter:function (cellValue) {
                  if(cellValue==1){
                      return "教师";
@@ -137,6 +138,7 @@
                  elem.find("input[name='code']").val(data.code);
                  elem.find("input[name='pcode']").val(data.pcode);
                  elem.find("input[name='iconbackup']").val(data.icon);
+                 elem.find("input[name='sort']").val(data.sort);
                  $("#fa").attr("class","");
                  $("#fa").addClass("fa-lg "+data.icon);
                  elem.find("select[name='type']").val(data.type);

@@ -9,6 +9,7 @@ public class LeftMenu {
     private String pcode;
     private String icon;
     private Boolean active;
+    private Integer sort;
     private List<LeftMenu> children;
 
     public String getName() {
@@ -65,5 +66,13 @@ public class LeftMenu {
 
     public void setChildren(List<LeftMenu> children) {
         this.children = children;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

@@ -76,6 +76,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                 firstMenu.setUrl(menu.getUrl());
                 firstMenu.setCode(menu.getCode());
                 firstMenu.setIcon(menu.getIcon());
+                firstMenu.setSort(menu.getSort());
                 leftMenu.add(firstMenu);
             }
         }
@@ -89,6 +90,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                     secondMenu.setCode(menu2.getCode());
                     secondMenu.setPcode(menu2.getPcode());
                     secondMenu.setIcon(menu2.getIcon());
+                    secondMenu.setSort(menu2.getSort());
                     children.add(secondMenu);
                 }
             }

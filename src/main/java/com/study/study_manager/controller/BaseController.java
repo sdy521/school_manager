@@ -7,6 +7,8 @@ import com.study.study_manager.util.SpringSecurity;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BaseController {
@@ -21,6 +23,8 @@ public class BaseController {
         for(LeftMenu leftMenu:menus){
             leftMenu.setActive(activeMenu(leftMenu,domain));
         }
+        //排序
+        Collections.sort(menus, Comparator.comparing(LeftMenu::getSort));
         return menus;
     }
     private void clearActive(List<LeftMenu> menus) {
@@ -36,6 +40,7 @@ public class BaseController {
         if ("#".equals(menu.getUrl())) {
             List<LeftMenu> children = menu.getChildren();
             if (!CollectionUtils.isEmpty(children)) {
+                Collections.sort(children,Comparator.comparing(LeftMenu::getSort));
                 for (LeftMenu child : children) {
                     if (activeMenu(child, domain)) {
                         return true;

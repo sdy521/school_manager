@@ -113,6 +113,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label">排序</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="sort">
+                            <span class="help-block m-b-none">注：菜单显示顺序</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label">图标</label>
                         <div class="col-sm-9">
                             <input type="text" id="picker" name="icon"/>
@@ -179,6 +186,13 @@
                             <div id="update-menu-panel" class="tree-panel">
 
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">排序</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="sort">
+                            <span class="help-block m-b-none">注：菜单显示顺序</span>
                         </div>
                     </div>
                     <div class="form-group">

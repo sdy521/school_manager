@@ -19,6 +19,11 @@ public class Menu extends BaseEntity{
     private Integer type;
     @Column
     private String icon;
+    /***
+     * 显示顺序
+     */
+    @Column
+    private Integer sort;
 
     public String getName() {
         return name;
@@ -66,5 +71,13 @@ public class Menu extends BaseEntity{
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }
