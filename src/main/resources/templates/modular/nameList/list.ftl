@@ -145,7 +145,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">文件</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             <input id="fileinput" type="file">
                         </div>
                     </div>

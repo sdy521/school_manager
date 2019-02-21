@@ -20,10 +20,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -108,12 +105,20 @@ public class StudentListService extends BaseService<User> {
             user.setDeleted(false);
             user.setImg(null);
             //插入结果
-            /*Cell createCell = row.createCell(2);
-            createCell.setCellType(Cell.CELL_TYPE_STRING);*/
+            Cell createCell = row.createCell(2);
+            createCell.setCellType(Cell.CELL_TYPE_STRING);
+            createCell.setCellValue("导入成功");
             list.add(user);
         }
         if (!CollectionUtils.isEmpty(list)){
             userDao.insertList(list);
+        }
+        try {
+            book.write(os);
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return true;
     }

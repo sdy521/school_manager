@@ -279,10 +279,10 @@ StudentList.jqSearch = function(){
      $("#fileinput").fileinput({
          language: 'zh', //设置语言
          uploadUrl: "/upload", //上传的地址
-         allowedFileExtensions: ['xls'],//接收的文件后缀
+         allowedFileExtensions: ['xls','xlsx'],//接收的文件后缀
          uploadAsync: true, //默认异步上传
          showUpload: false, //是否显示上传按钮
-         showRemove : false, //显示移除按钮
+         showRemove : true, //显示移除按钮
          showPreview : false, //是否显示预览
          showCaption: true,//是否显示标题
          browseClass: "btn btn-primary", //按钮样式
