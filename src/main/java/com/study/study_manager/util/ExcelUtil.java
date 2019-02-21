@@ -19,6 +19,10 @@ public class ExcelUtil {
         }
         // 第二步，在workbook中添加一个sheet,对应Excel文件中的sheet
         HSSFSheet sheet = wb.createSheet(sheetName);
+        //设置单元格宽度
+        for(int i=0;i<title.length;i++){
+            sheet.setColumnWidth(i,30*256);//第二个参数的单位是1/256  现在表示30个字符
+        }
         // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制
         HSSFRow row = sheet.createRow(0);
         // 第四步，创建单元格，并设置值表头 设置表头居中
@@ -37,7 +41,9 @@ public class ExcelUtil {
             row = sheet.createRow(i + 1);
             for(int j=0;j<values[i].length;j++){
                 //将内容按顺序赋给对应的列对象
-                row.createCell(j).setCellValue(values[i][j]);
+                cell = row.createCell(j);
+                cell.setCellValue(values[i][j]);
+                cell.setCellStyle(style);
             }
         }
         return wb;
