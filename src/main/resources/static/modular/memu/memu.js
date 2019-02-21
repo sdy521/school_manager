@@ -215,7 +215,7 @@
              $(panel).css({
                  width: $(this).outerWidth(),//外部控件宽度
                  height: "200px"
-             }).slideDown("fast");
+             }).slideToggle("fast");
          }
      });
      //初始化jstree
