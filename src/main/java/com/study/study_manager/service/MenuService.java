@@ -26,7 +26,7 @@ public class MenuService extends BaseService<Menu> {
      * 获取menu列表构造成的json
      */
     public JSONArray jstreeMenu() {
-        return jstree(selectAll());
+        return jstree(menuDao.selectNotDeleted());
     }
 
     /**
