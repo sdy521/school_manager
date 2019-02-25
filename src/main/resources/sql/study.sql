@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2019-02-21 17:18:43
+Date: 2019-02-25 15:46:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for class
+-- ----------------------------
+DROP TABLE IF EXISTS `class`;
+CREATE TABLE `class` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '班级名称',
+  `deleted` tinyint(1) DEFAULT NULL COMMENT '1删除0未删除',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of class
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for info
@@ -72,10 +89,10 @@ INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '�
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-02-21 14:56:53', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key', '2');
 INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-02-21 14:57:01', '发送公告', '/send/list', 'send', '0', 'systemSetup', '0', 'fa fa-bullhorn', '3');
-INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-02-19 16:36:04', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '2');
+INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-02-21 17:21:36', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '2');
 INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-02-19 16:48:34', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '0', 'fa fa-graduation-cap', '1');
 INSERT INTO `menu` VALUES ('11', '2019-02-21 14:51:12', '2019-02-21 14:51:35', '测试菜单', '#', 'ceshi', '1', '', '0', 'fa fa-adjust', '3');
-INSERT INTO `menu` VALUES ('12', '2019-02-21 16:07:38', '2019-02-21 16:07:38', '学生信息', '/student_info/list', 'student_info', '0', 'student', '0', 'fa fa-newspaper-o', '2');
+INSERT INTO `menu` VALUES ('12', '2019-02-21 16:07:38', '2019-02-21 17:21:30', '学生信息', '/student_info/list', 'student_info', '0', 'student', '0', 'fa fa-newspaper-o', '2');
 
 -- ----------------------------
 -- Table structure for notice
@@ -218,6 +235,23 @@ INSERT INTO `user` VALUES ('30', '某某', '$2a$10$wjBU9kJJ2LDFoIfwWlooX.tLW34L9
 INSERT INTO `user` VALUES ('31', '某某', '$2a$10$i7DCoSUZ/qLchSsK.twwJuQ8tlknnzn35i9EPKlHyMdrHOp4Jq3N2', '2019-02-21 11:20:18', '2019-02-21 11:20:18', '0', '2', '0', null);
 INSERT INTO `user` VALUES ('32', '某某', '$2a$10$ICCy4XFGO4Ph7euYpOxj..9arRm66VRTCy2TJZvzGXW9cblAyJM/a', '2019-02-21 11:21:11', '2019-02-21 14:06:22', '1', '2', '0', null);
 INSERT INTO `user` VALUES ('33', '某某', '$2a$10$WjEWmOoeAEPdgGUbxwnpv.MuDf1C4XX2CnCuYoMizthhxQ/s8/Y.C', '2019-02-21 11:24:16', '2019-02-21 14:06:20', '1', '2', '0', null);
+
+-- ----------------------------
+-- Table structure for user_class
+-- ----------------------------
+DROP TABLE IF EXISTS `user_class`;
+CREATE TABLE `user_class` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `class_id` int(11) DEFAULT NULL COMMENT '班级id',
+  `type` int(2) DEFAULT NULL COMMENT '1:教师2:学生',
+  `isadmin` tinyint(1) DEFAULT NULL COMMENT '是否是班主任（1：是0：不是）',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_class
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_role
