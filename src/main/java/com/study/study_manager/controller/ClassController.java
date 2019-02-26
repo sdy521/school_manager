@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/class")
@@ -33,7 +34,7 @@ public class ClassController extends BaseController {
     @RequestMapping("/grid")
     @ResponseBody
     public Result grid(ClassParam param){
-        PageInfo<Class> pageInfo = classService.selectByPage(param);
+        PageInfo<Map> pageInfo = classService.selectByPage(param);
         JqGridResult result = new JqGridResult();
         result.setRecords(pageInfo.getTotal());
         result.setTotal(pageInfo.getPages());

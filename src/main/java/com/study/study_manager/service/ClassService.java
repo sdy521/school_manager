@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ClassService extends BaseService<Class> {
@@ -21,10 +22,10 @@ public class ClassService extends BaseService<Class> {
         return classDao;
     }
 
-    public PageInfo<Class> selectByPage(ClassParam param){
+    public PageInfo<Map> selectByPage(ClassParam param){
         PageHelper.startPage(param.getPage(),param.getRows());
-        List<Class> list = classDao.selectByPage(param.getName(),param.getDeleted());
-        return new PageInfo<Class>(list);
+        List<Map> list = classDao.selectByPage(param.getName(),param.getDeleted());
+        return new PageInfo<Map>(list);
     }
 
     /***

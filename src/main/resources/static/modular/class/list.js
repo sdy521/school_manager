@@ -27,10 +27,10 @@
         colModel:[
             {name:'id',index:'id', width:80,align:'center',sortable:true,search:false,formatter:'integer',key:true},
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
-            {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
+            {name:'create_time',index:'create_time', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                         return setDateFormat(new Date(cellValue));
                 }},
-            {name:'createUser',index:'createUser', width:80,align:'center',sortable:false,search:true, stype:'text'},
+            {name:'createUserName',index:'createUserName', width:80,align:'center',sortable:false,search:true, stype:'text'},
             {name:'operation',index:'operation', width:130, sortable:false,sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];
                     var deleted = rowObject['deleted'];
