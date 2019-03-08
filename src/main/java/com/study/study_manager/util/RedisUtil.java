@@ -15,6 +15,7 @@ public class RedisUtil {
 
     private static RedisTemplate<String,Object> redisTemplate;
 
+    //在类被加载的时候执行且仅会被执行一次，一般用来初始化静态变量和调用静态方法
     static {
         redisTemplate = (RedisTemplate<String, Object>) SpringContextUtil.getBean("redisTemplate");
     }
