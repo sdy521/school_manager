@@ -137,6 +137,13 @@
                 <activatedProperties>test</activatedProperties>
             </properties>
         </profile>
+        <!--正式-->
+        <profile>
+            <id>release</id>
+            <properties>
+                <activatedProperties>release</activatedProperties>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
