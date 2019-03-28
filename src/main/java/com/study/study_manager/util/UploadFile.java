@@ -20,7 +20,7 @@ public class UploadFile {
         String fileName = uploadImg.getOriginalFilename();
         logger.info("上传图片:name={"+fileName+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
-        String filePath = location; // 上传后的路径
+        String filePath = location+File.separator; // 上传后的路径
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         fileName = UUID.randomUUID() + suffixName; // 新文件名
         File newFile = new File(filePath + fileName);
@@ -56,6 +56,6 @@ public class UploadFile {
 
     public static String uploadRoute(){
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
-        return location;
+        return location+File.separator;
     }
 }
