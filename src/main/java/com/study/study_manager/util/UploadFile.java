@@ -42,7 +42,7 @@ public class UploadFile {
         String filename = uploadfile.getOriginalFilename();
         logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
-        String filePath = location; // 上传后的路径
+        String filePath = location+File.separator; // 上传后的路径
         String suffixName = filename.substring(filename.lastIndexOf("."));
         filename = UUID.randomUUID()+suffixName;
         File newFile = new File(filePath+filename);
