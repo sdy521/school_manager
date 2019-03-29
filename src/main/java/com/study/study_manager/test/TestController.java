@@ -1,4 +1,4 @@
-package com.study.study_manager.controller;
+package com.study.study_manager.test;
 
 import com.study.study_manager.util.RedisUtil;
 import org.springframework.stereotype.Controller;
