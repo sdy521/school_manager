@@ -22,7 +22,7 @@ public class TestWordConverterPdf {
         InputStream source = new FileInputStream(filepath);
         OutputStream target = new FileOutputStream(outpath);
         Map<String, String> params = new HashMap<String, String>();
-
+        params.put("SpringSecurity","ss");
 
         PdfOptions options = PdfOptions.create();
 
