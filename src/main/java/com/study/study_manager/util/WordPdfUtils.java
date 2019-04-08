@@ -1,4 +1,4 @@
-package com.study.study_manager.test;
+package com.study.study_manager.util;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,20 +22,6 @@ import java.util.Map;
  */
 public class WordPdfUtils {
     protected static final Logger logger = LoggerFactory.getLogger(WordPdfUtils.class);
-
-    public static void main(String[] args) throws Exception{
-        String filepath = "D:\\pdf\\test.docx";
-        String outpath = "D:\\pdf\\test.pdf";
-
-        InputStream source = new FileInputStream(filepath);
-        OutputStream target = new FileOutputStream(outpath);
-        Map<String, String> params = new HashMap<String, String>();
-
-
-        PdfOptions options = PdfOptions.create();
-
-        wordConverterToPdf(source, target, options, params);
-    }
 
     /**
      * 将word文档， 转换成pdf, 中间替换掉变量
