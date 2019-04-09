@@ -22,6 +22,10 @@ public class UploadFile {
         String fileName = uploadImg.getOriginalFilename();
         logger.info("上传图片:name={"+fileName+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
+        File dirFile = new File(location);
+        if(!dirFile.exists()){
+            dirFile.mkdir();
+        }
         String filePath = location+File.separator; // 上传后的路径
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         fileName = UUID.randomUUID() + suffixName; // 新文件名
@@ -44,6 +48,10 @@ public class UploadFile {
         String filename = uploadfile.getOriginalFilename();
         logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
+        File dirFile = new File(location);
+        if(!dirFile.exists()){
+            dirFile.mkdir();
+        }
         String filePath = location+File.separator; // 上传后的路径
         String suffixName = filename.substring(filename.lastIndexOf("."));
         filename = UUID.randomUUID()+suffixName;
@@ -72,6 +80,10 @@ public class UploadFile {
         String filename = uploadfile.getOriginalFilename();
         logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("word.location");
+        File dirFile = new File(location);
+        if(!dirFile.exists()){
+            dirFile.mkdir();
+        }
         String filePath = location+File.separator; // 上传后的路径
         /*String suffixName = filename.substring(filename.lastIndexOf("."));
         filename = UUID.randomUUID()+suffixName;*/
