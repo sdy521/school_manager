@@ -16,7 +16,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input id="fileinput" type="file">
+                               <input id="input-id" name="file" multiple type="file" data-show-caption="true">
                             </div>
                         </div>
                     </div>

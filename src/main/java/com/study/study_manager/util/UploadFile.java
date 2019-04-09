@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 public class UploadFile {
@@ -57,5 +59,29 @@ public class UploadFile {
     public static String uploadRoute(){
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("img.location");
         return location+File.separator;
+    }
+
+    /***
+     * 上传word文件
+     * @param uploadfile
+     * @return
+     */
+    public static String uploadWord(MultipartFile uploadfile){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
+        String contentType = uploadfile.getContentType();
+        String filename = uploadfile.getOriginalFilename();
+        logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
+        String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("word.location");
+        String filePath = location+File.separator; // 上传后的路径
+        /*String suffixName = filename.substring(filename.lastIndexOf("."));
+        filename = UUID.randomUUID()+suffixName;*/
+        filename =sdf.format(new Date())+"-"+filename;
+        File newFile = new File(filePath+filename);
+        try {
+            uploadfile.transferTo(newFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return filename;
     }
 }
