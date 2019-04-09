@@ -17,7 +17,7 @@ public class StudyManagerApplicationTests {
     private UserDao userDao;
     @Test
     public void contextLoads() {
-        System.out.println(BCrypt.hashpw("admin",BCrypt.gensalt()));
+        System.out.println(BCrypt.hashpw("sdy",BCrypt.gensalt()));
 //        System.out.println(TestEnum.SECRECY.getValue());
     }
 
