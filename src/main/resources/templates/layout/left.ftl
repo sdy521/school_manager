@@ -34,16 +34,20 @@
             </li>-->
             <#list menus as menu>
                 <#assign children = menu.children />
+                <#if children??&&(children?size>0)>
                     <li class="${menu.active?string('active','')}">
-                        <a><i class="${menu.icon}"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
-                        <#if children??&&(children?size>0)>
-                            <#list children as child>
-                                <ul class="nav nav-second-level">
-                                    <li class="${child.active?string('active','')}"><a href="${child.url}"><i class="${child.icon}"></i>${child.name}</a></li>
-                                </ul>
-                            </#list>
-                        </#if>
+                        <a><i class="${menu.icon!"fa fa-th-large"}"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
+                        <#list children as child>
+                            <ul class="nav nav-second-level">
+                                <li class="${child.active?string('active','')}"><a href="${child.url}"><i class="${child.icon}"></i>${child.name}</a></li>
+                            </ul>
+                        </#list>
                     </li>
+                <#else >
+                    <li class="${menu.active?string('active', '')}">
+                        <a href="${menu.url}"><i class="${menu.icon!"fa fa-th-large"}"></i> <span class="nav-label">${menu.name}</span></a>
+                    </li>
+                </#if>
             </#list>
         </ul>
 
