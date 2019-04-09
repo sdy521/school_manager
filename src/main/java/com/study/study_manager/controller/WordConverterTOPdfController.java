@@ -26,7 +26,7 @@ import java.util.Map;
 @RequestMapping("/wordConverterPdf")
 public class WordConverterTOPdfController extends BaseController{
 
-    @Value("word.location")
+    @Value("${word.location}")
     private String localPath;
     @RequestMapping("/list")
     public String list(Model model){
@@ -45,13 +45,13 @@ public class WordConverterTOPdfController extends BaseController{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
         String wordName = UploadFile.uploadWord(file);
         String name = wordName.substring(0,wordName.lastIndexOf("."));
-        String target = localPath+File.separator+name;
+        String target = localPath+File.separator+wordName;
         InputStream targetPath = new FileInputStream(target);
         File file1 = new File(localPath+File.separator+"pdf");
         if(!file1.exists()){
             file1.mkdir();
         }
-        String outPath = localPath+File.separator+"pdf"+File.separator+wordName+".pdf";
+        String outPath = localPath+File.separator+"pdf"+File.separator+name+".pdf";
         OutputStream outDir = new FileOutputStream(outPath);
 
         PdfOptions pdfOptions = PdfOptions.create();
