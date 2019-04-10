@@ -4,7 +4,7 @@ $(function () {
         language: 'zh', //设置语言
         uploadUrl: "/wordConverterPdf/uploadWord", //上传的地址
         allowedFileExtensions: ['docx'],//接收的文件后缀
-        maxFilesNum : 5,//上传最大的文件数量
+        maxFilesNum : 100,//上传最大的文件数量
         //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
         uploadAsync: true, //默认异步上传
         showUpload: true, //是否显示上传按钮
@@ -25,14 +25,17 @@ $(function () {
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
 
-    }).on('filepreupload', function(event, data, previewId, index) {     //上传中
-        var form = data.form, files = data.files, extra = data.extra,
-            response = data.response, reader = data.reader;
-        console.log('文件正在上传');
+    }).on('filepreupload', function(event, data, previewId, index) {
+        var filenames = data.filenames;
+        console.log('文件正在上传:'+filenames[index]);
     }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
-        console.log('文件上传成功！'+data.id);
+        var filenames = data.filenames;
+        console.log('文件上传成功:'+filenames[index]);
+        success("word转pdf成功");
 
     }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
-        console.log('文件上传失败！'+data.id);
+        var filenames = data.filenames;
+        console.log('文件上传失败:'+filenames);
+        error("word转pdf失败");
     })
 });
