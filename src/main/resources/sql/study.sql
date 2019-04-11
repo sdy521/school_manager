@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50725
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : study
 
 Target Server Type    : MYSQL
-Target Server Version : 50725
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2019-04-11 17:23:54
+Date: 2019-04-11 23:22:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,21 +49,27 @@ CREATE TABLE `file` (
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted` tinyint(1) DEFAULT NULL COMMENT '是否删除',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of file
 -- ----------------------------
-INSERT INTO `file` VALUES ('1', '软件资料', '/a', 'aa', null, '2019-04-11 14:05:44', '2019-04-11 14:05:46', '0');
-INSERT INTO `file` VALUES ('2', 'java', '/b', 'bb', 'aa', '2019-04-11 14:06:01', '2019-04-11 14:06:03', '0');
-INSERT INTO `file` VALUES ('3', '20190411 165336-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165336-InputPhoneModel - 副本.xls', '9cce0b31-c0db-4ea0-b76a-af716cd6d250', 'aa', '2019-04-11 16:53:36', '2019-04-11 16:53:36', '0');
-INSERT INTO `file` VALUES ('4', '20190411 165356-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165356-InputPhoneModel - 副本.xls', 'c605e911-9628-4bf4-96e7-ba5fa3944057', 'bb', '2019-04-11 16:53:57', '2019-04-11 16:53:57', '0');
-INSERT INTO `file` VALUES ('5', 'ceshi', '/c', 'cc', null, '2019-04-11 16:56:42', '2019-04-11 16:56:44', '0');
-INSERT INTO `file` VALUES ('6', '20190411 165748-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165748-InputPhoneModel - 副本.xls', '4ae8c110-cb5b-465c-911f-c46124121613', 'cc', '2019-04-11 16:57:48', '2019-04-11 16:57:48', '0');
-INSERT INTO `file` VALUES ('7', '20190411 165915-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165915-InputPhoneModel - 副本.xls', '9221e3f9-1a96-4ae2-a0a1-d4d3279e9130', 'cc', '2019-04-11 16:59:15', '2019-04-11 16:59:15', '0');
-INSERT INTO `file` VALUES ('8', '20190411 170005-sdy测试_1554780521102.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 170005-sdy测试_1554780521102.xls', '5debde3e-12a7-4f69-8434-cedee2405025', '4ae8c110-cb5b-465c-911f-c46124121613', '2019-04-11 17:00:05', '2019-04-11 17:00:05', '0');
-INSERT INTO `file` VALUES ('9', '20190411 170005-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 170005-InputPhoneModel - 副本.xls', '876865b5-d173-4699-b8e7-c95e12caed92', '4ae8c110-cb5b-465c-911f-c46124121613', '2019-04-11 17:00:05', '2019-04-11 17:00:05', '0');
+INSERT INTO `file` VALUES ('1', 'word文件', null, '705b7aab-609b-4048-926c-c189982ab01b', null, '2019-04-11 22:31:19', '2019-04-11 22:31:19', '0', null);
+INSERT INTO `file` VALUES ('2', 'excel文件', null, 'c6f99e70-957b-4f67-8092-d0393665dc5e', null, '2019-04-11 22:33:46', '2019-04-11 22:33:46', '0', null);
+INSERT INTO `file` VALUES ('3', '其他文件', null, '5d633edd-a87c-4049-b7e5-0613527b8d35', null, '2019-04-11 22:34:42', '2019-04-11 23:19:00', '0', null);
+INSERT INTO `file` VALUES ('4', '2019/4/10', null, 'c9c01445-d54c-4bfc-a3b8-a992ee363782', '705b7aab-609b-4048-926c-c189982ab01b', '2019-04-11 22:35:02', '2019-04-11 22:35:02', '0', null);
+INSERT INTO `file` VALUES ('5', '20190411 223517-20190409 232616-security 2.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223517-20190409 232616-security 2.docx', '04eb8d92-8163-4664-bca1-ec2cddccdf62', 'c9c01445-d54c-4bfc-a3b8-a992ee363782', '2019-04-11 22:35:18', '2019-04-11 22:35:18', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('6', '20190411 223517-20190409 232406-security 2.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223517-20190409 232406-security 2.docx', '17a68a37-aa2b-403d-8194-8fea95d896c8', 'c9c01445-d54c-4bfc-a3b8-a992ee363782', '2019-04-11 22:35:18', '2019-04-11 22:35:18', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('7', '20190411 223517-20190409 232406-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223517-20190409 232406-security.docx', 'a99ac808-5e63-4273-a24e-98f7fb02f69a', 'c9c01445-d54c-4bfc-a3b8-a992ee363782', '2019-04-11 22:35:18', '2019-04-11 22:35:18', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('8', '2019/4/11', null, 'bd8d3953-8969-4b11-bbd0-27a970b77cb4', '705b7aab-609b-4048-926c-c189982ab01b', '2019-04-11 22:35:41', '2019-04-11 22:35:41', '0', null);
+INSERT INTO `file` VALUES ('9', '20190411 223600-20190409 232616-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223600-20190409 232616-security.docx', 'e66cbe58-cf4b-4ba2-b1c1-24476638bc6c', 'bd8d3953-8969-4b11-bbd0-27a970b77cb4', '2019-04-11 22:36:01', '2019-04-11 22:36:01', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('10', '20190411 223600-20190409 232709-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223600-20190409 232709-security.docx', '6a9a278c-526f-4d0a-a623-c30f46aff33a', 'bd8d3953-8969-4b11-bbd0-27a970b77cb4', '2019-04-11 22:36:01', '2019-04-11 22:36:01', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('11', '20190411 223739-工作计划.xlsx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 223739-工作计划.xlsx', '10be9c06-5c67-4354-a72b-5b5710aa8758', 'c6f99e70-957b-4f67-8092-d0393665dc5e', '2019-04-11 22:37:40', '2019-04-11 22:37:40', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('12', '20190411 224417-20190409 232803-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 224417-20190409 232803-security.docx', '71731dd6-f23e-46c6-b23b-0c8effee4e41', '5d633edd-a87c-4049-b7e5-0613527b8d35', '2019-04-11 22:44:17', '2019-04-11 22:44:17', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('13', '20190411 224449-20190409 232616-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 224449-20190409 232616-security.docx', 'b001e2ca-ae4c-4bb0-92a1-b480f75492c0', '5d633edd-a87c-4049-b7e5-0613527b8d35', '2019-04-11 22:44:49', '2019-04-11 22:44:49', '0', 'fa fa-file');
+INSERT INTO `file` VALUES ('14', '20190411 224449-20190409 232406-security.docx', 'C:\\Users\\Sdy\\Desktop\\filedesk\\20190411 224449-20190409 232406-security.docx', '1ecd20ef-5cbd-4129-a7ed-de7b5d78d72b', '5d633edd-a87c-4049-b7e5-0613527b8d35', '2019-04-11 22:44:49', '2019-04-11 22:44:49', '0', 'fa fa-file');
 
 -- ----------------------------
 -- Table structure for info
@@ -244,7 +250,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-04-09 13:30:17', '0', '0', '1', '7fe0f393-cd1f-48f8-b1d1-99d7ce2b99ec.jpg');
+INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-04-11 21:05:58', '0', '0', '1', 'd3b0ae64-d605-443d-8aa2-e911d05ca27c.jpg');
 INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-03-15 15:15:06', '0', '1', '1', '6f213d71-825f-4e76-a128-6ba369162126.png');
 INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
 INSERT INTO `user` VALUES ('4', '张梅', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);

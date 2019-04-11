@@ -16,6 +16,8 @@ public class File extends BaseEntity{
     private String code;
     @Column
     private String pcode;
+    @Column
+    private String icon;
 
     public String getName() {
         return name;
@@ -47,5 +49,13 @@ public class File extends BaseEntity{
 
     public void setPcode(String pcode) {
         this.pcode = pcode;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }
