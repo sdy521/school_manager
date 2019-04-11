@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+/***
+ * 上传工具类
+ */
 public class UploadFile {
     private static Logger logger = LoggerFactory.getLogger(UploadFile.class);
     /***
@@ -80,6 +83,34 @@ public class UploadFile {
         String filename = uploadfile.getOriginalFilename();
         logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
         String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("word.location");
+        File dirFile = new File(location);
+        if(!dirFile.exists()){
+            dirFile.mkdir();
+        }
+        String filePath = location+File.separator; // 上传后的路径
+        /*String suffixName = filename.substring(filename.lastIndexOf("."));
+        filename = UUID.randomUUID()+suffixName;*/
+        filename =sdf.format(new Date())+"-"+filename;
+        File newFile = new File(filePath+filename);
+        try {
+            uploadfile.transferTo(newFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return filename;
+    }
+
+    /***
+     * 上传 文件台管理
+     * @param uploadfile
+     * @return
+     */
+    public static String uploadFileDesk(MultipartFile uploadfile){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
+        String contentType = uploadfile.getContentType();
+        String filename = uploadfile.getOriginalFilename();
+        logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
+        String location = SpringBeanTool.getApplicationContext().getEnvironment().getProperty("filedesk.location");
         File dirFile = new File(location);
         if(!dirFile.exists()){
             dirFile.mkdir();

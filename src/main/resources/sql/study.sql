@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-04-09 14:36:55
+Date: 2019-04-11 17:23:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,6 +35,35 @@ CREATE TABLE `class` (
 -- ----------------------------
 INSERT INTO `class` VALUES ('1', '测试班级', '0', '2019-02-26 14:43:08', '2019-02-26 15:37:04', '1', '1');
 INSERT INTO `class` VALUES ('2', '测试删除', '1', '2019-02-26 15:37:21', '2019-02-26 15:38:40', '1', '1');
+
+-- ----------------------------
+-- Table structure for file
+-- ----------------------------
+DROP TABLE IF EXISTS `file`;
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '文件名称',
+  `path` varchar(255) DEFAULT NULL COMMENT '文件地址',
+  `code` varchar(255) DEFAULT NULL,
+  `pcode` varchar(255) DEFAULT NULL COMMENT '父类为code',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` tinyint(1) DEFAULT NULL COMMENT '是否删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of file
+-- ----------------------------
+INSERT INTO `file` VALUES ('1', '软件资料', '/a', 'aa', null, '2019-04-11 14:05:44', '2019-04-11 14:05:46', '0');
+INSERT INTO `file` VALUES ('2', 'java', '/b', 'bb', 'aa', '2019-04-11 14:06:01', '2019-04-11 14:06:03', '0');
+INSERT INTO `file` VALUES ('3', '20190411 165336-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165336-InputPhoneModel - 副本.xls', '9cce0b31-c0db-4ea0-b76a-af716cd6d250', 'aa', '2019-04-11 16:53:36', '2019-04-11 16:53:36', '0');
+INSERT INTO `file` VALUES ('4', '20190411 165356-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165356-InputPhoneModel - 副本.xls', 'c605e911-9628-4bf4-96e7-ba5fa3944057', 'bb', '2019-04-11 16:53:57', '2019-04-11 16:53:57', '0');
+INSERT INTO `file` VALUES ('5', 'ceshi', '/c', 'cc', null, '2019-04-11 16:56:42', '2019-04-11 16:56:44', '0');
+INSERT INTO `file` VALUES ('6', '20190411 165748-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165748-InputPhoneModel - 副本.xls', '4ae8c110-cb5b-465c-911f-c46124121613', 'cc', '2019-04-11 16:57:48', '2019-04-11 16:57:48', '0');
+INSERT INTO `file` VALUES ('7', '20190411 165915-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 165915-InputPhoneModel - 副本.xls', '9221e3f9-1a96-4ae2-a0a1-d4d3279e9130', 'cc', '2019-04-11 16:59:15', '2019-04-11 16:59:15', '0');
+INSERT INTO `file` VALUES ('8', '20190411 170005-sdy测试_1554780521102.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 170005-sdy测试_1554780521102.xls', '5debde3e-12a7-4f69-8434-cedee2405025', '4ae8c110-cb5b-465c-911f-c46124121613', '2019-04-11 17:00:05', '2019-04-11 17:00:05', '0');
+INSERT INTO `file` VALUES ('9', '20190411 170005-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190411 170005-InputPhoneModel - 副本.xls', '876865b5-d173-4699-b8e7-c95e12caed92', '4ae8c110-cb5b-465c-911f-c46124121613', '2019-04-11 17:00:05', '2019-04-11 17:00:05', '0');
 
 -- ----------------------------
 -- Table structure for info
@@ -80,14 +109,14 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-04-09 13:50:40', '教师管理', '#', 'teacher', '0', '', '0', 'fa fa-tasks', '2');
 INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-02-21 14:56:31', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '0', 'fa fa-user', '1');
-INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-04-09 14:21:24', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '7');
+INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-04-11 11:05:08', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '8');
 INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt', '1');
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '0', 'fa fa-newspaper-o', '2');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
@@ -103,6 +132,8 @@ INSERT INTO `menu` VALUES ('15', '2019-04-09 13:41:46', '2019-04-09 13:50:56', '
 INSERT INTO `menu` VALUES ('16', '2019-04-09 13:44:36', '2019-04-09 13:44:36', 'wordToPdf', '/wordConverterPdf/list', 'wordConverterPdf', '0', 'tool', '0', 'fa fa-exchange', '2');
 INSERT INTO `menu` VALUES ('17', '2019-04-09 13:49:22', '2019-04-09 13:49:22', '首页', '/main', 'main', '0', '', '0', 'fa fa-laptop', '1');
 INSERT INTO `menu` VALUES ('18', '2019-04-09 14:21:18', '2019-04-09 14:21:18', '消息', '#', 'news', '0', '', '0', 'fa fa-comments', '6');
+INSERT INTO `menu` VALUES ('19', '2019-04-11 11:05:02', '2019-04-11 11:08:28', '文件台', '#', 'filedesk', '0', '', '0', 'fa fa-paste (alias)', '7');
+INSERT INTO `menu` VALUES ('20', '2019-04-11 11:07:49', '2019-04-11 11:07:49', '文件管理', '/file/list', 'filemanager', '0', 'filedesk', '0', 'fa fa-folder-open', '1');
 
 -- ----------------------------
 -- Table structure for notice
