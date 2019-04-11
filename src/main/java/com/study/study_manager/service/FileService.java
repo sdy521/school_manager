@@ -42,6 +42,10 @@ public class FileService extends BaseService<File> {
             jsonObject.put("id",file.getCode());
             jsonObject.put("parent", StringUtils.isEmpty(file.getPcode())?"#":file.getPcode());
             jsonObject.put("text",file.getName());
+            jsonObject.put("icon","fa fa-bars");
+            JSONObject state = new JSONObject();
+            state.put("opened", true);
+            jsonObject.put("state",state);
             jsonArray.add(jsonObject);
         }
         return jsonArray;

@@ -5,7 +5,6 @@ var jstreeOptions = {
     types: {
         'default': {
             'icon': true  // 删除默认图标
-            // "icon": "fa fa-user"
         },
     },
     core: {
