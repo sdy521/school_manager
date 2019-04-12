@@ -19,4 +19,10 @@ public interface FileDao extends BaseDao<File> {
 
     @Update("update file set name=#{newName} where code=#{code}")
     void updateNameByCode(@Param("newName") String newName,@Param("code") String code);
+
+    @Update("update file set name=#{newName}, path=#{path} where code=#{code}")
+    void updateNamePathByCode(@Param("newName") String newName,@Param("path") String path,@Param("code") String code);
+
+    @Select("select * from file where deleted=0 and code=#{code}")
+    File getFileByCode(@Param("code") String code);
 }

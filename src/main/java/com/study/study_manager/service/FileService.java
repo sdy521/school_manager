@@ -42,6 +42,7 @@ public class FileService extends BaseService<File> {
             jsonObject.put("id",file.getCode());
             jsonObject.put("parent", StringUtils.isEmpty(file.getPcode())?"#":file.getPcode());
             jsonObject.put("text",file.getName());
+            jsonObject.put("type",file.getType()==0?"package":"file");
             jsonObject.put("icon",StringUtils.isEmpty(file.getIcon())?"":file.getIcon());
             JSONObject state = new JSONObject();
             state.put("opened", true);
@@ -53,5 +54,12 @@ public class FileService extends BaseService<File> {
 
     public void updateNameByCode(String newName,String code){
         fileDao.updateNameByCode(newName,code);
+    }
+    public void updateNamePathByCode(String newName,String path,String code){
+        fileDao.updateNamePathByCode(newName,path,code);
+    }
+
+    public File getFileByCode(String code){
+        return fileDao.getFileByCode(code);
     }
 }

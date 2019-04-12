@@ -1,11 +1,10 @@
 var File={}
 var jstreeOptions = {
     // 引入插件
-    plugins: [/*'checkbox',*/'types','themes','contextmenu'],
+    plugins: ['types','themes','contextmenu'],
     types: {
-        'default': {
-            'icon': false  // 删除默认图标
-        },
+        'package': {},
+        'file': {}
     },
     core: {
         data: [],
@@ -13,51 +12,67 @@ var jstreeOptions = {
             "variant" : "large"
         }
     },
-    /*checkbox: {
-        'tie_selection': false,
-        'keep_selected_style': false,
-        'whole_node': false
-    },*/
     contextmenu: {    // 右键菜单
-        'items': {
-            'addDir': {
-                'label': '新增目录',
-                'action': function (data) {
-                    var inst = $.jstree.reference(data.reference);
-                    var obj = inst.get_node(data.reference);
-                    $("#codeDir").val(obj.id);
-                    $("#DirName").val("");
-                    $("#createModalDir").modal();
-                }
-            },
-            'addFile': {
-                'label': '新增文件',
-                'action': function (data) {
-                    var inst = $.jstree.reference(data.reference);
-                    var obj = inst.get_node(data.reference);
-                    $("#codeFile").val(obj.id);
-                    $("#createModal").modal();
-                }
-            },
-            'update':{
-                'label':'修改',
-                'action':function (data) {
-                    var inst = $.jstree.reference(data.reference);
-                    var obj = inst.get_node(data.reference);
-                    $("#updateCode").val(obj.id);
-                    $("#updateName").val("");
-                    $("#updateModal").modal();
-                }
-            },
-            'delete': {
-                'label': '删除',
-                'action': function (data) {
-                    info("暂未开发");
-                }
+        'items':contextmenu//每个节点都会调用这个函数
+    }
+};
+function contextmenu(node){
+    var items = {
+        'addDir': {
+            'label': '新增目录',
+            'action': function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $("#codeDir").val(obj.id);
+                $("#DirName").val("");
+                $("#createModalDir").modal();
+            }
+        },
+        'addFile': {
+            'label': '新增文件',
+            'action': function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $("#codeFile").val(obj.id);
+                $("#createModal").modal();
+            }
+        },
+        'update':{
+            'label':'修改',
+            'action':function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $("#updateCode").val(obj.id);
+                $("#updateName").val("");
+                $("#updateModal").modal();
+            }
+        },
+        'updateFile':{
+            'label':'修改',
+            'action':function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $("#updateFileCode").val(obj.id);
+                $("#updateFileName").val("");
+                $("#updateFileModal").modal();
+            }
+        },
+        'delete': {
+            'label': '删除',
+            'action': function (data) {
+                info("暂未开发");
             }
         }
     }
-};
+    if(node.type=='file'){
+        delete items.addFile;
+        delete items.addDir;
+        delete items.update;
+    }else if(node.type=='package'){
+        delete items.updateFile;
+    }
+    return items;
+}
 File.bootstrapInput = function(){
     $("#input-id").fileinput({
         language: 'zh', //设置语言
@@ -89,7 +104,11 @@ File.bootstrapInput = function(){
         console.log('文件上传成功:'+filenames[index]);
         File.destroyAndCreate();
         $("#createModal").modal('hide');
-        success("文件上传成功");
+        if(data.response.code===0){
+            success("文件上传成功");
+        }else {
+            error(data.response.msg);
+        }
 
     }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
         var filenames = data.filenames;
@@ -161,6 +180,25 @@ File.updateName = function(){
                 $("#updateModal").modal('hide');
                 File.destroyAndCreate();
                 success("修改成功");
+            }
+        }
+    });
+}
+//修改文件
+File.updateFileName = function(){
+    var newName = $("#updateFileName").val();
+    var updateCode = $("#updateFileCode").val();
+    $.ajax({
+        url:"/file/updateFileName?newName="+newName+"&updateCode="+updateCode,
+        type:"GET",
+        dateType:"JSON",
+        success:function (r) {
+            if(r.code===0){
+                $("#updateFileModal").modal('hide');
+                File.destroyAndCreate();
+                success("修改成功");
+            }else {
+                error(r.msg);
             }
         }
     });

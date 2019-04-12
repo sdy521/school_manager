@@ -98,6 +98,25 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<#--修改文件弹框-->
+<div class="modal fade" id="updateFileModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <input type="hidden" id="updateFileCode"/>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">修改</h4>
+            </div>
+            <div class="modal-body">
+                <input id="updateFileName" type="text" class="form-control" placeholder="请输入新名称...">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" onclick="File.updateFileName();" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <#include "/templates/layout/commonjs.ftl">
 </body>
 <#--jstree-->

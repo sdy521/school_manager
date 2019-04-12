@@ -18,6 +18,8 @@ public class File extends BaseEntity{
     private String pcode;
     @Column
     private String icon;
+    @Column
+    private Integer type;
 
     public String getName() {
         return name;
@@ -57,5 +59,13 @@ public class File extends BaseEntity{
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

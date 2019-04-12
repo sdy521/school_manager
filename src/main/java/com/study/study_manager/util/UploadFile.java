@@ -106,7 +106,7 @@ public class UploadFile {
      * @return
      */
     public static String uploadFileDesk(MultipartFile uploadfile){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String contentType = uploadfile.getContentType();
         String filename = uploadfile.getOriginalFilename();
         logger.info("上传文件:name={"+filename+"},type={"+contentType+"}");
@@ -120,6 +120,9 @@ public class UploadFile {
         filename = UUID.randomUUID()+suffixName;*/
         filename =sdf.format(new Date())+"-"+filename;
         File newFile = new File(filePath+filename);
+        if(newFile.exists()){
+            return "exists";
+        }
         try {
             uploadfile.transferTo(newFile);
         } catch (IOException e) {
