@@ -6,6 +6,7 @@ import com.study.study_manager.core.BaseDao;
 import com.study.study_manager.core.BaseService;
 import com.study.study_manager.dao.FileDao;
 import com.study.study_manager.entity.File;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,6 +19,10 @@ import java.util.List;
  */
 @Service
 public class FileService extends BaseService<File> {
+    @Value("${filedesk.location}")
+    private String path;
+    @Value("${localfiledesk.location}")
+    private String localpath;
     @Resource
     private FileDao fileDao;
 
@@ -61,5 +66,44 @@ public class FileService extends BaseService<File> {
 
     public File getFileByCode(String code){
         return fileDao.getFileByCode(code);
+    }
+
+    public String getFilePath(String code){
+        return fileDao.getFilePath(code);
+    }
+
+    public void delete(String code){
+        fileDao.deleteByCode(code);
+    }
+
+    public Integer getTypeByCode(String code){
+        return fileDao.getTypeByCode(code);
+    }
+
+    public List<Integer> getIdListByCode(String code){
+        return fileDao.getIdListByCode(code);
+    }
+
+    public List<String> getNameListByCode(String code){
+        return fileDao.getNameListByCode(code);
+    }
+
+    public void deleteByIds(String ids){
+        fileDao.deleteByIds(ids);
+    }
+
+    public void deleteFile(String name){
+        //删除本地文件
+        String localp = localpath+ java.io.File.separator+name;
+        java.io.File file = new java.io.File(localp);
+        if(file.exists()){
+            file.delete();
+        }
+        //删除服务器文件
+        String p = path+ java.io.File.separator+name;
+        java.io.File file1 = new java.io.File(p);
+        if(file1.exists()){
+            file1.delete();
+        }
     }
 }

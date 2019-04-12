@@ -37,6 +37,38 @@ function contextmenu(node){
                 $("#createModal").modal();
             }
         },
+        'look': {
+            'label': '打开',
+            'action': function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $.ajax({
+                    url:"/file/lookFile?code="+obj.id,
+                    type:"GET",
+                    success:function (r) {
+                        if(r.code!==0){
+                            error(r.msg);
+                        }
+                    }
+                });
+            }
+        },
+        'synchro': {
+            'label': '同步',
+            'action': function (data) {
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                $.ajax({
+                    url:"/file/synchroFile?name="+obj.text,
+                    type:"GET",
+                    success:function (r) {
+                        if(r.code===0){
+                            success("同步成功");
+                        }
+                    }
+                });
+            }
+        },
         'update':{
             'label':'修改',
             'action':function (data) {
@@ -60,7 +92,21 @@ function contextmenu(node){
         'delete': {
             'label': '删除',
             'action': function (data) {
-                info("暂未开发");
+                var inst = $.jstree.reference(data.reference);
+                var obj = inst.get_node(data.reference);
+                warningCommon("确定删除！","如果是文件夹，删除后文件夹下文件全部删除",function () {
+                    $.ajax({
+                        url:"/file/deletedFile?code="+obj.id+"&name="+obj.text,
+                        type:"GET",
+                        dateType:"JSON",
+                        success:function (r) {
+                            if(r.code===0){
+                                File.destroyAndCreate();
+                                success("删除成功");
+                            }
+                        }
+                    });
+                });
             }
         }
     }
@@ -70,6 +116,8 @@ function contextmenu(node){
         delete items.update;
     }else if(node.type=='package'){
         delete items.updateFile;
+        delete items.look;
+        delete items.synchro;
     }
     return items;
 }
@@ -188,19 +236,21 @@ File.updateName = function(){
 File.updateFileName = function(){
     var newName = $("#updateFileName").val();
     var updateCode = $("#updateFileCode").val();
-    $.ajax({
-        url:"/file/updateFileName?newName="+newName+"&updateCode="+updateCode,
-        type:"GET",
-        dateType:"JSON",
-        success:function (r) {
-            if(r.code===0){
-                $("#updateFileModal").modal('hide');
-                File.destroyAndCreate();
-                success("修改成功");
-            }else {
-                error(r.msg);
+    warningCommon("确定修改文件名!","修改文件名前请及时同步，防止信息丢失",function () {
+        $.ajax({
+            url:"/file/updateFileName?newName="+newName+"&updateCode="+updateCode,
+            type:"GET",
+            dateType:"JSON",
+            success:function (r) {
+                if(r.code===0){
+                    $("#updateFileModal").modal('hide');
+                    File.destroyAndCreate();
+                    success("修改成功");
+                }else {
+                    error(r.msg);
+                }
             }
-        }
+        });
     });
 }
 File.destroyAndCreate = function(){

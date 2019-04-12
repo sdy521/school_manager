@@ -5,15 +5,21 @@ import com.study.study_manager.core.Result;
 import com.study.study_manager.entity.File;
 import com.study.study_manager.service.FileService;
 import com.study.study_manager.util.UploadFile;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.util.StringUtil;
+import org.apache.tomcat.jni.Proc;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +34,8 @@ public class FileController extends BaseController{
 
     @Value("${filedesk.location}")
     private String path;
+    @Value("${localfiledesk.location}")
+    private String localpath;
     @Resource
     private FileService fileService;
 
@@ -150,4 +158,78 @@ public class FileController extends BaseController{
         fileService.updateNamePathByCode(newPath.substring(newPath.lastIndexOf("\\")+1),newPath,updateCode);
         return OK;
     }
+
+    /***
+     * 查看文件
+     * @param code
+     */
+    @RequestMapping("/lookFile")
+    @ResponseBody
+    public Result lookFile(@RequestParam String code){
+        String path = fileService.getFilePath(code);
+        java.io.File file = new java.io.File(path);
+        if(file.exists()){
+            //copy到本地路径
+            java.io.File fileDir = new java.io.File(localpath);
+            if(!fileDir.exists()){
+                fileDir.mkdir();
+            }
+            String localPath = localpath+path.substring(path.lastIndexOf("\\"));
+            java.io.File file1 = new java.io.File(localPath);
+            try {
+                FileUtils.copyFile(file,file1);
+                Runtime.getRuntime().exec("cmd /c cmd.exe /c"+localPath+" exit");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return OK;
+        }else {
+            return new Result(1,"文件不存在");
+        }
+    }
+
+    /***
+     * 同步文件
+     * @param name
+     * @return
+     */
+    @RequestMapping("/synchroFile")
+    @ResponseBody
+    public Result synchroFile(@RequestParam String name){
+        String p = localpath+ java.io.File.separator+name;
+        java.io.File file = new java.io.File(p);
+        if(file.exists()){
+            String op = path+ java.io.File.separator+name;
+            java.io.File file1 = new java.io.File(op);
+            try {
+                FileUtils.copyFile(file,file1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return OK;
+    }
+
+    @RequestMapping("/deletedFile")
+    @ResponseBody
+    public Result deletedFile(@RequestParam String code,@RequestParam String name){
+        Integer type = fileService.getTypeByCode(code);
+        if(type==0){
+            //文件夹
+            List<Integer> idList = fileService.getIdListByCode(code);
+            List<String> nameList = fileService.getNameListByCode(code);
+            fileService.deleteByIds(StringUtils.join(idList.toArray(),","));
+            fileService.delete(code);
+            for(String n:nameList){
+                fileService.deleteFile(n);
+            }
+        }else {
+            //文件
+            //删除文件
+            fileService.deleteFile(name);
+            fileService.delete(code);
+        }
+        return OK;
+    }
+
 }
