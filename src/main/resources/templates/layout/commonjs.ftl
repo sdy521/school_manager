@@ -20,18 +20,7 @@
 <#--bootstrapFileUpload-->
 <script src="/static/plugins/bootstrapFileUpload/js/fileinput.min.js"></script>
 <script type="text/javascript">
-    var stompClient = null;
     $(function () {
-        //初始化websocket
-        var socket = new SockJS('/endpointSang');
-        stompClient = Stomp.over(socket);
-        stompClient.connect({}, function (frame) {
-            console.log('Connected:' + frame);
-            stompClient.subscribe('/topic/getResponse', function (response) {
-                showResponse(JSON.parse(response.body).responseMessage);
-            })
-        });
-        //bootstrapFileUpload
         $("#uploadfile").fileinput({
             language: 'zh', //设置语言
             uploadUrl: "/upload", //上传的地址
@@ -53,28 +42,5 @@
             success(response.message);
             $("#uploadModal").modal('hide');
         });
-        //上传前
-       /* $('#uploadfile').on('filepreupload', function(event, data, previewId, index) {
-            var form = data.form, files = data.files, extra = data.extra,
-                    response = data.response, reader = data.reader;
-        });*/
     });
-    function sendName() {
-        var title = $('#onlyTitle').val();
-        var content = Send.ue.getContent();
-        var params = {};
-        params.title = title;
-        params.content = content;
-        stompClient.send("/websocket", {}, JSON.stringify(params));
-    }
-    function showResponse(message) {
-        // success("发布成功");
-        $("#tip").html(message);
-        Send.reload();
-        $("#onlyTitle").val("");
-        setContent();
-    }
-    function setContent(isAppendTo) {
-        Send.ue.setContent('发布成功...', isAppendTo);
-    }
 </script>
