@@ -6,12 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 import java.net.URI;
 
 /***
  * https://blog.csdn.net/weixin_38111957/article/details/86352677
  */
-@Configuration
+@Component
 public class WebSocketConfig{
 
     private Logger log = LoggerFactory.getLogger(WebSocketConfig.class);
