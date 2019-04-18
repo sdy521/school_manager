@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 /**
  * @author sdy
  * @date 2019/4/17 17:17
+ * 后端实现websocket客户端
  */
-@Component
+//@Component
 public class ScoketClient implements WebSocketService {
 
-    @Autowired
+//    @Autowired
     private WebSocketClient webSocketClient;
 
     @Override

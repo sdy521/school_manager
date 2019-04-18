@@ -5,20 +5,19 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-
 import java.net.URI;
 
 /***
  * https://blog.csdn.net/weixin_38111957/article/details/86352677
+ * 后台实现websocket客户端代码
  */
-@Component
+//@Component
 public class WebSocketConfig{
 
     private Logger log = LoggerFactory.getLogger(WebSocketConfig.class);
 
-    @Bean
+//    @Bean
     public WebSocketClient webSocketClient() {
         try {
             WebSocketClient webSocketClient = new WebSocketClient(new URI("ws://localhost:8081/websocket/test"),new Draft_6455()) {
