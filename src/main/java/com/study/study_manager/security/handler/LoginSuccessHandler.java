@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    @Value("${img.location}")
-    private String location;
+    @Value("${websocket.url}")
+    private String websocketUrl;
     @Resource
     private MenuService menuService;
     @Resource
@@ -63,6 +63,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             user.setLeftMenus(leftMenus);
             request.getSession().setAttribute("leftname",user.getUsername());
             request.getSession().setAttribute("userImg",user.getImg());
+            request.getSession().setAttribute("websocketUserId",user.getId());
+            request.getSession().setAttribute("websocketUrl",websocketUrl);
             super.onAuthenticationSuccess(request, response, authentication);
         }
     }

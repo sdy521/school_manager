@@ -1,4 +1,6 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
+    <input type="hidden" id="websocketUserId" value="${websocketUserId}">
+    <input type="hidden" id="websocketUrl" value="${websocketUrl}">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
