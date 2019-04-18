@@ -1,6 +1,6 @@
 package com.study.study_manager.test;
 
-import com.study.study_manager.service.ScoketClient;
+import com.study.study_manager.socket.ScoketClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

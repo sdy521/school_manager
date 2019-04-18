@@ -1,4 +1,4 @@
-package com.study.study_manager.service;
+package com.study.study_manager.socket;
 
 /**
  * @author sdy

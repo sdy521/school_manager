@@ -1,4 +1,4 @@
-package com.study.study_manager.service;
+package com.study.study_manager.socket;
 
 import org.java_websocket.client.WebSocketClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,7 @@ public class ScoketClient implements WebSocketService {
 
     @Override
     public void groupSending(String message) {
-        // 这里我加了6666-- 是因为我在index.html页面中，要拆分用户编号和消息的标识，只是一个例子而已
-        // 在index.html会随机生成用户编号，这里相当于模拟页面发送消息
-        // 实际这样写就行了 webSocketClient.send(message)
-        webSocketClient.send(message+"---6666");
+        webSocketClient.send(message);
     }
 
     @Override

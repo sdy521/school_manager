@@ -91,10 +91,10 @@
             <version>3.6</version>
         </dependency>
         <!-- websocket -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
+        </dependency>-->
         <!--ueditor-->
         <dependency>
             <groupId>com.songxinqiang</groupId>
