@@ -17,7 +17,7 @@ function dateFtt(fmt,date)
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
     return fmt;
 }
-//获取表单下的值得JSON对象
+/**************************************获取表单下的值得JSON对象************************************/
 function getFormJson(frm) {
     var o = {};
     var a = $(frm).serializeArray();//表单对象数组 [{name:xxx,value:xxx},{name:xxx,value:xxx},......]
@@ -34,7 +34,7 @@ function getFormJson(frm) {
 
     return o;
 }
-//成功弹窗
+/**************************************成功弹窗************************************/
 function success(msg,substr) {
     swal({
         title: msg,
@@ -42,7 +42,7 @@ function success(msg,substr) {
         type: "success"
     });
 }
-//警告弹窗
+/**************************************警告弹窗************************************/
 function warning(msg,substr,fn) {
     swal({
         title: msg,
@@ -71,7 +71,7 @@ function recoverWarning(msg,substr,fn) {
         confirmButtonColor: "#f3a50d"
     },fn);
 }
-//警告弹窗
+/**************************************警告弹窗************************************/
 function warningCommon(msg,substr,fn) {
     swal({
         title: msg,
@@ -100,23 +100,23 @@ function init(msg,substr,fn) {
         confirmButtonColor: "#1768b3"
     },fn);
 }
-//信息框
+/**************************************信息框************************************/
 function info(msg) {
     swal(msg);
 }
-//错误弹窗
+/**************************************错误弹窗************************************/
 function error(msg,substr) {
     swal(msg, substr, "error");
 }
 
-//switchery
+/**************************************switchery************************************/
 function setSwitchery(switchElement, checkedBool) {
     if ((checkedBool && !switchElement.isChecked()) || (!checkedBool && switchElement.isChecked())) {
         switchElement.setPosition(true);
         switchElement.handleOnchange(true);
     }
 }
-//用户编辑
+/**************************************用户编辑************************************/
 function leftModel() {
     $.ajax({
         url:"/leftmodal",
@@ -146,7 +146,7 @@ function update() {
         }
     });
 }
-//上传头像
+/**************************************上传头像************************************/
 function upImage() {
     $("#uploadModal").modal();
 }
