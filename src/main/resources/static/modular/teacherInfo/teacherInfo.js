@@ -35,10 +35,10 @@ TeacherInfo.initJqGrid = function(){
                     }
                 }},
             {name:'create_time',index:'create_time', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'update_time',index:'update_time', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'operation',index:'operation', width:130, sortable:false,sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];

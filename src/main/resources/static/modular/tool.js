@@ -1,29 +1,21 @@
-// 格式化时间  参数为Date类型
-//yyyy-MM-dd HH:mm:ss
-function setDateFormat(myDate) {
-    var year = myDate.getFullYear();
-    var month = myDate.getMonth() + 1;
-    month = (month.toString().length == 1) ? ("0" + month) : month;
-    var day = myDate.getDate();
-    day = (day.toString().length == 1) ? ("0" + day) : day;
-    var hours = myDate.getHours();
-    hours = (hours.toString().length == 1)?("0"+hours):hours;
-    var minutes = myDate.getMinutes();
-    minutes = (minutes.toString().length == 1)?("0"+minutes):minutes;
-    var seconds = myDate.getSeconds();
-    seconds = (seconds.toString().length == 1)?("0"+seconds):seconds;
-    var result = year + '-' + month + '-' + day + ' '+ hours + ':' + minutes + ':' + seconds //当前日期
-    return result;
-}
-//yyyy-MM-dd
-function setDate(myDate) {
-    var year = myDate.getFullYear();
-    var month = myDate.getMonth() + 1;
-    month = (month.toString().length == 1) ? ("0" + month) : month;
-    var day = myDate.getDate();
-    day = (day.toString().length == 1) ? ("0" + day) : day;
-    var result = year + '-' + month + '-' + day//当前日期
-    return result;
+/**************************************时间格式化处理************************************/
+function dateFtt(fmt,date)
+{
+    var o = {
+        "M+" : date.getMonth()+1,                 //月份
+        "d+" : date.getDate(),                    //日
+        "h+" : date.getHours(),                   //小时
+        "m+" : date.getMinutes(),                 //分
+        "s+" : date.getSeconds(),                 //秒
+        "q+" : Math.floor((date.getMonth()+3)/3), //季度
+        "S"  : date.getMilliseconds()             //毫秒
+    };
+    if(/(y+)/.test(fmt))
+        fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+    for(var k in o)
+        if(new RegExp("("+ k +")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    return fmt;
 }
 //获取表单下的值得JSON对象
 function getFormJson(frm) {

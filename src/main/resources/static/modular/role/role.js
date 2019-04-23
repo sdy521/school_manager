@@ -28,10 +28,10 @@ Role.initJqGrid = function(){
             {name:'id',index:'id', width:80,align:'center',sortable:false,search:false,formatter:'integer',key:true},
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
             {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'updateTime',index:'updateTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'operation',index:'operation', width:100, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];

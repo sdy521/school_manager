@@ -33,10 +33,10 @@
             {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
             // {name:'password',index:'password', width:100,align:'center',sortable:false,search:false},
             {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'updateTime',index:'updateTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             /*{name:'deleted',index:'deleted', width:80,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     if(cellValue==0){

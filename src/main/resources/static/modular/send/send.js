@@ -33,10 +33,10 @@ Send.initJqGrid = function(){
             {name:'title',index:'title', width:80,align:'center',sortable:false,search:true, stype:'text'},
             {name:'content',index:'content', width:180,align:'center',sortable:false,search:true, stype:'text'},
             {name:'createTime',index:'createTime', width:100,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'updateTime',index:'updateTime', width:100,align:'center',sortable:false,search:false,formatter:function (cellValue) {
-                    return setDateFormat(new Date(cellValue));
+                    return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }},
             {name:'operation',index:'operation', width:80, sortable:false,align:'center',sortable:false,search:false,formatter:function (cellValue,index,rowObject) {
                     var id = rowObject['id'];
