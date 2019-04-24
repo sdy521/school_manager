@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-04-12 17:18:46
+Date: 2019-04-24 17:33:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,7 +81,7 @@ CREATE TABLE `info` (
   `deleted` tinyint(1) DEFAULT NULL COMMENT '是否被删除',
   `age` int(11) DEFAULT NULL COMMENT '年龄',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of info
@@ -92,6 +92,7 @@ INSERT INTO `info` VALUES ('5', '1', '1', '江苏省常州市', '15961170770', '
 INSERT INTO `info` VALUES ('8', '9', '0', '江苏省南京市', '15961170771', '2019-02-19 10:34:01', '2019-02-19 10:56:13', '1', '25');
 INSERT INTO `info` VALUES ('9', '25', '0', '121212', '15961170771', '2019-02-19 17:13:27', '2019-02-19 17:17:16', '1', '12');
 INSERT INTO `info` VALUES ('10', '26', '1', '江苏省常州市', '15961170770', '2019-02-21 17:13:50', '2019-02-21 17:13:50', '0', '22');
+INSERT INTO `info` VALUES ('11', '12', '0', '江苏南京', '15263236963', '2019-04-18 14:57:41', '2019-04-18 14:57:41', '0', '22');
 
 -- ----------------------------
 -- Table structure for menu
@@ -122,7 +123,7 @@ INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '�
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '0', 'fa fa-newspaper-o', '2');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-02-21 14:56:53', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key', '2');
-INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-04-09 14:21:55', '发送公告', '/send/list', 'send', '0', 'news', '0', 'fa fa-bullhorn', '1');
+INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-04-24 14:13:57', '增加公告', '/send/list', 'send', '0', 'news', '0', 'fa fa-bullhorn', '1');
 INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-04-09 13:50:45', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '3');
 INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-02-19 16:48:34', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '0', 'fa fa-graduation-cap', '1');
 INSERT INTO `menu` VALUES ('11', '2019-02-21 14:51:12', '2019-02-21 14:51:35', '测试菜单', '#', 'ceshi', '1', '', '0', 'fa fa-adjust', '3');
@@ -148,7 +149,7 @@ CREATE TABLE `notice` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted` tinyint(1) DEFAULT NULL COMMENT '0未删除 1已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of notice
@@ -172,21 +173,21 @@ INSERT INTO `notice` VALUES ('16', '321321', '<p>123123</p>', '2019-01-26 11:30:
 INSERT INTO `notice` VALUES ('17', '12332', '<p>32123</p>', '2019-01-26 11:30:28', '2019-01-28 09:41:41', '1');
 INSERT INTO `notice` VALUES ('18', '6556', '<p>123</p>', '2019-01-26 11:30:50', '2019-01-28 09:41:20', '1');
 INSERT INTO `notice` VALUES ('19', '1111', '<p>1111</p>', '2019-01-26 12:20:01', '2019-01-28 09:40:49', '1');
-INSERT INTO `notice` VALUES ('20', '666', '<p>666</p>', '2019-01-26 12:21:02', '2019-01-29 09:43:53', '0');
-INSERT INTO `notice` VALUES ('21', '888', '<p>888</p>', '2019-01-26 12:21:52', '2019-01-26 12:21:52', '0');
+INSERT INTO `notice` VALUES ('20', '666', '<p>666</p>', '2019-01-26 12:21:02', '2019-04-24 13:42:16', '1');
+INSERT INTO `notice` VALUES ('21', '888', '<p>888</p>', '2019-01-26 12:21:52', '2019-04-24 13:42:19', '1');
 INSERT INTO `notice` VALUES ('22', '新年通知', '<p>祝大家新年快乐。</p>', '2019-01-30 14:39:44', '2019-01-30 14:39:44', '0');
 INSERT INTO `notice` VALUES ('23', '测试', '<p>测试</p>', '2019-01-30 16:49:25', '2019-01-30 16:56:27', '1');
 INSERT INTO `notice` VALUES ('24', '测试测试', '<p>测试测试测试测试</p>', '2019-01-31 11:14:53', '2019-01-31 11:14:53', '0');
 INSERT INTO `notice` VALUES ('25', '测试', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0001.gif\"/><img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"/></p>', '2019-02-01 14:19:02', '2019-02-01 15:50:42', '1');
 INSERT INTO `notice` VALUES ('26', '表情测试', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\"/><img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"/><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\"/></p>', '2019-02-01 15:51:17', '2019-02-01 15:51:17', '0');
 INSERT INTO `notice` VALUES ('27', '', '', '2019-02-01 16:07:12', '2019-02-01 16:07:26', '1');
-INSERT INTO `notice` VALUES ('28', '1212', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0013.gif\"/></p>', '2019-02-01 16:08:29', '2019-02-01 16:08:29', '0');
+INSERT INTO `notice` VALUES ('28', '1212', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0013.gif\"/></p>', '2019-02-01 16:08:29', '2019-04-24 13:42:14', '1');
 INSERT INTO `notice` VALUES ('29', '开学通知', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"/>假期结束，正式开学<img src=\"http://img.baidu.com/hi/jx2/j_0006.gif\"/></p>', '2019-02-13 13:42:50', '2019-02-13 13:49:28', '0');
 INSERT INTO `notice` VALUES ('30', '测试', '<p><img src=\"http://img.baidu.com/hi/jx2/j_0003.gif\"/>新学期加油</p>', '2019-02-13 14:17:27', '2019-02-13 14:31:26', '0');
 INSERT INTO `notice` VALUES ('31', '', '', '2019-02-13 14:17:43', '2019-02-13 14:18:10', '1');
 INSERT INTO `notice` VALUES ('32', '测试图片', '<p><img src=\"/imgPath\\e873a44d-bef1-4307-b634-fa2d755f6a2d.jpeg\" title=\"e873a44d-bef1-4307-b634-fa2d755f6a2d.jpeg\" alt=\"e873a44d-bef1-4307-b634-fa2d755f6a2d.jpeg\"/><img src=\"/imgPath\\a1bc067b-eaeb-4824-879f-c47dd2f70d3f.jpeg\" title=\"a1bc067b-eaeb-4824-879f-c47dd2f70d3f.jpeg\" alt=\"a1bc067b-eaeb-4824-879f-c47dd2f70d3f.jpeg\"/></p>', '2019-02-13 16:09:14', '2019-02-14 11:04:40', '1');
 INSERT INTO `notice` VALUES ('33', '12121', '<p><img src=\"C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\img\\69e12f1d-0242-4cc4-bbf7-a9306af1bdb0.jpg\"/><img src=\"/imgPath\\4f040229-330f-4713-9ac8-ac97c41e5dc1.jpeg\" title=\"4f040229-330f-4713-9ac8-ac97c41e5dc1.jpeg\" alt=\"4f040229-330f-4713-9ac8-ac97c41e5dc1.jpeg\"/><img src=\"http://img.baidu.com/hi/jx2/j_0002.gif\"/></p>', '2019-02-13 16:34:47', '2019-02-14 11:04:37', '1');
-INSERT INTO `notice` VALUES ('34', '测试测试', '<p>测试121212121</p><p style=\"text-align:center\"><img src=\"/imgPath\\30fcb519-7272-434d-a756-063c58d13007.jpeg\" title=\"30fcb519-7272-434d-a756-063c58d13007.jpeg\" alt=\"30fcb519-7272-434d-a756-063c58d13007.jpeg\"/></p><p><br/></p>', '2019-02-13 16:56:22', '2019-02-14 11:04:31', '0');
+INSERT INTO `notice` VALUES ('34', '测试测试', '<p>测试121212121</p><p style=\"text-align:center\"><img src=\"/imgPath\\30fcb519-7272-434d-a756-063c58d13007.jpeg\" title=\"30fcb519-7272-434d-a756-063c58d13007.jpeg\" alt=\"30fcb519-7272-434d-a756-063c58d13007.jpeg\"/></p><p><br/></p>', '2019-02-13 16:56:22', '2019-04-24 13:42:04', '1');
 INSERT INTO `notice` VALUES ('35', '图片', '<p><img src=\"/imgPath\\f7fa5466-ba39-4081-adfb-5cdb91c48e5f.jpeg\" title=\"f7fa5466-ba39-4081-adfb-5cdb91c48e5f.jpeg\" alt=\"f7fa5466-ba39-4081-adfb-5cdb91c48e5f.jpeg\"/></p>', '2019-02-14 11:19:13', '2019-02-19 11:22:28', '1');
 INSERT INTO `notice` VALUES ('36', '1212', '<p><video class=\"edui-upload-video  vjs-default-skin    video-js\" controls=\"\" preload=\"none\" width=\"420\" height=\"280\" src data-setup=\"{}\"></video></p>', '2019-02-14 13:56:42', '2019-02-14 14:50:57', '1');
 INSERT INTO `notice` VALUES ('37', '12121', '<p>\n    <video class=\"edui-upload-video  vjs-default-skin video-js\" controls=\"\" preload=\"none\" width=\"420\" height=\"280\" src=\"/imgPath\\ba0e0256-ffe0-462f-b83b-d37c188e4667.mp4\" data-setup=\"{}\"></video>\n</p>', '2019-02-14 13:58:06', '2019-02-14 14:50:55', '1');
@@ -207,6 +208,14 @@ INSERT INTO `notice` VALUES ('51', '121212', '<p><video class=\"edui-upload-vide
 INSERT INTO `notice` VALUES ('52', '111', '<p><video class=\"edui-upload-video  vjs-default-skin video-js\" controls=\"\" preload=\"none\" width=\"989\" height=\"484\" src=\"/imgPath\\04d71b04-471d-4746-9d17-af415b081b34.mp4\" data-setup=\"{}\"><source src=\"/imgPath\\04d71b04-471d-4746-9d17-af415b081b34.mp4\" type=\"video/mp4\"/></video></p>', '2019-02-14 16:03:41', '2019-02-14 17:28:09', '1');
 INSERT INTO `notice` VALUES ('53', '12121', '<p><embed type=\"application/x-shockwave-flash\" class=\"edui-faked-music\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" src=\"http://box.baidu.com/widget/flash/bdspacesong.swf?from=tiebasongwidget&url=&name=%E6%99%B4%E5%A4%A9&artist=%E5%91%A8%E6%9D%B0%E4%BC%A6&extra=%E5%8F%B6%E6%83%A0%E7%BE%8E&autoPlay=false&loop=true\" width=\"400\" height=\"95\" align=\"none\" wmode=\"transparent\" play=\"true\" loop=\"false\" menu=\"false\" allowscriptaccess=\"never\" allowfullscreen=\"true\"/></p>', '2019-02-14 16:25:28', '2019-02-14 17:28:18', '1');
 INSERT INTO `notice` VALUES ('54', '12121', '<p><video class=\"edui-upload-video  vjs-default-skin video-js\" controls=\"\" preload=\"none\" width=\"202\" height=\"151\" src=\"/imgPath\\bb0ef7d0-8805-44b4-9604-44e4a0e683d7.mp4\" data-setup=\"{}\"><source src=\"/imgPath\\bb0ef7d0-8805-44b4-9604-44e4a0e683d7.mp4\" type=\"video/mp4\"/></video></p>', '2019-02-14 17:26:25', '2019-02-14 17:28:07', '1');
+INSERT INTO `notice` VALUES ('55', '111', '<p>111</p>', '2019-04-17 14:14:28', '2019-04-24 13:42:10', '1');
+INSERT INTO `notice` VALUES ('56', '121', '<p>121</p>', '2019-04-24 13:57:41', '2019-04-24 14:05:09', '1');
+INSERT INTO `notice` VALUES ('57', '1212', '<p>12121</p>', '2019-04-24 13:58:51', '2019-04-24 14:05:06', '1');
+INSERT INTO `notice` VALUES ('58', '111122222121', '<p>12121</p>', '2019-04-24 13:59:45', '2019-04-24 14:05:04', '1');
+INSERT INTO `notice` VALUES ('59', '3322', '<p>3322</p>', '2019-04-24 14:03:20', '2019-04-24 14:05:01', '1');
+INSERT INTO `notice` VALUES ('60', '1212', '<p>12121</p>', '2019-04-24 14:03:52', '2019-04-24 14:04:59', '1');
+INSERT INTO `notice` VALUES ('61', '1', '<p>1</p>', '2019-04-24 14:05:37', '2019-04-24 14:05:37', '0');
+INSERT INTO `notice` VALUES ('62', 'qwer', '<p><img src=\"/imgPath\\26e50c3a-c201-45a7-baab-2788f1617537.jpeg\" title=\"26e50c3a-c201-45a7-baab-2788f1617537.jpeg\" alt=\"26e50c3a-c201-45a7-baab-2788f1617537.jpeg\" width=\"295\" height=\"178\" style=\"width: 295px; height: 178px;\"/></p>', '2019-04-24 15:43:30', '2019-04-24 15:44:11', '0');
 
 -- ----------------------------
 -- Table structure for role
@@ -256,7 +265,7 @@ INSERT INTO `user` VALUES ('8', '吴刚', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSL
 INSERT INTO `user` VALUES ('9', '周小', '$2a$10$qVKxQuv9hZNaJQHg.7cO2u9FYQhsdLuc/bSIuch/ihrBXPDF067w2', '2018-12-25 13:38:33', '2019-02-19 10:56:14', '1', '1', '1', null);
 INSERT INTO `user` VALUES ('10', '郑雪', '$2a$10$uQB9Nh/BYiPeaWrJdv/akORO1Z/54hvN6mt1pcIpAhX9UufaGOC6G', '2018-12-25 13:39:04', '2019-02-19 09:54:30', '0', '1', '1', null);
 INSERT INTO `user` VALUES ('11', '王红', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:16', '2018-12-25 13:39:16', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('12', '梅雪', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:49:54', '2018-12-26 16:16:05', '0', '1', '1', null);
+INSERT INTO `user` VALUES ('12', '梅雪', '$2a$10$MkE8.184a4my9SbqONln6.7yDh4PyDyLMehOyzLngYWyDWJs2rDsC', '2018-12-25 13:49:54', '2019-04-18 14:57:41', '0', '1', '1', null);
 INSERT INTO `user` VALUES ('14', '张张', '$2a$10$F9xfVttFqLGf5OUcmTSoaucpPnUYLYpFTlsNwmhA58FtZ/I9F32l6', '2019-02-18 18:13:09', '2019-02-18 18:46:20', '1', '1', '1', null);
 INSERT INTO `user` VALUES ('15', '哈哈', '$2a$10$uxVzILF7v6zyR89HWC3VReArNtICMHWR1799fOU1n.yp6beFPiEH6', '2019-02-18 18:13:10', '2019-02-18 18:46:16', '1', '1', '1', null);
 INSERT INTO `user` VALUES ('16', '张张', '$2a$10$yTXe23zJ5pTfo1zpDi5oI.AIL1RFa5NGx0MUTBbjiAcSwg6CvqZK.', '2019-02-18 18:14:36', '2019-02-18 18:14:47', '1', '1', '1', null);
@@ -304,7 +313,7 @@ CREATE TABLE `user_role` (
   `user_id` bigint(11) DEFAULT NULL,
   `roles_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_role
@@ -322,3 +331,6 @@ INSERT INTO `user_role` VALUES ('10', '10', '2');
 INSERT INTO `user_role` VALUES ('11', '11', '2');
 INSERT INTO `user_role` VALUES ('12', '25', '3');
 INSERT INTO `user_role` VALUES ('13', '26', '3');
+INSERT INTO `user_role` VALUES ('14', '31', '2');
+INSERT INTO `user_role` VALUES ('15', '22', '3');
+INSERT INTO `user_role` VALUES ('16', '12', '2');
