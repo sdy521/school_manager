@@ -26,6 +26,17 @@ public class SendController extends BaseController{
     }
 
     /***
+     * 增加新公告
+     * @param notice
+     * @return
+     */
+    @RequestMapping("/insertNotic")
+    @ResponseBody
+    public Result insertNotic(@RequestBody Notice notice){
+        noticeService.insert(notice);
+        return OK;
+    }
+    /***
      * 修改弹窗
      * @param id
      * @return

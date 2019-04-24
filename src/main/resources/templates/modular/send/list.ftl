@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <#--<button class="btn btn-white" type="submit">Cancel</button>-->
-                                        <button class="btn btn-primary" onclick="sendName();">发布</button>
+                                        <button class="btn btn-primary" onclick="Send.send();">发布</button>
                                     </div>
                                 </div>
                             </div>

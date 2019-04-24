@@ -64,6 +64,28 @@ Send.initJqGrid = function(){
 Send.reload = function(){
     Send.table.setGridParam().trigger('reloadGrid');
 }
+//发送
+Send.send = function(){
+    var params = {};
+    var title = $("#onlyTitle").val();
+    var content = UE.getEditor('editor').getContent();
+    params.title = title;
+    params.content = content;
+    $.ajax({
+        url:"/send/insertNotic",
+        type:"POST",
+        data:JSON.stringify(params),
+        dataType:"JSON",
+        contentType:"application/json;charset=utf8",
+        success:function (r) {
+            if(r.code===0){
+                $("#onlyTitle").val("")
+                UesetContent("增加成功...",false);
+                Send.reload();
+            }
+        }
+    });
+}
 //删除
 Send.delete = function(id){
     if($("#a").find("i").hasClass("fa-chevron-up")){
@@ -125,6 +147,9 @@ Send.update = function () {
     });
 }
 //富文本框赋值
+function UesetContent(content,isAppendTo){
+    Send.ue.setContent(content,isAppendTo);
+}
 function Ue2setContent(content,isAppendTo){
     Send.ue2.setContent(content,isAppendTo);
 }
