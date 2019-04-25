@@ -80,9 +80,9 @@
 
         //接收到消息的回调方法
         websocket.onmessage = function(event){
+            var message = JSON.parse(event.data);
             //提示层
-            pop_init("公告信息",event.data);
-            $('#pop_div').fadeIn(400);
+            pop_init("公告信息",message.message,message.color);
         }
 
         //连接关闭的回调方法
@@ -107,24 +107,27 @@
         }
     }
     //提示层
-    function pop_init(title,content) {
+    function pop_init(title,content,color) {
         //取当前浏览器窗口大小
         var windowWidth=$(document).width();
         var windowHeight=$(document).height();
         //弹窗的大小
         var weight=320;
-        var height=240;
-        var str = "<div id='pop_div'style='background: #e9030b;display:none;position:absolute;border:1px solid #e0e0e0;z-index:99;width:"+weight+"px;height:"+height+"px;top:"+(windowHeight-height-10)+"px;left:"+(windowWidth-weight-10)+"px'>"+
-                "<div style='line-height:32px;background:#e9030b;border-bottom:1px solid #3b3b3b;font-size:14px;padding:0 0 0 10px;'>" +
-                "<div style='float:left;'><b>"+title+"</b></div><div style='float:right;cursor:pointer;'><b onclick='pop_close()'>×</b></div>" +
+        var height=120;
+        var str = "<div id='pop_div'style='background: "+color+";display:none;position:absolute;border:1px solid #e0e0e0;z-index:99;width:"+weight+"px;height:"+height+"px;top:"+(windowHeight-height-10)+"px;left:"+(windowWidth-weight-10)+"px'>"+
+                "<div style='line-height:32px;background:"+color+";'>" +
+                "<div style='float:right;cursor:pointer;'><span onclick='pop_close()'>关闭</span></div>"+
+                "<div style='text-align: center'><h4>"+title+"</h4></div>" +
                 "<div style='clear:both'></div>"+
                 "</div>" +
-                "<div id='content'>" +
-                content+
+                "<div id='content' style='margin-left: 10px;'>" +
+                "<strong>"+content+"</strong>"+
                 "</div>"+
                 "</div>";
         localStorage.setItem("pop",str);
+        $("#pop_div").remove();
         $("body").append(str);
+        $('#pop_div').fadeIn(400);
     }
     //提示层关闭
     function pop_close(){
