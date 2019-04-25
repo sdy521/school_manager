@@ -25,6 +25,11 @@
         fileInput();
         //websocket客户端
         websocketClient();
+        if(localStorage.pop){
+            var str = localStorage.pop;
+            $("body").append(str);
+            $('#pop_div').fadeIn(400);
+        }
     });
 
     function fileInput() {
@@ -75,7 +80,9 @@
 
         //接收到消息的回调方法
         websocket.onmessage = function(event){
-            alert(event.data)
+            //提示层
+            pop_init("公告信息",event.data);
+            $('#pop_div').fadeIn(400);
         }
 
         //连接关闭的回调方法
@@ -98,5 +105,30 @@
         function send(){
             websocket.send("message");
         }
+    }
+    //提示层
+    function pop_init(title,content) {
+        //取当前浏览器窗口大小
+        var windowWidth=$(document).width();
+        var windowHeight=$(document).height();
+        //弹窗的大小
+        var weight=320;
+        var height=240;
+        var str = "<div id='pop_div'style='background: #e9030b;display:none;position:absolute;border:1px solid #e0e0e0;z-index:99;width:"+weight+"px;height:"+height+"px;top:"+(windowHeight-height-10)+"px;left:"+(windowWidth-weight-10)+"px'>"+
+                "<div style='line-height:32px;background:#e9030b;border-bottom:1px solid #3b3b3b;font-size:14px;padding:0 0 0 10px;'>" +
+                "<div style='float:left;'><b>"+title+"</b></div><div style='float:right;cursor:pointer;'><b onclick='pop_close()'>×</b></div>" +
+                "<div style='clear:both'></div>"+
+                "</div>" +
+                "<div id='content'>" +
+                content+
+                "</div>"+
+                "</div>";
+        localStorage.setItem("pop",str);
+        $("body").append(str);
+    }
+    //提示层关闭
+    function pop_close(){
+        localStorage.removeItem("pop");
+        $('#pop_div').fadeOut(400);
     }
 </script>
