@@ -31,4 +31,8 @@ public class NoticeService extends BaseService<Notice> {
     public List<Notice> selectByTime(String dateTime){
         return noticeDao.selectNotice(dateTime);
     }
+
+    public List<Notice> selectByTime(String dateTime,Integer userId){
+        return noticeDao.selectNotice(dateTime,userId);
+    }
 }

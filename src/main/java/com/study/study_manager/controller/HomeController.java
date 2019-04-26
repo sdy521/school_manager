@@ -4,6 +4,7 @@ import com.study.study_manager.core.JSONResult;
 import com.study.study_manager.core.Result;
 import com.study.study_manager.entity.Notice;
 import com.study.study_manager.service.NoticeService;
+import com.study.study_manager.util.SpringSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class HomeController extends BaseController{
         model.addAttribute("menus",getMenus("main"));
         //添加公告
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        List<Notice> list = noticeService.selectByTime(sdf.format(new Date()));
+        List<Notice> list = noticeService.selectByTime(sdf.format(new Date()), SpringSecurity.getSysUser().getId());
         model.addAttribute("listnotice",list);
         return "main";
     }

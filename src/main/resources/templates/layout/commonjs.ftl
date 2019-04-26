@@ -21,10 +21,17 @@
 <script src="/static/plugins/bootstrapFileUpload/js/fileinput.min.js"></script>
 <script type="text/javascript">
     $(function () {
-       //头像上传
+         //头像上传
         fileInput();
         //websocket客户端
         websocketClient();
+        //判断是否在首页
+        var path = window.location.href;
+        if(path.indexOf("/main")!=-1){
+            localStorage.removeItem("noticeCount");
+            localStorage.removeItem("pop");
+        }
+        //判断是否有公告没看
         if(localStorage.pop){
             var str = localStorage.pop;
             $("body").append(str);
@@ -108,6 +115,15 @@
     }
     //提示层
     function pop_init(title,content,color) {
+        //发送公告个数
+        if(localStorage.getItem("noticeCount")){
+            var count = parseInt(localStorage.getItem("noticeCount"))+1;
+            localStorage.setItem("noticeCount",count);
+            $("#tip").text(count)
+        }else {
+            localStorage.setItem("noticeCount",1);
+            $("#tip").text(1);
+        }
         //取当前浏览器窗口大小
         var windowWidth=$(document).width();
         var windowHeight=$(document).height();

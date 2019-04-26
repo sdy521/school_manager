@@ -16,4 +16,9 @@ public interface NoticeDao extends BaseDao<Notice> {
 
     @Select("select * from notice where deleted = 0 and create_time like '${createTime}%' ORDER BY update_time DESC")
     List<Notice> selectNotice(@Param("createTime") String createTime);
+
+    @Select("SELECT n.* FROM user_notice un " +
+            "LEFT JOIN notice n ON un.notice_id=n.id " +
+            "WHERE un.create_time LIKE '${createTime}%' AND un.user_id=${userId} ORDER BY un.create_time DESC")
+    List<Notice> selectNotice(@Param("createTime") String createTime,@Param("userId")Integer userId);
 }
