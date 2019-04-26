@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController extends BaseController{
@@ -26,7 +27,7 @@ public class HomeController extends BaseController{
         model.addAttribute("menus",getMenus("main"));
         //添加公告
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        List<Notice> list = noticeService.selectByTime(sdf.format(new Date()), SpringSecurity.getSysUser().getId());
+        List<Map> list = noticeService.selectByTime(sdf.format(new Date()), SpringSecurity.getSysUser().getId());
         model.addAttribute("listnotice",list);
         return "main";
     }
@@ -34,7 +35,7 @@ public class HomeController extends BaseController{
     @RequestMapping("/selectNotice")
     @ResponseBody
     public Result selectNotice(@RequestParam String dateTime){
-        List<Notice> list = noticeService.selectByTime(dateTime);
+        List<Map> list = noticeService.selectByTime(dateTime,SpringSecurity.getSysUser().getId());
         return new JSONResult(list);
     }
 }

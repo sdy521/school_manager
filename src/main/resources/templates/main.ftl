@@ -37,7 +37,7 @@
                                         <div class="ibox-title">
                                             <h5>${notice.title}</h5>
                                             <div class="ibox-tools">
-                                                <label class="label">${notice.createTime?string('yyyy-MM-dd')}</label>
+                                                <label class="label">${notice.ucreateTime?string('yyyy-MM-dd')}</label>
                                             </div>
                                         </div>
                                         <div class="ibox-content">
@@ -106,7 +106,7 @@
                                "    <div class=\"ibox-title\">\n" +
                                "        <h5>"+item.title+"</h5>\n" +
                                "        <div class=\"ibox-tools\">\n" +
-                               "            <label class=\"label\">"+dateFtt("yyyy-MM-dd",new Date(item.createTime))+"</label>\n" +
+                               "            <label class=\"label\">"+dateFtt("yyyy-MM-dd",new Date(item.ucreateTime))+"</label>\n" +
                                "        </div>\n" +
                                "     </div>\n" +
                                "     <div class=\"ibox-content\">"+item.content+"</div>\n" +

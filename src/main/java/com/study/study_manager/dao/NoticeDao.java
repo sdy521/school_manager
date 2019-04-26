@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public interface NoticeDao extends BaseDao<Notice> {
@@ -14,11 +15,8 @@ public interface NoticeDao extends BaseDao<Notice> {
     @Select("select * from notice where deleted = 0 ORDER BY update_time DESC")
     List<Notice> selectByPage();
 
-    @Select("select * from notice where deleted = 0 and create_time like '${createTime}%' ORDER BY update_time DESC")
-    List<Notice> selectNotice(@Param("createTime") String createTime);
-
-    @Select("SELECT n.* FROM user_notice un " +
+    @Select("SELECT n.*,un.create_time AS ucreateTime FROM user_notice un " +
             "LEFT JOIN notice n ON un.notice_id=n.id " +
             "WHERE un.create_time LIKE '${createTime}%' AND un.user_id=${userId} ORDER BY un.create_time DESC")
-    List<Notice> selectNotice(@Param("createTime") String createTime,@Param("userId")Integer userId);
+    List<Map> selectNotice(@Param("createTime") String createTime, @Param("userId")Integer userId);
 }

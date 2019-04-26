@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class NoticeService extends BaseService<Notice> {
@@ -28,11 +29,7 @@ public class NoticeService extends BaseService<Notice> {
         return new PageInfo<>(list);
     }
 
-    public List<Notice> selectByTime(String dateTime){
-        return noticeDao.selectNotice(dateTime);
-    }
-
-    public List<Notice> selectByTime(String dateTime,Integer userId){
+    public List<Map> selectByTime(String dateTime, Integer userId){
         return noticeDao.selectNotice(dateTime,userId);
     }
 }
