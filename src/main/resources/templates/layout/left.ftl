@@ -28,22 +28,16 @@
                         <i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 35px;"></i>
                 </div>
             </li>
-            <#--<li class="active">
-                <a><i class="fa fa-th-large"></i> <span class="nav-label">教师管理</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="/teacher_nameList/list">教师名单</a></li>
-                </ul>
-            </li>-->
             <#list menus as menu>
                 <#assign children = menu.children />
                 <#if children??&&(children?size>0)>
                     <li class="${menu.active?string('active','')}">
                         <a><i class="${menu.icon!"fa fa-th-large"}"></i> <span class="nav-label">${menu.name}</span> <span class="fa arrow"></span></a>
-                        <#list children as child>
-                            <ul class="nav nav-second-level">
+                        <ul class="nav nav-second-level collapse ${menu.active?string('in', '')}">
+                            <#list children as child>
                                 <li class="${child.active?string('active','')}"><a href="${child.url}"><i class="${child.icon}"></i>${child.name}</a></li>
-                            </ul>
-                        </#list>
+                            </#list>
+                        </ul>
                     </li>
                 <#else >
                     <li class="${menu.active?string('active', '')}">
