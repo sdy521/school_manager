@@ -218,10 +218,14 @@ public class FileController extends BaseController{
             //文件夹
             List<Integer> idList = fileService.getIdListByCode(code);
             List<String> nameList = fileService.getNameListByCode(code);
-            fileService.deleteByIds(StringUtils.join(idList.toArray(),","));
+            if(idList!=null&&idList.size()>0){
+                fileService.deleteByIds(StringUtils.join(idList.toArray(),","));
+            }
             fileService.delete(code);
-            for(String n:nameList){
-                fileService.deleteFile(n);
+            if(nameList!=null&&nameList.size()>0){
+                for(String n:nameList){
+                    fileService.deleteFile(n);
+                }
             }
         }else {
             //文件
