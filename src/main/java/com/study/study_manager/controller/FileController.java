@@ -178,7 +178,7 @@ public class FileController extends BaseController{
             java.io.File file1 = new java.io.File(localPath);
             try {
                 FileUtils.copyFile(file,file1);
-                Runtime.getRuntime().exec("cmd /c cmd.exe /c"+localPath+" exit");
+                Runtime.getRuntime().exec("rundll32 url.dll FileProtocolHandler file://"+localPath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
