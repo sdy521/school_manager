@@ -29,7 +29,7 @@ function contextmenu(node){
             }
         },
         'addFile': {
-            'label': '新增文件',
+            'label': '上传文件',
             'action': function (data) {
                 var inst = $.jstree.reference(data.reference);
                 var obj = inst.get_node(data.reference);
@@ -38,22 +38,24 @@ function contextmenu(node){
             }
         },
         'look': {
-            'label': '打开',
+            'label': '下载',
             'action': function (data) {
                 var inst = $.jstree.reference(data.reference);
                 var obj = inst.get_node(data.reference);
                 $.ajax({
-                    url:"/file/lookFile?code="+obj.id,
+                    url:"/file/downloadFile?code="+obj.id,
                     type:"GET",
                     success:function (r) {
-                        if(r.code!==0){
+                        if(r.code===0){
+                            window.open(r.msg);
+                        }else {
                             error(r.msg);
                         }
                     }
                 });
             }
         },
-        'synchro': {
+        /*'synchro': {
             'label': '同步',
             'action': function (data) {
                 var inst = $.jstree.reference(data.reference);
@@ -68,7 +70,7 @@ function contextmenu(node){
                     }
                 });
             }
-        },
+        },*/
         'update':{
             'label':'修改',
             'action':function (data) {
@@ -236,7 +238,7 @@ File.updateName = function(){
 File.updateFileName = function(){
     var newName = $("#updateFileName").val();
     var updateCode = $("#updateFileCode").val();
-    warningCommon("确定修改文件名!","修改文件名前请及时同步，防止信息丢失",function () {
+    warningCommon("确定修改文件名!","",function () {
         $.ajax({
             url:"/file/updateFileName?newName="+newName+"&updateCode="+updateCode,
             type:"GET",

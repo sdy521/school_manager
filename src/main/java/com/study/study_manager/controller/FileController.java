@@ -5,6 +5,7 @@ import com.study.study_manager.core.Result;
 import com.study.study_manager.entity.File;
 import com.study.study_manager.service.FileService;
 import com.study.study_manager.util.UploadFile;
+import com.study.study_manager.util.UrlUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.util.StringUtil;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +38,8 @@ public class FileController extends BaseController{
     private String path;
     @Value("${localfiledesk.location}")
     private String localpath;
+    @Value("${fileurl}")
+    private String fileurl;
     @Resource
     private FileService fileService;
 
@@ -144,7 +148,7 @@ public class FileController extends BaseController{
         if(!oldFile.exists()){
             return new Result(1,"文件不存在");
         }
-        String newPath = path.substring(0,path.lastIndexOf("\\"))+"\\"+newName+path.substring(path.lastIndexOf("."));
+        String newPath = path.substring(0,path.lastIndexOf("/"))+ java.io.File.separator +newName+path.substring(path.lastIndexOf("."));
         java.io.File newFile = new java.io.File(newPath);
         if(newFile.exists()){
             return new Result(1,"文件命名重复，不可修改");
@@ -155,17 +159,17 @@ public class FileController extends BaseController{
             e.printStackTrace();
             System.out.println("修改文件名异常！");
         }
-        fileService.updateNamePathByCode(newPath.substring(newPath.lastIndexOf("\\")+1),newPath,updateCode);
+        fileService.updateNamePathByCode(newPath.substring(newPath.lastIndexOf("/")+1),newPath,updateCode);
         return OK;
     }
 
     /***
-     * 查看文件
+     * 下载文件
      * @param code
      */
-    @RequestMapping("/lookFile")
+    @RequestMapping("/downloadFile")
     @ResponseBody
-    public Result lookFile(@RequestParam String code){
+    public Result downloadFile(@RequestParam String code){
         String path = fileService.getFilePath(code);
         java.io.File file = new java.io.File(path);
         if(file.exists()){
@@ -174,15 +178,25 @@ public class FileController extends BaseController{
             if(!fileDir.exists()){
                 fileDir.mkdir();
             }
-            String localPath = localpath+path.substring(path.lastIndexOf("\\"));
+            String nginxPath = fileurl+path;
+            /*String localPath = localpath+"\\"+path.substring(path.lastIndexOf(java.io.File.separator)+1);
             java.io.File file1 = new java.io.File(localPath);
             try {
+                if(!file1.exists()){
+                    file1.createNewFile();
+                }
+                URL url = new URL(fileurl+path);
+                UrlUtil.saveBinary(url,localPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            /*try {
                 FileUtils.copyFile(file,file1);
                 Runtime.getRuntime().exec("rundll32 url.dll FileProtocolHandler file://"+localPath);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            return OK;
+            }*/
+            return new Result(0,nginxPath);
         }else {
             return new Result(1,"文件不存在");
         }
