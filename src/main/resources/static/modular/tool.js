@@ -1,6 +1,5 @@
 /**************************************时间格式化处理************************************/
-function dateFtt(fmt,date)
-{
+function dateFtt(fmt,date) {
     var o = {
         "M+" : date.getMonth()+1,                 //月份
         "d+" : date.getDate(),                    //日

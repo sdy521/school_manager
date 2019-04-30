@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-04-26 15:38:35
+Date: 2019-04-30 16:19:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,19 +52,14 @@ CREATE TABLE `file` (
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `type` int(11) DEFAULT NULL COMMENT '0:文件夹 1:文件',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of file
 -- ----------------------------
-INSERT INTO `file` VALUES ('1', 'word文件', null, '3e692811-18f3-4d86-8dfc-eb55759d5b5d', null, '2019-04-12 17:16:22', '2019-04-12 17:16:22', '0', null, '0');
-INSERT INTO `file` VALUES ('2', 'excel文件', null, 'f7ae54d8-ac9e-4680-a3e7-eeaa4a6643fa', null, '2019-04-12 17:16:30', '2019-04-12 17:16:30', '0', null, '0');
-INSERT INTO `file` VALUES ('3', '其他', null, 'cf75ffd8-3b0f-4848-9c34-9a25dd67344a', null, '2019-04-12 17:16:35', '2019-04-12 17:16:35', '0', null, '0');
-INSERT INTO `file` VALUES ('4', '2019/04/12', null, '4995c6c8-cbc5-415a-9e98-83c585b3ca74', '3e692811-18f3-4d86-8dfc-eb55759d5b5d', '2019-04-12 17:16:47', '2019-04-12 17:16:47', '0', null, '0');
-INSERT INTO `file` VALUES ('5', '20190412-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190412-InputPhoneModel - 副本.xls', '19931869-1b6a-4a06-a44a-307e6698c700', '4995c6c8-cbc5-415a-9e98-83c585b3ca74', '2019-04-12 17:17:02', '2019-04-12 17:17:16', '1', 'fa fa-file', '1');
-INSERT INTO `file` VALUES ('6', '2019/04/12', null, 'be9ddd6c-6ff6-4bf2-81c7-c94d9427cd7a', 'f7ae54d8-ac9e-4680-a3e7-eeaa4a6643fa', '2019-04-12 17:17:27', '2019-04-12 17:17:27', '0', null, '0');
-INSERT INTO `file` VALUES ('7', 'test.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\test.xls', 'b4588bad-b69a-4eab-8b24-22b0d8fa5236', 'be9ddd6c-6ff6-4bf2-81c7-c94d9427cd7a', '2019-04-12 17:17:37', '2019-04-12 17:17:45', '0', 'fa fa-file', '1');
-INSERT INTO `file` VALUES ('8', 'test.docx', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\test.docx', 'c0ae8b2d-2309-4204-8587-7a84d7e80d4e', '4995c6c8-cbc5-415a-9e98-83c585b3ca74', '2019-04-12 17:18:09', '2019-04-12 17:18:20', '0', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('1', 'word', null, '2120425f-ffcf-49ab-a9d4-426319397d90', null, '2019-04-29 15:24:14', '2019-04-29 15:24:14', '0', null, '0');
+INSERT INTO `file` VALUES ('2', '20190429-qqq.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190429-qqq.xls', '0060a7c2-1772-4fb5-afdb-8b8b935f93bf', '2120425f-ffcf-49ab-a9d4-426319397d90', '2019-04-29 15:25:29', '2019-04-29 15:25:29', '0', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('3', '20190430-20190428-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190430-20190428-InputPhoneModel - 副本.xls', '3b00cc42-da8e-40bc-a512-0e331eb2a4b5', '2120425f-ffcf-49ab-a9d4-426319397d90', '2019-04-30 14:12:03', '2019-04-30 14:12:03', '0', 'fa fa-file', '1');
 
 -- ----------------------------
 -- Table structure for info
@@ -163,6 +158,25 @@ INSERT INTO `notice` VALUES ('8', '毕业答辩', '<p>毕业答辩毕业答辩�
 INSERT INTO `notice` VALUES ('63', '学校座谈会', '<p><img src=\"/imgPath\\b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" title=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" alt=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" style=\"width: 349px; height: 214px;\" width=\"349\" height=\"214\"/>&nbsp; <br/></p><p>学校座谈会<br/></p>', '2019-04-26 13:35:20', '2019-04-26 13:35:20', '0');
 
 -- ----------------------------
+-- Table structure for pdf
+-- ----------------------------
+DROP TABLE IF EXISTS `pdf`;
+CREATE TABLE `pdf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL COMMENT '保存路径',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `deleted` tinyint(4) DEFAULT NULL COMMENT '0未删除 1删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pdf
+-- ----------------------------
+INSERT INTO `pdf` VALUES ('1', '20190430 151524-12.pdf', '/home/aubin/study_manager/word/pdf/20190430 151524-12.pdf', '2019-04-30 15:15:25', '2019-04-30 15:15:25', '0');
+
+-- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
@@ -259,15 +273,18 @@ CREATE TABLE `user_notice` (
   `notice_id` int(11) DEFAULT NULL COMMENT 'notice表id',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '推送时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_notice
 -- ----------------------------
-INSERT INTO `user_notice` VALUES ('1', '1', '63', '2019-04-26 15:36:49');
-INSERT INTO `user_notice` VALUES ('2', '12', '8', '2019-04-26 15:37:43');
-INSERT INTO `user_notice` VALUES ('3', '1', '8', '2019-04-26 15:37:43');
-INSERT INTO `user_notice` VALUES ('4', '12', '2', '2019-04-26 15:37:57');
+INSERT INTO `user_notice` VALUES ('1', '1', '63', '2019-04-26 15:56:03');
+INSERT INTO `user_notice` VALUES ('2', '1', '2', '2019-04-26 16:01:48');
+INSERT INTO `user_notice` VALUES ('3', '12', '2', '2019-04-26 16:01:48');
+INSERT INTO `user_notice` VALUES ('4', '1', '7', '2019-04-26 17:11:32');
+INSERT INTO `user_notice` VALUES ('5', '1', '63', '2019-04-26 17:11:43');
+INSERT INTO `user_notice` VALUES ('6', '1', '7', '2019-04-28 10:50:11');
+INSERT INTO `user_notice` VALUES ('7', '1', '8', '2019-04-28 15:32:49');
 
 -- ----------------------------
 -- Table structure for user_role

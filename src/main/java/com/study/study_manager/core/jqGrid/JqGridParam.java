@@ -3,8 +3,7 @@ package com.study.study_manager.core.jqGrid;
 /**
  * jqGrid查询参数
  *
- * @author fonlin
- * @date 2018/4/24
+ * @author sdy
  */
 public class JqGridParam {
 

@@ -11,6 +11,7 @@
         <#include "/templates/layout/head.ftl">
         <#--内容-->
         <div class="wrapper wrapper-content">
+            <input type="hidden" id="nginxurl" value="${nginxurl}">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox">
@@ -19,6 +20,16 @@
                                 <input id="input-id" name="file" multiple type="file" data-show-caption="true">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <table id="grid-table"></table>
+                        <div id="grid-pager"></div>
                     </div>
                 </div>
             </div>

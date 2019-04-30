@@ -1,11 +1,20 @@
 package com.study.study_manager.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.study.study_manager.core.JSONResult;
 import com.study.study_manager.core.Result;
+import com.study.study_manager.core.jqGrid.JqGridResult;
+import com.study.study_manager.dto.PdfParam;
+import com.study.study_manager.entity.Pdf;
+import com.study.study_manager.service.PdfService;
 import com.study.study_manager.util.UploadFile;
 import com.study.study_manager.util.WordPdfUtils;
 import org.apache.poi.xwpf.converter.pdf.PdfOptions;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +40,16 @@ public class WordConverterTOPdfController extends BaseController{
 
     @Value("${word.location}")
     private String localPath;
+    @Value("${fileurl}")
+    private String nginxurl;
+
+    @Resource
+    private PdfService pdfService;
+
     @RequestMapping("/list")
     public String list(Model model){
         model.addAttribute("menus",getMenus("wordConverterPdf"));
+        model.addAttribute("nginxurl",nginxurl);
         return "/modular/wordConverterPdf/list";
     }
 
@@ -42,7 +61,6 @@ public class WordConverterTOPdfController extends BaseController{
     @RequestMapping("/uploadWord")
     @ResponseBody
     public Result uploadWord(MultipartFile file) throws Exception{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HHmmss");
         String wordName = UploadFile.uploadWord(file);
         String name = wordName.substring(0,wordName.lastIndexOf("."));
         String target = localPath+File.separator+wordName;
@@ -52,11 +70,50 @@ public class WordConverterTOPdfController extends BaseController{
             file1.mkdir();
         }
         String outPath = localPath+File.separator+"pdf"+File.separator+name+".pdf";
+        //保存路径
+        Pdf pdf = new Pdf();
+        pdf.setPath(outPath);
+        pdf.setName(outPath.substring(outPath.lastIndexOf(File.separator)+1));
+        pdfService.insert(pdf);
         OutputStream outDir = new FileOutputStream(outPath);
-
         PdfOptions pdfOptions = PdfOptions.create();
         Map<String,String> params = new HashMap<>();
         WordPdfUtils.wordConverterToPdf(targetPath,outDir,pdfOptions,params);
         return OK;
+    }
+
+    /***
+     * 分页展示
+     * @param param
+     * @return
+     */
+    @RequestMapping("/grid")
+    @ResponseBody
+    public Result grid(PdfParam param){
+        PageInfo<Pdf> pageInfo = pdfService.selectByPage(param);
+        JqGridResult result = new JqGridResult();
+        result.setRecords(pageInfo.getTotal());
+        result.setTotal(pageInfo.getPages());
+        result.setPage(pageInfo.getPageNum());
+        result.setRows(pageInfo.getList());
+        return new JSONResult(result);
+    }
+
+    @RequestMapping(value = "/download")
+    public void downloadPdf(String url,HttpServletResponse response) throws IOException {
+        //获取文件流
+        InputStream is = new URL(url).openStream();
+        String name = url.substring(url.lastIndexOf(File.separator)+1);
+        response.reset();
+        response.setContentType("application/pdf;charset=ISO8859-1");
+        response.setHeader("content-disposition", "attachment; filename="+name);
+        response.addHeader("Pargam", "no-cache");
+        response.addHeader("Cache-Control", "no-cache");
+        OutputStream os = response.getOutputStream();
+        byte[] b = new byte[1024];
+        int len;
+        while ((len=is.read(b))!=-1){
+            os.write(b,0,len);
+        }
     }
 }
