@@ -27,7 +27,8 @@
         <div class="wrapper wrapper-content">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="ibox">
+                    <div class="ibox-content">
+                        <button class="btn btn-success" style="margin-bottom: 10px;" onclick="TeacherInfo.downloadExcel();">导出pdf</button>
                         <table id="grid-table"></table>
                         <div id="grid-pager"></div>
                     </div>

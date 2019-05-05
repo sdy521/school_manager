@@ -28,7 +28,9 @@ import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipOutputStream;
 
 /**
  * @author sdy
@@ -115,5 +117,12 @@ public class WordConverterTOPdfController extends BaseController{
         while ((len=is.read(b))!=-1){
             os.write(b,0,len);
         }
+    }
+
+    @RequestMapping("/downloadZip")
+    public void downloadZip(HttpServletResponse response) throws IOException{
+        OutputStream os = response.getOutputStream();
+        ZipOutputStream zos = new ZipOutputStream(os);
+        List<Pdf> list = pdfService.selectAll();
     }
 }

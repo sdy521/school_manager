@@ -2,13 +2,25 @@ package com.study.study_manager.core;
 
 import com.study.study_manager.entity.BaseEntity;
 import com.study.study_manager.entity.Menu;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
 public abstract class BaseService<T extends BaseEntity>{
 
+    private Class<T> entityClass;
+
     protected abstract BaseDao<T> getDao();
+
+    public BaseService() {
+        //getGenericSuperclass()获取直接父类
+        //转成ParameterizedType
+        //getActualTypeArguments()获取泛型数组
+        this.entityClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    }
 
     /***
      * 参数属性值为空的也插入
@@ -57,7 +69,10 @@ public abstract class BaseService<T extends BaseEntity>{
      * @return
      */
     public List<T> selectAll(){
-        return getDao().selectAll();
+        Condition condition = new Condition(entityClass);
+        Example.Criteria criteria = condition.createCriteria();
+        criteria.andEqualTo("deleted", false);
+        return getDao().selectByExample(condition);
     }
 
     /***

@@ -64,6 +64,10 @@ WordPdf.downloadPdf = function(path){
     var url = nginxurl+path;
     window.open("/wordConverterPdf/download?url="+url);
 }
+//全部导出pdf
+WordPdf.downloadPdfZip = function(){
+    
+}
 $(function () {
     WordPdf.table = WordPdf.initJqGrid();
     //bootstrap fileinput
