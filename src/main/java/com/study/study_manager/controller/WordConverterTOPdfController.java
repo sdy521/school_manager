@@ -9,6 +9,7 @@ import com.study.study_manager.entity.Pdf;
 import com.study.study_manager.service.PdfService;
 import com.study.study_manager.util.UploadFile;
 import com.study.study_manager.util.WordPdfUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.xwpf.converter.pdf.PdfOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
@@ -105,7 +107,7 @@ public class WordConverterTOPdfController extends BaseController{
     public void downloadPdf(String url,HttpServletResponse response) throws IOException {
         //获取文件流
         InputStream is = new URL(url).openStream();
-        String name = url.substring(url.lastIndexOf(File.separator)+1);
+        String name = url.substring(url.lastIndexOf("/")+1);
         response.reset();
         response.setContentType("application/pdf;charset=ISO8859-1");
         response.setHeader("content-disposition", "attachment; filename="+name);
@@ -120,9 +122,36 @@ public class WordConverterTOPdfController extends BaseController{
     }
 
     @RequestMapping("/downloadZip")
-    public void downloadZip(HttpServletResponse response) throws IOException{
-        OutputStream os = response.getOutputStream();
-        ZipOutputStream zos = new ZipOutputStream(os);
+    public ResponseEntity<byte[]> downloadZip(HttpServletResponse response) throws IOException{
+        /*String zipName = "pdf批量.zip";
+        response.setContentType("APPLICATION/OCTET-STREAM");
+        response.setHeader("Content-Disposition","attachment; filename="+zipName);*/
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        OutputStream os = response.getOutputStream();
+        ZipOutputStream zos = new ZipOutputStream(bos);
         List<Pdf> list = pdfService.selectAll();
+        list.forEach(pdf -> {
+            String path = pdf.getPath();
+            String name = path.substring(path.lastIndexOf("/")+1);
+            String url = nginxurl + path;
+            try {
+                InputStream is = new URL(url).openStream();
+                zos.putNextEntry(new ZipEntry(name));
+                byte[] bytes = new byte[1024];
+                int len;
+                while ((len = is.read(bytes))!=-1){
+                    zos.write(bytes,0,len);
+                }
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        bos.close();
+        zos.close();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", "pdf批量.zip");
+        return new ResponseEntity<byte[]>(bos.toByteArray(),headers, HttpStatus.CREATED);
     }
 }

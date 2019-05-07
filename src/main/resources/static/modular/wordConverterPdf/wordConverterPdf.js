@@ -66,7 +66,7 @@ WordPdf.downloadPdf = function(path){
 }
 //全部导出pdf
 WordPdf.downloadPdfZip = function(){
-    
+    window.open("/wordConverterPdf/downloadZip");
 }
 $(function () {
     WordPdf.table = WordPdf.initJqGrid();
