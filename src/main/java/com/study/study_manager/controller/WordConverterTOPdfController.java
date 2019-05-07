@@ -150,8 +150,9 @@ public class WordConverterTOPdfController extends BaseController{
         bos.close();
         zos.close();
         HttpHeaders headers = new HttpHeaders();
+        String filename = new String("pdf批量.xip".getBytes("UTF-8"),"ISO-8859-1");
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        headers.setContentDispositionFormData("attachment", "pdf批量.zip");
+        headers.setContentDispositionFormData("attachment", filename);
         return new ResponseEntity<byte[]>(bos.toByteArray(),headers, HttpStatus.CREATED);
     }
 }
