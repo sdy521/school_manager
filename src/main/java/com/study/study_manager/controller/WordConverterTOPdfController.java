@@ -104,6 +104,7 @@ public class WordConverterTOPdfController extends BaseController{
         return new JSONResult(result);
     }
 
+    @OperationLog("下载pdf")
     @RequestMapping(value = "/download")
     public void downloadPdf(String url,HttpServletResponse response) throws IOException {
         //获取文件流

@@ -1,5 +1,6 @@
 package com.study.study_manager.controller;
 
+import com.study.study_manager.annotation.OperationLog;
 import com.study.study_manager.entity.Info;
 import com.study.study_manager.service.InfoService;
 import com.study.study_manager.util.ExcelUtil;
@@ -26,6 +27,7 @@ public class ExcelController extends BaseController{
      * 导出教师信息
      * @return
      */
+    @OperationLog("导出教师信息")
     @RequestMapping(value = "/export")
     @ResponseBody
     public void export(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -77,6 +79,7 @@ public class ExcelController extends BaseController{
      * 导出学生信息
      * @return
      */
+    @OperationLog("导出学生信息")
     @RequestMapping(value = "/exportStudent")
     @ResponseBody
     public void exportStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
