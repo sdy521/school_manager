@@ -23,9 +23,6 @@ import java.lang.reflect.Method;
 @Component
 public class LogAspect {
 
-    @Autowired
-    private OperationLogDao operationLogDao;
-
     @Pointcut("@annotation(com.study.study_manager.annotation.OperationLog)")
     public void pointcut(){
 
@@ -56,6 +53,6 @@ public class LogAspect {
         String username = SpringSecurity.getSysUser().getUsername();
         //操作名
         String name = currentMethod.getAnnotation(OperationLog.class).value();
-        operationLogDao.insert(name,method,username);
+        LogManager.execute(LogFactory.operationlog(name,method,username));
     }
 }
