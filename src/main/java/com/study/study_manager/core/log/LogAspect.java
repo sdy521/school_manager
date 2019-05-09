@@ -53,6 +53,7 @@ public class LogAspect {
         String username = SpringSecurity.getSysUser().getUsername();
         //操作名
         String name = currentMethod.getAnnotation(OperationLog.class).value();
+        //线程池插入数据库
         LogManager.execute(LogFactory.operationlog(name,method,username));
     }
 }
