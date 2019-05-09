@@ -1,6 +1,7 @@
 package com.study.study_manager.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.study.study_manager.annotation.OperationLog;
 import com.study.study_manager.core.JSONResult;
 import com.study.study_manager.core.Result;
 import com.study.study_manager.core.jqGrid.JqGridResult;
@@ -121,6 +122,7 @@ public class WordConverterTOPdfController extends BaseController{
         }
     }
 
+    @OperationLog("批量下载pdf")
     @RequestMapping("/downloadZip")
     public ResponseEntity<byte[]> downloadZip(HttpServletResponse response) throws IOException{
         /*String zipName = "pdf批量.zip";

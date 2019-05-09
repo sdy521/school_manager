@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-04-30 16:19:59
+Date: 2019-05-09 16:14:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,14 +52,17 @@ CREATE TABLE `file` (
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `type` int(11) DEFAULT NULL COMMENT '0:文件夹 1:文件',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of file
 -- ----------------------------
-INSERT INTO `file` VALUES ('1', 'word', null, '2120425f-ffcf-49ab-a9d4-426319397d90', null, '2019-04-29 15:24:14', '2019-04-29 15:24:14', '0', null, '0');
-INSERT INTO `file` VALUES ('2', '20190429-qqq.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190429-qqq.xls', '0060a7c2-1772-4fb5-afdb-8b8b935f93bf', '2120425f-ffcf-49ab-a9d4-426319397d90', '2019-04-29 15:25:29', '2019-04-29 15:25:29', '0', 'fa fa-file', '1');
-INSERT INTO `file` VALUES ('3', '20190430-20190428-InputPhoneModel - 副本.xls', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\filedesk\\20190430-20190428-InputPhoneModel - 副本.xls', '3b00cc42-da8e-40bc-a512-0e331eb2a4b5', '2120425f-ffcf-49ab-a9d4-426319397d90', '2019-04-30 14:12:03', '2019-04-30 14:12:03', '0', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('1', 'excel', null, 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', null, '2019-04-29 16:16:36', '2019-04-29 16:16:36', '0', null, '0');
+INSERT INTO `file` VALUES ('2', '20190429-InputPhoneModel - 副本.xls', '/home/aubin/study_manager/filedesk/20190429-InputPhoneModel - 副本.xls', '9c65a49a-9f4f-4d1e-be7d-fe1ab7c3219a', 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', '2019-04-29 16:16:46', '2019-04-29 16:22:19', '1', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('3', '20190429-20190428-InputPhoneModel - 副本.xls', '/home/aubin/study_manager/filedesk/20190429-20190428-InputPhoneModel - 副本.xls', 'f07ede01-33fa-4355-99b7-61ba1220fd1c', 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', '2019-04-29 16:22:29', '2019-04-29 16:29:16', '1', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('4', '123.xls', '/home/aubin/study_manager/filedesk/123.xls', '4c8b6def-b637-4f19-80df-3d7b57e938e9', 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', '2019-04-29 16:30:31', '2019-04-29 17:01:20', '0', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('5', '123.xls', '/home/aubin/study_manager/filedesk/123.xls', '765fa3b0-ee8b-4aef-b30c-96ec2ba7b709', 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', '2019-04-29 16:37:27', '2019-04-29 16:49:38', '1', 'fa fa-file', '1');
+INSERT INTO `file` VALUES ('6', '123.xls', '/home/aubin/study_manager/filedesk/123.xls', '9840586b-c867-4ede-aa3e-14e0421f38d3', 'fa5d03c2-a97e-4159-be3c-a56f8bea6551', '2019-04-29 16:56:00', '2019-04-29 16:56:50', '1', 'fa fa-file', '1');
 
 -- ----------------------------
 -- Table structure for info
@@ -158,6 +161,24 @@ INSERT INTO `notice` VALUES ('8', '毕业答辩', '<p>毕业答辩毕业答辩�
 INSERT INTO `notice` VALUES ('63', '学校座谈会', '<p><img src=\"/imgPath\\b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" title=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" alt=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" style=\"width: 349px; height: 214px;\" width=\"349\" height=\"214\"/>&nbsp; <br/></p><p>学校座谈会<br/></p>', '2019-04-26 13:35:20', '2019-04-26 13:35:20', '0');
 
 -- ----------------------------
+-- Table structure for operation_log
+-- ----------------------------
+DROP TABLE IF EXISTS `operation_log`;
+CREATE TABLE `operation_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '操作名',
+  `method` varchar(255) DEFAULT NULL COMMENT '操作方法',
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
+
+-- ----------------------------
+-- Records of operation_log
+-- ----------------------------
+INSERT INTO `operation_log` VALUES ('1', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-09 16:13:31');
+
+-- ----------------------------
 -- Table structure for pdf
 -- ----------------------------
 DROP TABLE IF EXISTS `pdf`;
@@ -169,12 +190,13 @@ CREATE TABLE `pdf` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `deleted` tinyint(4) DEFAULT NULL COMMENT '0未删除 1删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pdf
 -- ----------------------------
 INSERT INTO `pdf` VALUES ('1', '20190430 151524-12.pdf', '/home/aubin/study_manager/word/pdf/20190430 151524-12.pdf', '2019-04-30 15:15:25', '2019-04-30 15:15:25', '0');
+INSERT INTO `pdf` VALUES ('2', '20190505 103158-12 - 副本.pdf', 'C:\\Users\\Administrator.ZYDN-20180527PO\\Desktop\\word\\pdf\\20190505 103158-12 - 副本.pdf', '2019-05-05 10:32:01', '2019-05-05 10:32:01', '1');
 
 -- ----------------------------
 -- Table structure for role
