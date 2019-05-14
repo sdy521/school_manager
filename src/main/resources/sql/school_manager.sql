@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50725
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : school_manager
 
 Target Server Type    : MYSQL
-Target Server Version : 50725
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2019-05-14 17:14:41
+Date: 2019-05-14 22:36:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -125,14 +125,14 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
 INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-05-14 13:47:34', '教师管理', '#', 'teacher', '0', '', '0', 'fa fa-tasks', '3');
 INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-02-21 14:56:31', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '0', 'fa fa-user', '1');
-INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-05-14 13:48:26', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '9');
+INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-05-14 22:34:02', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '10');
 INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt', '1');
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '0', 'fa fa-newspaper-o', '2');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
@@ -151,6 +151,8 @@ INSERT INTO `menu` VALUES ('18', '2019-04-09 14:21:18', '2019-05-14 13:48:17', '
 INSERT INTO `menu` VALUES ('19', '2019-04-11 11:05:02', '2019-05-14 13:48:05', '文件台', '#', 'filedesk', '0', '', '0', 'fa fa-paste (alias)', '7');
 INSERT INTO `menu` VALUES ('20', '2019-04-11 11:07:49', '2019-04-11 11:07:49', '文件管理', '/file/list', 'filemanager', '0', 'filedesk', '0', 'fa fa-folder-open', '1');
 INSERT INTO `menu` VALUES ('21', '2019-05-14 13:40:46', '2019-05-14 13:47:16', '系统监控', '/monitor/list', 'monitor', '0', '', '0', 'fa fa-tachometer', '2');
+INSERT INTO `menu` VALUES ('22', '2019-05-14 22:33:54', '2019-05-14 22:33:54', '日志管理', '#', 'log', '0', '', '0', 'fa fa-edit', '9');
+INSERT INTO `menu` VALUES ('23', '2019-05-14 22:35:15', '2019-05-14 22:35:15', '操作日志', '/log/operationList', 'operaton', '0', 'log', '0', 'fa fa-hand-pointer-o', '1');
 
 -- ----------------------------
 -- Table structure for notice
@@ -175,7 +177,7 @@ INSERT INTO `notice` VALUES ('3', '团建', '<p>本周六统一去团建</p>', '
 INSERT INTO `notice` VALUES ('4', '暑假放假通知', '<p>暑假放假从7月到8月，共1个月</p>', '2019-01-26 10:40:03', '2019-01-26 10:40:03', '0');
 INSERT INTO `notice` VALUES ('7', '10周年校庆', '<p>10周年校庆10周年校庆10周年校庆10周年校庆10周年校庆</p>', '2019-01-26 10:59:33', '2019-01-26 10:59:33', '0');
 INSERT INTO `notice` VALUES ('8', '毕业答辩', '<p>毕业答辩毕业答辩毕业答辩毕业答辩毕业答辩毕业答辩</p>', '2019-01-26 11:02:14', '2019-01-26 11:02:14', '0');
-INSERT INTO `notice` VALUES ('63', '学校座谈会', '<p><img src=\"/imgPath\\b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" title=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" alt=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" style=\"width: 349px; height: 214px;\" width=\"349\" height=\"214\"/>&nbsp; <br/></p><p>学校座谈会<br/></p>', '2019-04-26 13:35:20', '2019-04-26 13:35:20', '0');
+INSERT INTO `notice` VALUES ('63', '学校座谈会', '<p><img src=\"/imgPath\\b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" title=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" alt=\"b96ed004-c9a9-4af8-9131-318000e825c4.jpeg\" style=\"width: 349px; height: 214px;\" width=\"349\" height=\"214\"/>&nbsp; <br/></p><p>学校座谈会<br/></p>', '2019-04-26 13:35:20', '2019-05-14 21:48:08', '1');
 
 -- ----------------------------
 -- Table structure for operation_log
@@ -261,7 +263,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-04-12 09:21:06', '0', '0', '1', 'f0630498-a4a5-449b-9a4c-39ee60843078.jpg');
+INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-05-14 21:49:48', '0', '0', '1', 'f29075f8-d1ca-444e-88d4-a857ba932a42.jpg');
 INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-03-15 15:15:06', '0', '1', '1', '6f213d71-825f-4e76-a128-6ba369162126.png');
 INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
 INSERT INTO `user` VALUES ('4', '张梅', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);
