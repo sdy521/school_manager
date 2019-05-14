@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-05-09 16:14:20
+Date: 2019-05-14 15:11:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -93,6 +93,22 @@ INSERT INTO `info` VALUES ('10', '26', '1', '江苏省常州市', '15961170770',
 INSERT INTO `info` VALUES ('11', '12', '0', '江苏南京', '15263236963', '2019-04-18 14:57:41', '2019-04-18 14:57:41', '0', '22');
 
 -- ----------------------------
+-- Table structure for linux_monitor
+-- ----------------------------
+DROP TABLE IF EXISTS `linux_monitor`;
+CREATE TABLE `linux_monitor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(255) DEFAULT NULL COMMENT 'ip地址',
+  `port` varchar(255) DEFAULT NULL COMMENT '端口号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='linux系统配置表';
+
+-- ----------------------------
+-- Records of linux_monitor
+-- ----------------------------
+INSERT INTO `linux_monitor` VALUES ('1', '192.168.1.85', '8081');
+
+-- ----------------------------
 -- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
@@ -109,31 +125,32 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-04-09 13:50:40', '教师管理', '#', 'teacher', '0', '', '0', 'fa fa-tasks', '2');
+INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-05-14 13:47:34', '教师管理', '#', 'teacher', '0', '', '0', 'fa fa-tasks', '3');
 INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-02-21 14:56:31', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '0', 'fa fa-user', '1');
-INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-04-11 11:05:08', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '8');
+INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-05-14 13:48:26', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '9');
 INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt', '1');
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '0', 'fa fa-newspaper-o', '2');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-02-21 14:56:53', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key', '2');
 INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-04-24 14:13:57', '增加公告', '/send/list', 'send', '0', 'news', '0', 'fa fa-bullhorn', '1');
-INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-04-09 13:50:45', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '3');
+INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-05-14 13:47:42', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '4');
 INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-02-19 16:48:34', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '0', 'fa fa-graduation-cap', '1');
 INSERT INTO `menu` VALUES ('11', '2019-02-21 14:51:12', '2019-02-21 14:51:35', '测试菜单', '#', 'ceshi', '1', '', '0', 'fa fa-adjust', '3');
 INSERT INTO `menu` VALUES ('12', '2019-02-21 16:07:38', '2019-02-21 17:21:30', '学生信息', '/student_info/list', 'student_info', '0', 'student', '0', 'fa fa-newspaper-o', '2');
-INSERT INTO `menu` VALUES ('13', '2019-02-26 10:31:56', '2019-04-09 13:50:51', '班级管理', '#', 'class', '0', '', '0', 'fa fa-reorder', '4');
+INSERT INTO `menu` VALUES ('13', '2019-02-26 10:31:56', '2019-05-14 13:47:53', '班级管理', '#', 'class', '0', '', '0', 'fa fa-reorder', '5');
 INSERT INTO `menu` VALUES ('14', '2019-02-26 10:35:44', '2019-02-26 10:35:44', '班级列表', '/class/list', 'class_list', '0', 'class', '0', 'fa fa-home', '1');
-INSERT INTO `menu` VALUES ('15', '2019-04-09 13:41:46', '2019-04-09 13:50:56', '工具', '#', 'tool', '0', '', '0', 'fa fa-legal', '5');
+INSERT INTO `menu` VALUES ('15', '2019-04-09 13:41:46', '2019-05-14 13:48:00', '工具', '#', 'tool', '0', '', '0', 'fa fa-legal', '6');
 INSERT INTO `menu` VALUES ('16', '2019-04-09 13:44:36', '2019-04-09 13:44:36', 'wordToPdf', '/wordConverterPdf/list', 'wordConverterPdf', '0', 'tool', '0', 'fa fa-exchange', '2');
 INSERT INTO `menu` VALUES ('17', '2019-04-09 13:49:22', '2019-04-09 13:49:22', '首页', '/main', 'main', '0', '', '0', 'fa fa-laptop', '1');
-INSERT INTO `menu` VALUES ('18', '2019-04-09 14:21:18', '2019-04-09 14:21:18', '消息', '#', 'news', '0', '', '0', 'fa fa-comments', '6');
-INSERT INTO `menu` VALUES ('19', '2019-04-11 11:05:02', '2019-04-11 11:08:28', '文件台', '#', 'filedesk', '0', '', '0', 'fa fa-paste (alias)', '7');
+INSERT INTO `menu` VALUES ('18', '2019-04-09 14:21:18', '2019-05-14 13:48:17', '消息', '#', 'news', '0', '', '0', 'fa fa-comments', '8');
+INSERT INTO `menu` VALUES ('19', '2019-04-11 11:05:02', '2019-05-14 13:48:05', '文件台', '#', 'filedesk', '0', '', '0', 'fa fa-paste (alias)', '7');
 INSERT INTO `menu` VALUES ('20', '2019-04-11 11:07:49', '2019-04-11 11:07:49', '文件管理', '/file/list', 'filemanager', '0', 'filedesk', '0', 'fa fa-folder-open', '1');
+INSERT INTO `menu` VALUES ('21', '2019-05-14 13:40:46', '2019-05-14 13:47:16', '系统监控', '/monitor/list', 'monitor', '0', '', '0', 'fa fa-tachometer', '2');
 
 -- ----------------------------
 -- Table structure for notice
@@ -171,12 +188,20 @@ CREATE TABLE `operation_log` (
   `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
 
 -- ----------------------------
 -- Records of operation_log
 -- ----------------------------
 INSERT INTO `operation_log` VALUES ('1', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-09 16:13:31');
+INSERT INTO `operation_log` VALUES ('2', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-09 16:17:08');
+INSERT INTO `operation_log` VALUES ('3', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-09 16:17:24');
+INSERT INTO `operation_log` VALUES ('4', '导出教师信息', 'export', 'sdy', '2019-05-09 16:34:59');
+INSERT INTO `operation_log` VALUES ('5', '导出学生信息', 'exportStudent', 'sdy', '2019-05-09 16:35:16');
+INSERT INTO `operation_log` VALUES ('6', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-09 17:21:24');
+INSERT INTO `operation_log` VALUES ('7', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-10 09:28:46');
+INSERT INTO `operation_log` VALUES ('8', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-10 09:32:30');
+INSERT INTO `operation_log` VALUES ('9', '批量下载pdf', 'downloadZip', 'sdy', '2019-05-10 09:35:18');
 
 -- ----------------------------
 -- Table structure for pdf
