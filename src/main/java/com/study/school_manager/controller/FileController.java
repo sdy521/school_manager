@@ -5,7 +5,6 @@ import com.study.school_manager.core.Result;
 import com.study.school_manager.entity.File;
 import com.study.school_manager.service.FileService;
 import com.study.school_manager.util.UploadFile;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
@@ -202,7 +200,7 @@ public class FileController extends BaseController{
      * @param name
      * @return
      */
-    @RequestMapping("/synchroFile")
+    /*@RequestMapping("/synchroFile")
     @ResponseBody
     public Result synchroFile(@RequestParam String name){
         String p = localpath+ java.io.File.separator+name;
@@ -217,7 +215,7 @@ public class FileController extends BaseController{
             }
         }
         return OK;
-    }
+    }*/
 
     @RequestMapping("/deletedFile")
     @ResponseBody
