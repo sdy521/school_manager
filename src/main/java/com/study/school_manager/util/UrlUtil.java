@@ -1,6 +1,8 @@
 package com.study.school_manager.util;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -31,6 +33,26 @@ public class UrlUtil {
                 fout.write(data);
                 fout.flush();
             }
+        }
+    }
+
+    /***
+     * 检查path是否可以连接
+     * @param path
+     */
+    public static boolean checkUrl(String path){
+        try {
+            URL url = new URL(path);
+            HttpURLConnection con =(HttpURLConnection)url.openConnection();
+            int state = con.getResponseCode();
+            if(state==200){
+                return true;
+            }else {
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

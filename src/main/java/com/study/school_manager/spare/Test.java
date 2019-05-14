@@ -26,6 +26,10 @@ public class Test {
         }
     }
     public static void main(String[] args) {
-        getMysql57();
+//        getMysql57();
+        String os = System.getProperty("os.name");
+        String separator = System.getProperty("file.separator");
+        System.out.println(os);
+        System.out.println(separator);
     }
 }

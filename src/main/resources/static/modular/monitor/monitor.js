@@ -21,8 +21,10 @@ Monitor.initJqGrid = function(){
             {name:'mysqlStatus',index:'mysqlStatus', width:80,align:'center',sortable:false,search:true, stype:'text',formatter:function (cellValue) {
                     if(cellValue==1){
                         return "<span><i class='fa fa-circle text-navy'></i>active</span>";
-                    }else {
+                    }else if(cellValue==0){
                         return "<span><i class='fa fa-circle text-muted'></i>dead</span>";
+                    }else {
+                        return "<span><i class='fa fa-circle text-danger'></i>cannot connect</span>";
                     }
                 }}
         ],

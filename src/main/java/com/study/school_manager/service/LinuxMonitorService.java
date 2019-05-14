@@ -6,9 +6,12 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.study.school_manager.dao.LinuxMonitorDao;
 import com.study.school_manager.entity.LinuxMonitor;
+import com.study.school_manager.util.UrlUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,12 +41,17 @@ public class LinuxMonitorService {
                 LinuxMonitor linuxMonitor= list.get(i);
                 String path = "http://"+linuxMonitor.getIp()+":"+linuxMonitor.getPort()+"/api/systemInfo";
                 Map map = new HashMap();
-                HttpResponse<JsonNode> response = Unirest.post(path).header("accept", "application/json").asJson();
-                String result = response.getBody().getObject().get("data").toString();
-                if(result.indexOf("running")!=-1){
-                    map.put("mysqlStatus",1);
+                //检查path是否连通
+                if(UrlUtil.checkUrl(path)){
+                    HttpResponse<JsonNode> response = Unirest.post(path).header("accept", "application/json").asJson();
+                    String result = response.getBody().getObject().get("data").toString();
+                    if(result.indexOf("running")!=-1){
+                        map.put("mysqlStatus",1);
+                    }else {
+                        map.put("mysqlStatus",0);
+                    }
                 }else {
-                    map.put("mysqlStatus",0);
+                    map.put("mysqlStatus",-1);
                 }
                 map.put("id",i+1);
                 map.put("ip",linuxMonitor.getIp());
