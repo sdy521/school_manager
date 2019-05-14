@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StudyManagerApplicationTests {
+public class SchoolManagerApplicationTests {
 
     @Autowired
     private UserDao userDao;
