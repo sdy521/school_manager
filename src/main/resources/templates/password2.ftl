@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>学生管理系统</title>
+    <title>学校管理系统</title>
 
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href = "/static/font-awesome-jquery-fontIconPicker/font-awesome/css/font-awesome.min.css" rel="stylesheet">

@@ -7,7 +7,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome to 学生管理系统</span>
+                <span class="m-r-sm text-muted welcome-message">Welcome to 学校管理系统</span>
             </li>
             <li>
                 <a href="/main">
