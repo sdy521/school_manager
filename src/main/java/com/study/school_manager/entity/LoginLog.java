@@ -28,7 +28,7 @@ public class LoginLog {
     private Integer userType;
 
     /***
-     * 登录时IP地址
+     * 登陆时IP地址
      */
     @Column
     private String ip;

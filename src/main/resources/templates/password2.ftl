@@ -60,7 +60,7 @@
                                 <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" onclick="updateInitPassword();"><strong>确认修改</strong></button>
                             </div>
                         </div>
-                        <div class="col-sm-6"><h4>返回登录页</h4>
+                        <div class="col-sm-6"><h4>返回登陆页</h4>
                             <p class="text-center">
                                 <a href="/login"><i class="fa fa-sign-in big-icon"></i></a>
                             </p>

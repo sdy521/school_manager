@@ -1,11 +1,15 @@
 package com.study.school_manager.security.service;
 
+import com.study.school_manager.core.log.LogFactory;
+import com.study.school_manager.core.log.LogManager;
+import com.study.school_manager.core.system.LoginType;
 import com.study.school_manager.dao.RolesDao;
 import com.study.school_manager.dao.UserDao;
 import com.study.school_manager.security.entity.MGrantedAuthority;
 import com.study.school_manager.entity.Role;
 import com.study.school_manager.entity.User;
 import com.study.school_manager.security.entity.UserDetail;
+import com.study.school_manager.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,12 +31,19 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.info("表单登录用户名:" + username);
+        logger.info("登陆用户:" + username);
         User select = new User();
         select.setName(username);
         User user = userDao.selectOne(select);
         if (user == null) {
-            throw new UsernameNotFoundException("该用户不存在：" + username);
+            logger.info("用户不存在 用户名={}"+username);
+            throw new UsernameNotFoundException("该用户不存在 用户名={}" + username);
+        }
+        if(user.getEnable()==false){
+            //登陆日志
+            LogManager.execute(LogFactory.loginlog(username,user.getType(), HttpUtil.getIp(), LoginType.DISABLED));
+            logger.info("用户被禁用，无法登陆 用户名={}"+username);
+            throw new UsernameNotFoundException("用户被禁用，无法登陆 用户名={}"+username);
         }
         List<Role> roleList = rolesDao.getRoles(user.getId());
         Set<MGrantedAuthority> authorities = new HashSet<MGrantedAuthority>();

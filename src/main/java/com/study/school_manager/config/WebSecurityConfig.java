@@ -39,9 +39,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //禁用csrf
         http.csrf().disable();
         http.formLogin().loginPage("/login")
-                //登录处理url
+                //登陆处理url
                 .loginProcessingUrl("/j_spring_security_check")
-                //登录时对应的用户名密码参数名
+                //登陆时对应的用户名密码参数名
                 .usernameParameter("username").passwordParameter("password")
                 .successHandler(loginSuccessHandler())
                 .and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler())
@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().anyRequest().authenticated()
                 //失效处理政策
                 .and().sessionManagement().invalidSessionStrategy(invalidSessionStrategy())
-                //单用户登录
+                //单用户登陆
                 .maximumSessions(1).sessionRegistry(getSessionRegistry())
                 //过期处理政策
                 .expiredSessionStrategy(mySessionInformationExpiredStrategy());
@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /***
-     * 单用户登录
+     * 单用户登陆
      * @return
      */
     @Bean
@@ -83,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /***
-     * 登录成功处理器
+     * 登陆成功处理器
      * @return
      */
     @Bean

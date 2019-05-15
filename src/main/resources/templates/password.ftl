@@ -50,7 +50,7 @@
                                     <div class="col-lg-4">
                                         <div class="text-center">
                                             <div style="margin-top: 60px">
-                                                <h4>返回登录页</h4>
+                                                <h4>返回登陆页</h4>
                                                 <a href="/login">
                                                     <i class="fa fa-sign-in" style="font-size: 180px;color: #e5e5e5 "></i>
                                                 </a>

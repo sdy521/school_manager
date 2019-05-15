@@ -41,7 +41,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         UserDetail user = SpringSecurity.getSysUser();
-        //记录登录日志
+        //记录登陆日志
         LogManager.execute(LogFactory.loginlog(user.getUsername(),user.getType(), HttpUtil.getIp(), LoginType.SUCCESS));
         //初始化密码
         if(new BCryptPasswordEncoder().matches(Constans.DEFAULT_PASSWORD,user.getPassword())){
