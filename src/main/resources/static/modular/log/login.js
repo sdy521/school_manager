@@ -1,11 +1,11 @@
-var Operation={
+var Login={
     tableId:"#grid-table",
     pagerId:"#grid-pager",
     table:null,
 }
-Operation.initJqGrid = function(){
+Login.initJqGrid = function(){
     var tableInstance = $("#grid-table").jqGrid({
-        url:'/log/operationGrid',
+        url:'/log/loginGrid',
         datatype: "json",
         jsonReader:{
             root: function (data) {
@@ -22,12 +22,21 @@ Operation.initJqGrid = function(){
             }, // 数据总数
             repeatitems:false
         },
-        colNames:['编号','操作名','操作方法','操作用户','操作时间'],
+        colNames:['编号','用户名','用户类别','登入地址','说明','操作时间'],
         colModel:[
             {name:'id',index:'id', width:80,align:'center',sortable:false,search:false,formatter:'integer',key:true},
-            {name:'name',index:'name', width:80,align:'center',sortable:false,search:true, stype:'text'},
-            {name:'method',index:'method', width:80,align:'center',sortable:false,search:true, stype:'text'},
             {name:'userName',index:'userName', width:80,align:'center',sortable:false,search:true, stype:'text'},
+            {name:'userType',index:'userType', width:80,align:'center',sortable:false,search:true, stype:'text',formatter:function (cellValue) {
+                    if(cellValue==0){
+                        return "管理员";
+                    }else if(cellValue==1){
+                        return "教师";
+                    }else{
+                        return "学生";
+                    }
+                }},
+            {name:'ip',index:'ip', width:80,align:'center',sortable:false,search:true, stype:'text'},
+            {name:'msg',index:'msg', width:80,align:'center',sortable:false,search:true, stype:'text'},
             {name:'createTime',index:'createTime', width:120,align:'center',sortable:false,search:false,formatter:function (cellValue) {
                     return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(cellValue));
                 }}
@@ -37,25 +46,13 @@ Operation.initJqGrid = function(){
         rowList:[10,20,30],
         pager: '#grid-pager',
         autowidth: true,
-        height:380,
+        height:300,
         viewrecords: true,
         sortorder:'desc'
-        //loadonce:true//为true时，不请求后台，直接从界面上排序
-        // sortorder:"desc",//此属性只能用于loadonce为true时
-        // multiselect: false,
-        // multiselectWidth: 25,
-        /*loadComplete : function() {
-            var grid = $("#grid-table");
-            var ids = grid.getDataIDs();
-            for (var i = 0; i < ids.length; i++) {
-                grid.setRowData (ids[i], false, {height: 40}); //设置成你要设定的固定行高
-            }
-        }*/
     });
-    // NameList.jqSearch();
     return tableInstance;
 }
 
 $(function () {
-    Operation.table = Operation.initJqGrid();
+    Login.table = Login.initJqGrid();
 });

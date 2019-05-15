@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * @author sdy
@@ -37,6 +38,9 @@ public class LoginLog {
      */
     @Column
     private String msg;
+
+    @Column
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -76,5 +80,13 @@ public class LoginLog {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

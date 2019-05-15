@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-05-15 13:54:46
+Date: 2019-05-15 14:17:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,7 +120,7 @@ CREATE TABLE `login_log` (
   `msg` varchar(255) DEFAULT NULL COMMENT '操作说明',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -130,6 +130,12 @@ INSERT INTO `login_log` VALUES ('2', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成�
 INSERT INTO `login_log` VALUES ('3', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:53:00');
 INSERT INTO `login_log` VALUES ('4', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 13:53:06');
 INSERT INTO `login_log` VALUES ('5', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:53:14');
+INSERT INTO `login_log` VALUES ('6', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 13:59:56');
+INSERT INTO `login_log` VALUES ('7', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:59:57');
+INSERT INTO `login_log` VALUES ('8', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 14:09:48');
+INSERT INTO `login_log` VALUES ('9', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 14:13:15');
+INSERT INTO `login_log` VALUES ('10', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 14:13:16');
+INSERT INTO `login_log` VALUES ('11', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 14:13:45');
 
 -- ----------------------------
 -- Table structure for menu
@@ -148,7 +154,7 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -176,6 +182,7 @@ INSERT INTO `menu` VALUES ('20', '2019-04-11 11:07:49', '2019-04-11 11:07:49', '
 INSERT INTO `menu` VALUES ('21', '2019-05-14 13:40:46', '2019-05-14 13:47:16', '系统监控', '/monitor/list', 'monitor', '0', '', '0', 'fa fa-tachometer', '2');
 INSERT INTO `menu` VALUES ('22', '2019-05-14 22:33:54', '2019-05-14 22:33:54', '日志管理', '#', 'log', '0', '', '0', 'fa fa-edit', '9');
 INSERT INTO `menu` VALUES ('23', '2019-05-14 22:35:15', '2019-05-14 22:35:15', '操作日志', '/log/operationList', 'operaton', '0', 'log', '0', 'fa fa-hand-pointer-o', '1');
+INSERT INTO `menu` VALUES ('24', '2019-05-15 13:59:50', '2019-05-15 13:59:50', '登入日志', '/log/loginList', 'login', '0', 'log', '0', 'fa fa-child', '2');
 
 -- ----------------------------
 -- Table structure for notice
