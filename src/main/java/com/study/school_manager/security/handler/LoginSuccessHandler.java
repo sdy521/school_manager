@@ -1,5 +1,8 @@
 package com.study.school_manager.security.handler;
 
+import com.study.school_manager.core.log.LogFactory;
+import com.study.school_manager.core.log.LogManager;
+import com.study.school_manager.core.system.LoginType;
 import com.study.school_manager.dao.RolesDao;
 import com.study.school_manager.entity.LeftMenu;
 import com.study.school_manager.entity.Menu;
@@ -7,6 +10,7 @@ import com.study.school_manager.entity.Role;
 import com.study.school_manager.security.entity.UserDetail;
 import com.study.school_manager.service.MenuService;
 import com.study.school_manager.core.system.Constans;
+import com.study.school_manager.util.HttpUtil;
 import com.study.school_manager.util.SpringSecurity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -37,6 +41,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         UserDetail user = SpringSecurity.getSysUser();
+        //记录登录日志
+        LogManager.execute(LogFactory.loginlog(user.getUsername(),user.getType(), HttpUtil.getIp(), LoginType.SUCCESS));
         //初始化密码
         if(new BCryptPasswordEncoder().matches(Constans.DEFAULT_PASSWORD,user.getPassword())){
             getRedirectStrategy().sendRedirect(request,response,"/initPassword");

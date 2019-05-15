@@ -45,6 +45,7 @@ public class MyUserDetailsService implements UserDetailsService {
         UserDetail userDetail = new UserDetail(user.getName(),user.getPassword(),user.getEnable(),true,true,true,authorities);
         userDetail.setId(user.getId());
         userDetail.setImg(user.getImg());
+        userDetail.setType(user.getType());
         return userDetail;
     }
 
