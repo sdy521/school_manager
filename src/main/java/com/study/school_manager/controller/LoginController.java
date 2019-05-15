@@ -161,4 +161,9 @@ public class LoginController {
         json.put("message", "上传成功");
         return json;
     }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String forbidden() {
+        return "/403";
+    }
 }

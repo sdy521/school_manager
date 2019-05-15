@@ -9,7 +9,7 @@ import com.study.school_manager.entity.Menu;
 import com.study.school_manager.entity.Role;
 import com.study.school_manager.security.entity.UserDetail;
 import com.study.school_manager.service.MenuService;
-import com.study.school_manager.core.system.Constans;
+import com.study.school_manager.core.system.Constants;
 import com.study.school_manager.util.HttpUtil;
 import com.study.school_manager.util.SpringSecurity;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,22 +44,22 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         //记录登陆日志
         LogManager.execute(LogFactory.loginlog(user.getUsername(),user.getType(), HttpUtil.getIp(), LoginType.SUCCESS));
         //初始化密码
-        if(new BCryptPasswordEncoder().matches(Constans.DEFAULT_PASSWORD,user.getPassword())){
+        if(new BCryptPasswordEncoder().matches(Constants.DEFAULT_PASSWORD,user.getPassword())){
             getRedirectStrategy().sendRedirect(request,response,"/initPassword");
         }else {
             //获取对应菜单权限
             Role role = rolesDao.getMenuRoles(user.getUsername());
             //获取所有能看到的菜单
             List<Menu> all = new ArrayList<>();
-            if(Constans.ADMIN.equals(role.getName())){
+            if(Constants.ADMIN.equals(role.getName())){
                 Menu param = new Menu();
                 param.setDeleted(false);
                 all = menuService.select(param);
-            }else if(Constans.TEACHER.equals(role.getName())){
+            }else if(Constants.TEACHER.equals(role.getName())){
                 Menu menu = new Menu();
                 menu.setType(1);
                 all = menuService.select(menu);
-            }else if(Constans.STUDENTS.equals(role.getName())){
+            }else if(Constants.STUDENTS.equals(role.getName())){
                 Menu menu = new Menu();
                 menu.setType(2);
                 all = menuService.select(menu);

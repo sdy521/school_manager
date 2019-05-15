@@ -4,6 +4,7 @@ import com.study.school_manager.security.handler.*;
 import com.study.school_manager.security.service.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -26,6 +27,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new MyUserDetailsService();
     }
 
+    @Override
+    @Bean
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

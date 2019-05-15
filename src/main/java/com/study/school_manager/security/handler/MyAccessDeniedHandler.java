@@ -14,9 +14,6 @@ import java.io.IOException;
 
 /**
  * 拒绝访问处理器
- *
- * @author fonlin
- * @date 2018/10/31
  */
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
 

@@ -2,20 +2,28 @@ package com.study.school_manager.security.service;
 
 import com.study.school_manager.core.log.LogFactory;
 import com.study.school_manager.core.log.LogManager;
+import com.study.school_manager.core.system.Constants;
 import com.study.school_manager.core.system.LoginType;
 import com.study.school_manager.dao.RolesDao;
 import com.study.school_manager.dao.UserDao;
+import com.study.school_manager.entity.Menu;
 import com.study.school_manager.security.entity.MGrantedAuthority;
 import com.study.school_manager.entity.Role;
 import com.study.school_manager.entity.User;
 import com.study.school_manager.security.entity.UserDetail;
+import com.study.school_manager.service.MenuService;
 import com.study.school_manager.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +34,8 @@ public class MyUserDetailsService implements UserDetailsService {
     private UserDao userDao;
     @Resource
     private RolesDao rolesDao;
+    @Resource
+    private MenuService menuService;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -46,18 +56,39 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("用户被禁用，无法登陆 用户名={}"+username);
         }
         List<Role> roleList = rolesDao.getRoles(user.getId());
-        Set<MGrantedAuthority> authorities = new HashSet<MGrantedAuthority>();
+        /*Set<MGrantedAuthority> authorities = new HashSet<MGrantedAuthority>();
         if (roleList.size() != 0){
             for (Role role: roleList){
                 authorities.add(new MGrantedAuthority(role.getName()));
                 System.out.println(role.getName());
             }
-        }
-        UserDetail userDetail = new UserDetail(user.getName(),user.getPassword(),user.getEnable(),true,true,true,authorities);
+        }*/
+        //获取权限
+        Collection<GrantedAuthority> grantedAuthorities = obtainGrantedAuthorities(user);
+        UserDetail userDetail = new UserDetail(user.getName(),user.getPassword(),user.getEnable(),true,true,true,grantedAuthorities);
         userDetail.setId(user.getId());
         userDetail.setImg(user.getImg());
         userDetail.setType(user.getType());
         return userDetail;
     }
 
+    private Set<GrantedAuthority> obtainGrantedAuthorities (
+            User user) {
+        List<Menu> menus;
+        //如果是超级管理员
+        if (user.getType()==0) {
+            menus = menuService.selectAll();
+        } else {
+            Menu menu = new Menu();
+            menu.setType(user.getType());
+            menus = menuService.select(menu);
+        }
+        Set<GrantedAuthority> authSet = new HashSet<>();
+        if (!CollectionUtils.isEmpty(menus)) {
+            for (Menu menu : menus) {
+                authSet.add(new SimpleGrantedAuthority("ROLE_" + menu.getCode()));
+            }
+        }
+        return authSet;
+    }
 }

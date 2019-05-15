@@ -8,7 +8,7 @@ import com.study.school_manager.dto.TeacherParam;
 import com.study.school_manager.entity.User;
 import com.study.school_manager.service.InfoService;
 import com.study.school_manager.service.StudentListService;
-import com.study.school_manager.core.system.Constans;
+import com.study.school_manager.core.system.Constants;
 import com.study.school_manager.util.UploadFile;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -138,7 +138,7 @@ public class StudentListController extends BaseController {
     public Result initpassword(@RequestParam Integer id){
         User teacher = new User();
         teacher.setId(id);
-        teacher.setPassword(BCrypt.hashpw(Constans.DEFAULT_PASSWORD,BCrypt.gensalt()));
+        teacher.setPassword(BCrypt.hashpw(Constants.DEFAULT_PASSWORD,BCrypt.gensalt()));
         studentListService.updateSelective(teacher);
         return OK;
     }
