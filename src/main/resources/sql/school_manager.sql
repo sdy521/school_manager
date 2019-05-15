@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50721
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : school_manager
 
 Target Server Type    : MYSQL
-Target Server Version : 50721
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-05-14 22:36:43
+Date: 2019-05-15 13:54:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,6 +107,29 @@ CREATE TABLE `linux_monitor` (
 -- Records of linux_monitor
 -- ----------------------------
 INSERT INTO `linux_monitor` VALUES ('1', '192.168.1.85', '8081');
+
+-- ----------------------------
+-- Table structure for login_log
+-- ----------------------------
+DROP TABLE IF EXISTS `login_log`;
+CREATE TABLE `login_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `user_type` varchar(255) DEFAULT NULL COMMENT '用户类型（1老师2学生）',
+  `ip` varchar(255) DEFAULT NULL COMMENT 'ip地址',
+  `msg` varchar(255) DEFAULT NULL COMMENT '操作说明',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of login_log
+-- ----------------------------
+INSERT INTO `login_log` VALUES ('1', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:52:26');
+INSERT INTO `login_log` VALUES ('2', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 13:52:50');
+INSERT INTO `login_log` VALUES ('3', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:53:00');
+INSERT INTO `login_log` VALUES ('4', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 13:53:06');
+INSERT INTO `login_log` VALUES ('5', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 13:53:14');
 
 -- ----------------------------
 -- Table structure for menu
@@ -263,7 +286,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-05-14 21:49:48', '0', '0', '1', 'f29075f8-d1ca-444e-88d4-a857ba932a42.jpg');
+INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-05-15 09:32:05', '0', '0', '1', '7f4e44df-1461-4aa8-883c-a72008a2a1f1.jpeg');
 INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-03-15 15:15:06', '0', '1', '1', '6f213d71-825f-4e76-a128-6ba369162126.png');
 INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
 INSERT INTO `user` VALUES ('4', '张梅', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);
