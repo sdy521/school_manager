@@ -12,11 +12,12 @@ import javax.annotation.PostConstruct;
 import javax.servlet.*;
 import java.io.IOException;
 
+/***
+ * 自定义过滤器
+ */
 @Component
 public class MySecurityFilter extends AbstractSecurityInterceptor implements
         Filter {
-	// 与applicationContext-security.xml里的myFilter的属性securityMetadataSource对应�?
-	// 其他的两个组件，已经在AbstractSecurityInterceptor定义
 	@Autowired
 	private MySecurityMetadataSource mySecurityMetadataSource;
 	@Autowired
@@ -26,7 +27,6 @@ public class MySecurityFilter extends AbstractSecurityInterceptor implements
 
 	@PostConstruct
 	public void init() {
-		// System.err.println(" ---------------  MySecurityFilter init--------------- ");
 		super.setAuthenticationManager(myAuthenticationManager);
 		super.setAccessDecisionManager(myAccessDecisionManager);
 	}
@@ -39,18 +39,6 @@ public class MySecurityFilter extends AbstractSecurityInterceptor implements
 	public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
 		FilterInvocation fi = new FilterInvocation(request, response, chain);
-		invoke(fi);
-	}
-
-	private void invoke(FilterInvocation fi) throws IOException,
-            ServletException {
-		// object为FilterInvocation对象
-		// super.beforeInvocation(fi);源码
-		// 执行Collection<ConfigAttribute> attributes =
-		// SecurityMetadataSource.getAttributes(object);
-		// 2.是否拥有权限
-		// this.accessDecisionManager.decide(authenticated, object, attributes);
-		// System.err.println(" ---------------  MySecurityFilter invoke--------------- ");
 		InterceptorStatusToken token = super.beforeInvocation(fi);
 		try {
 			fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
@@ -59,9 +47,12 @@ public class MySecurityFilter extends AbstractSecurityInterceptor implements
 		}
 	}
 
-	public void init(FilterConfig arg0) throws ServletException {
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+
 	}
 
+	@Override
 	public void destroy() {
 
 	}

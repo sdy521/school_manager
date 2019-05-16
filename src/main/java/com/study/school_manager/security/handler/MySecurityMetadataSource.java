@@ -23,28 +23,26 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 
 	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 
+	@Override
 	public Collection<ConfigAttribute> getAllConfigAttributes() {
-		if (resourceMap != null) {
-			Set<ConfigAttribute> set = new HashSet<>();
-			for (Map.Entry<String, Collection<ConfigAttribute>> entry : resourceMap.entrySet()) {
-				set.addAll(entry.getValue());
-			}
-			return set;
-		}
 		return null;
 	}
 
+	@Override
 	public boolean supports(Class<?> clazz) {
 		return true;
 	}
 
+	/***
+	 * @PostConstruct 加载servlet时加载   在构造方法之后加载
+	 */
 	@PostConstruct
 	private void loadResources() {
 		if (resourceMap == null) {
 			List<Menu> menus = menuDao.selectAll();
 			resourceMap = new HashMap<>();
 			for (Menu m : menus) {
-				//这里做一个资源一个权限
+				//将所有url增加权限  url为键  权限（ROLE_）为值
 				Collection<ConfigAttribute> configAttributes = new ArrayList<>();
 				ConfigAttribute configAttribute = new SecurityConfig("ROLE_" + m.getCode());
 				configAttributes.add(configAttribute);
@@ -54,10 +52,8 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	}
 
 	/**
-	 * 根据url获取其需要的权限
-	 *
-	 * @param object	url
-	 * @return	Collection<ConfigAttribute>
+	 * 根据url 获取需要的权限  返回需要的权限
+	 * @param object
 	 * @throws IllegalArgumentException
 	 *
 	 */
@@ -68,6 +64,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		if (resourceMap == null) {
 			loadResources();
 		}
+		//去除参数  获取上方存储的key
 		if (requestUrl.contains("?")) {
 			requestUrl = requestUrl.substring(0, requestUrl.indexOf("?"));
 		}

@@ -36,10 +36,12 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
         throw new AccessDeniedException(" 没有权限访问 ");
     }
 
+    @Override
     public boolean supports(ConfigAttribute attribute) {
         return true;
     }
 
+    @Override
     public boolean supports(Class<?> clazz) {
         return true;
     }
