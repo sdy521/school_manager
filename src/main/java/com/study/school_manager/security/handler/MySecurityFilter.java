@@ -36,6 +36,7 @@ public class MySecurityFilter extends AbstractSecurityInterceptor implements
 		return this.mySecurityMetadataSource;
 	}
 
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
 		FilterInvocation fi = new FilterInvocation(request, response, chain);
