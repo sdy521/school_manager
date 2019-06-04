@@ -82,6 +82,9 @@ public class MyUserDetailsService implements UserDetailsService {
             Menu menu = new Menu();
             menu.setType(user.getType());
             menus = menuService.select(menu);
+            //增加都能访问的菜单
+            List<Menu> notlimitMenus = menuService.selectNotLimit();
+            menus.addAll(notlimitMenus);
         }
         Set<GrantedAuthority> authSet = new HashSet<>();
         if (!CollectionUtils.isEmpty(menus)) {

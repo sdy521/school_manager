@@ -24,7 +24,9 @@
                  }else if(cellValue==2){
                      return "学生";
                  }else if(cellValue==0){
-                     return "管理员";
+                     return "仅管理员";
+                 }else {
+                     return "无限制";
                  }
              }},
          {title: '操作', field: 'operation', align: 'center', valign: 'middle', sortable: true, width:'15%', formatter: function(cellValue, rowObject) {

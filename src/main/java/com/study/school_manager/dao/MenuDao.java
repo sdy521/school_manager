@@ -12,4 +12,7 @@ public interface MenuDao extends BaseDao<Menu> {
 
     @Select("select * from menu where deleted=0")
     List<Menu> selectNotDeleted();
+
+    @Select("select * from menu where deleted=0 and type=-1")
+    List<Menu> selectNotLimit();
 }

@@ -47,4 +47,12 @@ public class MenuService extends BaseService<Menu> {
         }
         return jsonArray;
     }
+
+    /***
+     * 获取全部能访问的菜单
+     * @return
+     */
+    public List<Menu> selectNotLimit(){
+        return menuDao.selectNotLimit();
+    }
 }

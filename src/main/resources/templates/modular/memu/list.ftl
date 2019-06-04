@@ -208,7 +208,8 @@
                         <label class="col-sm-3 control-label">权限</label>
                         <div class="col-sm-9">
                             <select name="type" class="form-control" style="width: 100px;">
-                                <option value="0" selected>管理员</option>
+                                <option value="-1" selected>无限制</option>
+                                <option value="0" selected>仅管理员</option>
                                 <option value="1">教师</option>
                                 <option value="2">学生</option>
                             </select>
