@@ -75,6 +75,7 @@ Role.initJqGrid = function(){
  }
  //授权
  Role.role = function(id){
+     $("#radiolist").empty();
    $.ajax({
        url:"/role/getRoleId?userid="+id,
        type:"GET",
@@ -83,7 +84,17 @@ Role.initJqGrid = function(){
            if(r.code===0){
                var data = r.obj;
                var elem = "role"+data;
-               $("#"+elem).addClass('active');
+               $("#radiolist").append("<div class=\"col-xs-3\" id=\"role1\">\n" +
+                   "                            <input type=\"radio\" value=\"1\" name=\"roleid\">管理员\n" +
+                   "                        </div>\n" +
+                   "                        <div class=\"col-xs-3\" id=\"role2\">\n" +
+                   "                            <input type=\"radio\" value=\"2\" name=\"roleid\" >教师\n" +
+                   "                        </div>\n" +
+                   "                        <div class=\"col-xs-3\" id=\"role3\">\n" +
+                   "                            <input type=\"radio\" value=\"3\" name=\"roleid\" >学生\n" +
+                   "                        </div>");
+               $("#"+elem).find("input[type='radio']").attr("checked",true);
+               // $("#"+elem).addClass('active');
                $("#userid").val(id);
                $("#roleModal").modal();
            }

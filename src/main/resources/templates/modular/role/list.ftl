@@ -60,7 +60,7 @@
             <div class="modal-body col-md-offset-3">
                 <form class="form-horizontal" id="role-form">
                     <input type="hidden" id="userid" />
-                    <div class="bs-example">
+                   <#-- <div class="bs-example">
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-primary" id="role1">
                                 <input type="radio" name="roleid" value="1"> 管理员
@@ -72,7 +72,8 @@
                                 <input type="radio" name="roleid" value="3"> 学生
                             </label>
                         </div>
-                    </div>
+                    </div>-->
+                    <div class="row" id="radiolist"></div>
                 </form>
             </div>
             <div class="modal-footer">
