@@ -29,4 +29,9 @@ public interface RolesDao {
 
     @Insert("insert into user_role(user_id,roles_id) values(${userid},${roleid})")
     void insertUserRole(@Param("userid") Integer userid,@Param("roleid") Integer roleid);
+
+    @Select("SELECT * FROM role r\n" +
+            "LEFT JOIN user_role ur ON ur.roles_id=r.id\n" +
+            "WHERE ur.user_id=${userid}")
+    Role getRoleByUserId(@Param("userid")Integer userid);
 }

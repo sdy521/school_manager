@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.study.school_manager.dao.RolesDao;
 import com.study.school_manager.dao.UserDao;
 import com.study.school_manager.dto.RoleParam;
+import com.study.school_manager.entity.Role;
 import com.study.school_manager.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,14 @@ public class RoleService {
     }
     public void insert(RoleParam param){
         rolesDao.insertUserRole(param.getUserid(),param.getRoleid());
+    }
+
+    /***
+     * 获取用户权限
+     * @param userid
+     * @return
+     */
+    public Role getRoleByUserId(Integer userid){
+        return rolesDao.getRoleByUserId(userid);
     }
 }

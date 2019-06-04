@@ -55,8 +55,8 @@ public class MyUserDetailsService implements UserDetailsService {
             logger.info("用户被禁用，无法登陆 用户名={}"+username);
             throw new UsernameNotFoundException("用户被禁用，无法登陆 用户名={}"+username);
         }
-        List<Role> roleList = rolesDao.getRoles(user.getId());
-        /*Set<MGrantedAuthority> authorities = new HashSet<MGrantedAuthority>();
+        /*List<Role> roleList = rolesDao.getRoles(user.getId());
+        Set<MGrantedAuthority> authorities = new HashSet<MGrantedAuthority>();
         if (roleList.size() != 0){
             for (Role role: roleList){
                 authorities.add(new MGrantedAuthority(role.getName()));
@@ -75,8 +75,9 @@ public class MyUserDetailsService implements UserDetailsService {
     private Set<GrantedAuthority> obtainGrantedAuthorities (
             User user) {
         List<Menu> menus;
-        //如果是超级管理员
-        if (user.getType()==0) {
+        //如果是管理员
+        Role role = rolesDao.getRoleByUserId(user.getId());
+        if (Constants.ADMIN.equals(role.getName())) {
             menus = menuService.selectAll();
         } else {
             Menu menu = new Menu();

@@ -58,11 +58,19 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             }else if(Constants.TEACHER.equals(role.getName())){
                 Menu menu = new Menu();
                 menu.setType(1);
+                menu.setDeleted(false);
                 all = menuService.select(menu);
+                //增加都能访问的菜单
+                List<Menu> notlimitMenus = menuService.selectNotLimit();
+                all.addAll(notlimitMenus);
             }else if(Constants.STUDENTS.equals(role.getName())){
                 Menu menu = new Menu();
                 menu.setType(2);
+                menu.setDeleted(false);
                 all = menuService.select(menu);
+                //增加都能访问的菜单
+                List<Menu> notlimitMenus = menuService.selectNotLimit();
+                all.addAll(notlimitMenus);
             }
             //构造树
             List<LeftMenu> leftMenus = getLeftMenu(all);

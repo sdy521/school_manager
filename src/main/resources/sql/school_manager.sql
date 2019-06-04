@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-05-15 14:17:22
+Date: 2019-06-04 16:39:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,7 +79,7 @@ CREATE TABLE `info` (
   `deleted` tinyint(1) DEFAULT NULL COMMENT '是否被删除',
   `age` int(11) DEFAULT NULL COMMENT '年龄',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of info
@@ -91,6 +91,7 @@ INSERT INTO `info` VALUES ('8', '9', '0', '江苏省南京市', '15961170771', '
 INSERT INTO `info` VALUES ('9', '25', '0', '121212', '15961170771', '2019-02-19 17:13:27', '2019-02-19 17:17:16', '1', '12');
 INSERT INTO `info` VALUES ('10', '26', '1', '江苏省常州市', '15961170770', '2019-02-21 17:13:50', '2019-02-21 17:13:50', '0', '22');
 INSERT INTO `info` VALUES ('11', '12', '0', '江苏南京', '15263236963', '2019-04-18 14:57:41', '2019-04-18 14:57:41', '0', '22');
+INSERT INTO `info` VALUES ('12', '34', '0', '江苏常州', '15961170771', '2019-06-04 16:28:30', '2019-06-04 16:28:30', '0', '20');
 
 -- ----------------------------
 -- Table structure for linux_monitor
@@ -120,7 +121,7 @@ CREATE TABLE `login_log` (
   `msg` varchar(255) DEFAULT NULL COMMENT '操作说明',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -136,6 +137,47 @@ INSERT INTO `login_log` VALUES ('8', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成�
 INSERT INTO `login_log` VALUES ('9', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-05-15 14:13:15');
 INSERT INTO `login_log` VALUES ('10', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 14:13:16');
 INSERT INTO `login_log` VALUES ('11', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-05-15 14:13:45');
+INSERT INTO `login_log` VALUES ('12', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 14:32:50');
+INSERT INTO `login_log` VALUES ('13', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:34:22');
+INSERT INTO `login_log` VALUES ('14', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:42:58');
+INSERT INTO `login_log` VALUES ('15', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 15:44:43');
+INSERT INTO `login_log` VALUES ('16', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:44:52');
+INSERT INTO `login_log` VALUES ('17', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 15:45:03');
+INSERT INTO `login_log` VALUES ('18', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:45:05');
+INSERT INTO `login_log` VALUES ('19', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 15:45:14');
+INSERT INTO `login_log` VALUES ('20', '张学生', '2', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:45:22');
+INSERT INTO `login_log` VALUES ('21', '张学生', '2', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 15:45:27');
+INSERT INTO `login_log` VALUES ('22', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 15:45:28');
+INSERT INTO `login_log` VALUES ('23', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:06:48');
+INSERT INTO `login_log` VALUES ('24', 'sdy', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:17:06');
+INSERT INTO `login_log` VALUES ('25', 'sdy', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:17:10');
+INSERT INTO `login_log` VALUES ('26', 'sdy', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:17:19');
+INSERT INTO `login_log` VALUES ('27', 'sdy', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:17:33');
+INSERT INTO `login_log` VALUES ('28', 'sdy', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:17:49');
+INSERT INTO `login_log` VALUES ('29', 'sdy', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:17:59');
+INSERT INTO `login_log` VALUES ('30', 'sdy', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:20:19');
+INSERT INTO `login_log` VALUES ('31', 'sdy', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:25:14');
+INSERT INTO `login_log` VALUES ('32', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:25:15');
+INSERT INTO `login_log` VALUES ('33', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:27:47');
+INSERT INTO `login_log` VALUES ('34', '张好', '2', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:28:02');
+INSERT INTO `login_log` VALUES ('35', '张好', '2', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:28:34');
+INSERT INTO `login_log` VALUES ('36', '张好', '2', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:28:44');
+INSERT INTO `login_log` VALUES ('37', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:28:45');
+INSERT INTO `login_log` VALUES ('38', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:29:37');
+INSERT INTO `login_log` VALUES ('39', '张好', '2', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:29:47');
+INSERT INTO `login_log` VALUES ('40', '张好', '2', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:29:59');
+INSERT INTO `login_log` VALUES ('41', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:30:20');
+INSERT INTO `login_log` VALUES ('42', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:30:27');
+INSERT INTO `login_log` VALUES ('43', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:30:28');
+INSERT INTO `login_log` VALUES ('44', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:30:35');
+INSERT INTO `login_log` VALUES ('45', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:30:39');
+INSERT INTO `login_log` VALUES ('46', '张好', '2', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:22');
+INSERT INTO `login_log` VALUES ('47', '张好', '2', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:38:32');
+INSERT INTO `login_log` VALUES ('48', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:35');
+INSERT INTO `login_log` VALUES ('49', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:38:42');
+INSERT INTO `login_log` VALUES ('50', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:44');
+INSERT INTO `login_log` VALUES ('51', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:38:52');
+INSERT INTO `login_log` VALUES ('52', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:56');
 
 -- ----------------------------
 -- Table structure for menu
@@ -159,23 +201,23 @@ CREATE TABLE `menu` (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-05-14 13:47:34', '教师管理', '#', 'teacher', '0', '', '0', 'fa fa-tasks', '3');
-INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-02-21 14:56:31', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '0', 'fa fa-user', '1');
+INSERT INTO `menu` VALUES ('1', '2018-12-26 20:51:03', '2019-06-04 16:27:34', '教师管理', '#', 'teacher', '0', '', '1', 'fa fa-tasks', '3');
+INSERT INTO `menu` VALUES ('2', '2018-12-26 20:54:32', '2019-06-04 16:29:33', '教师名单', '/teacher_nameList/list', 'teacher_nameList', '0', 'teacher', '1', 'fa fa-user', '1');
 INSERT INTO `menu` VALUES ('3', '2018-12-29 00:07:57', '2019-05-14 22:34:02', '系统设置', '#', 'systemSetup', '0', '', '0', 'fa fa-cogs', '10');
 INSERT INTO `menu` VALUES ('4', '2018-12-29 00:09:45', '2018-12-29 16:13:16', '菜单设置', '/menu/list', 'menuSetup', '0', 'systemSetup', '0', 'fa fa-credit-card-alt', '1');
 INSERT INTO `menu` VALUES ('5', '2018-12-29 11:03:56', '2019-02-21 14:56:40', '教师信息', '/teacher_info/list', 'teacherInfo', '0', 'teacher', '0', 'fa fa-newspaper-o', '2');
 INSERT INTO `menu` VALUES ('6', '2018-12-29 14:40:41', '2018-12-29 16:25:47', '教师课程', '#', 'teacherClass', '1', 'teacher', '0', 'fa fa-adjust', '1');
 INSERT INTO `menu` VALUES ('7', '2019-01-02 09:22:29', '2019-02-21 14:56:53', '权限管理', '/role/list', 'roleSetup', '0', 'systemSetup', '0', 'fa fa-key', '2');
 INSERT INTO `menu` VALUES ('8', '2019-01-23 17:00:50', '2019-04-24 14:13:57', '增加公告', '/send/list', 'send', '0', 'news', '0', 'fa fa-bullhorn', '1');
-INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-05-14 13:47:42', '学生管理', '#', 'student', '0', '', '0', 'fa fa-server', '4');
-INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-02-19 16:48:34', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '0', 'fa fa-graduation-cap', '1');
+INSERT INTO `menu` VALUES ('9', '2019-02-19 16:34:42', '2019-06-04 16:27:40', '学生管理', '#', 'student', '0', '', '2', 'fa fa-server', '4');
+INSERT INTO `menu` VALUES ('10', '2019-02-19 16:48:34', '2019-06-04 16:29:00', '学生名单', '/student_nameList/list', 'student_nameList', '0', 'student', '2', 'fa fa-graduation-cap', '1');
 INSERT INTO `menu` VALUES ('11', '2019-02-21 14:51:12', '2019-02-21 14:51:35', '测试菜单', '#', 'ceshi', '1', '', '0', 'fa fa-adjust', '3');
 INSERT INTO `menu` VALUES ('12', '2019-02-21 16:07:38', '2019-02-21 17:21:30', '学生信息', '/student_info/list', 'student_info', '0', 'student', '0', 'fa fa-newspaper-o', '2');
-INSERT INTO `menu` VALUES ('13', '2019-02-26 10:31:56', '2019-05-14 13:47:53', '班级管理', '#', 'class', '0', '', '0', 'fa fa-reorder', '5');
-INSERT INTO `menu` VALUES ('14', '2019-02-26 10:35:44', '2019-02-26 10:35:44', '班级列表', '/class/list', 'class_list', '0', 'class', '0', 'fa fa-home', '1');
+INSERT INTO `menu` VALUES ('13', '2019-02-26 10:31:56', '2019-06-04 16:29:19', '班级管理', '#', 'class', '0', '', '-1', 'fa fa-reorder', '5');
+INSERT INTO `menu` VALUES ('14', '2019-02-26 10:35:44', '2019-06-04 16:29:26', '班级列表', '/class/list', 'class_list', '0', 'class', '-1', 'fa fa-home', '1');
 INSERT INTO `menu` VALUES ('15', '2019-04-09 13:41:46', '2019-05-14 13:48:00', '工具', '#', 'tool', '0', '', '0', 'fa fa-legal', '6');
 INSERT INTO `menu` VALUES ('16', '2019-04-09 13:44:36', '2019-04-09 13:44:36', 'wordToPdf', '/wordConverterPdf/list', 'wordConverterPdf', '0', 'tool', '0', 'fa fa-exchange', '2');
-INSERT INTO `menu` VALUES ('17', '2019-04-09 13:49:22', '2019-04-09 13:49:22', '首页', '/main', 'main', '0', '', '0', 'fa fa-laptop', '1');
+INSERT INTO `menu` VALUES ('17', '2019-04-09 13:49:22', '2019-06-04 15:37:51', '首页', '/main', 'main', '0', '', '-1', 'fa fa-laptop', '1');
 INSERT INTO `menu` VALUES ('18', '2019-04-09 14:21:18', '2019-05-14 13:48:17', '消息', '#', 'news', '0', '', '0', 'fa fa-comments', '8');
 INSERT INTO `menu` VALUES ('19', '2019-04-11 11:05:02', '2019-05-14 13:48:05', '文件台', '#', 'filedesk', '0', '', '0', 'fa fa-paste (alias)', '7');
 INSERT INTO `menu` VALUES ('20', '2019-04-11 11:07:49', '2019-04-11 11:07:49', '文件管理', '/file/list', 'filemanager', '0', 'filedesk', '0', 'fa fa-folder-open', '1');
@@ -288,43 +330,15 @@ CREATE TABLE `user` (
   `enable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0:禁用1:可用',
   `img` varchar(255) DEFAULT NULL COMMENT '图片',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-05-15 09:32:05', '0', '0', '1', '7f4e44df-1461-4aa8-883c-a72008a2a1f1.jpeg');
-INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-03-15 15:15:06', '0', '1', '1', '6f213d71-825f-4e76-a128-6ba369162126.png');
-INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', null);
-INSERT INTO `user` VALUES ('4', '张梅', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:44', '2018-12-25 12:46:46', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('5', '赵四', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:54', '2018-12-25 12:46:56', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('6', '占号', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 11:22:20', '2018-12-25 11:22:20', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('7', '钱发', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:26', '2018-12-25 12:46:26', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('8', '吴刚', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:37:32', '2018-12-25 13:37:32', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('9', '周小', '$2a$10$qVKxQuv9hZNaJQHg.7cO2u9FYQhsdLuc/bSIuch/ihrBXPDF067w2', '2018-12-25 13:38:33', '2019-02-19 10:56:14', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('10', '郑雪', '$2a$10$uQB9Nh/BYiPeaWrJdv/akORO1Z/54hvN6mt1pcIpAhX9UufaGOC6G', '2018-12-25 13:39:04', '2019-02-19 09:54:30', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('11', '王红', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 13:39:16', '2018-12-25 13:39:16', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('12', '梅雪', '$2a$10$MkE8.184a4my9SbqONln6.7yDh4PyDyLMehOyzLngYWyDWJs2rDsC', '2018-12-25 13:49:54', '2019-04-18 14:57:41', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('14', '张张', '$2a$10$F9xfVttFqLGf5OUcmTSoaucpPnUYLYpFTlsNwmhA58FtZ/I9F32l6', '2019-02-18 18:13:09', '2019-02-18 18:46:20', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('15', '哈哈', '$2a$10$uxVzILF7v6zyR89HWC3VReArNtICMHWR1799fOU1n.yp6beFPiEH6', '2019-02-18 18:13:10', '2019-02-18 18:46:16', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('16', '张张', '$2a$10$yTXe23zJ5pTfo1zpDi5oI.AIL1RFa5NGx0MUTBbjiAcSwg6CvqZK.', '2019-02-18 18:14:36', '2019-02-18 18:14:47', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('17', '哈哈', '$2a$10$8K0UK5RgH4VEeQdvhNjeA.CLgDyrFp19a8HVYBkSQeNuVbFKTorsK', '2019-02-18 18:14:36', '2019-02-18 18:14:43', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('18', '张张', '$2a$10$Owg/0wAQ3FHCOwRKPkZ/puKmQXUxLF86FIGdJQjsNcKQ11yskI8lK', '2019-02-18 18:47:20', '2019-02-18 18:47:46', '1', '1', '1', null);
-INSERT INTO `user` VALUES ('19', '哈哈', '$2a$10$gJaEGwAfQ02XAIBH3iUcWuWXq8/r8qXr.8nsvLY.UZFFFKQ.Unr0i', '2019-02-18 18:47:21', '2019-02-18 18:47:21', '1', '2', '1', null);
-INSERT INTO `user` VALUES ('20', '张张', '$2a$10$TtGKwKPmS9Z9F4IZer.vEeG7m2oxPaaVvtZoLQb/xX.CaR8yF4UJ2', '2019-02-18 18:48:05', '2019-02-18 18:48:05', '0', '1', '0', null);
-INSERT INTO `user` VALUES ('21', '哈哈', '$2a$10$sSERJ8ltb.6IeDkLnKXnouUUakhnVe2HVkEBaD0GBJuPnmBFFHT7y', '2019-02-18 18:48:05', '2019-02-19 17:08:50', '0', '2', '1', null);
-INSERT INTO `user` VALUES ('22', '某某', '$2a$10$9KIejyTVmUwZlSQMWpmKv.vpjY13fSuNmYFlft0tbBchDT0qdYeVS', '2019-02-19 09:39:18', '2019-02-19 09:39:18', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('23', '某某2', '$2a$10$i6wHuWZpfxRGppV7GXT/L.RG4VBn8irsEAZ2TLhC5dEyq/mKTfQ7S', '2019-02-19 09:47:48', '2019-02-19 09:47:48', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('24', '某某2', '$2a$10$RV5hbKmX5xOtfIVcnsbCyuzn7xrG0vpwWwGp6WA0KuPTDwgL0jK8e', '2019-02-19 09:48:04', '2019-02-19 09:48:15', '1', '1', '0', null);
-INSERT INTO `user` VALUES ('25', '测试', '$2a$10$J8PT5xRry95vjnbfiIboA.zlwXqrvcGcOfzKt9gsAwCQfIHMQvFyK', '2019-02-19 17:12:46', '2019-02-19 17:17:17', '1', '2', '1', null);
-INSERT INTO `user` VALUES ('26', '张学生', '$2a$10$Kw3BbqQJvd/IzM5bfmronO9e0s6.X1JJz8iLuyefdgUNBakcc5EKq', '2019-02-19 17:15:35', '2019-02-21 17:13:50', '0', '2', '1', null);
-INSERT INTO `user` VALUES ('27', '某某1', '$2a$10$gveUErRZel.z8zqIE/dgDuwxnLIOJ7XNVudokD.6G6oSJG6RLDdxG', '2019-02-21 11:11:08', '2019-02-21 11:11:08', '0', '1', '1', null);
-INSERT INTO `user` VALUES ('28', '某某1', '$2a$10$/h8FnmyWMsiCBOqUqZtPcOtTbThUVZq1Pry02T5HdZvroci0cykAa', '2019-02-21 11:16:42', '2019-02-21 11:16:42', '0', '2', '1', null);
-INSERT INTO `user` VALUES ('29', '121', '$2a$10$.IE3RXGYZ7t4zEp4NFT0/.TJXTlsWyqb.wJECnWSwl3QEsj6WsD.q', '2019-02-21 11:16:42', '2019-02-21 11:16:42', '0', '2', '1', null);
-INSERT INTO `user` VALUES ('30', '某某', '$2a$10$wjBU9kJJ2LDFoIfwWlooX.tLW34L9YrIiJzUr5eYzLYZlZScMJQKO', '2019-02-21 11:18:58', '2019-02-21 14:06:25', '1', '2', '1', null);
-INSERT INTO `user` VALUES ('31', '某某', '$2a$10$i7DCoSUZ/qLchSsK.twwJuQ8tlknnzn35i9EPKlHyMdrHOp4Jq3N2', '2019-02-21 11:20:18', '2019-02-21 11:20:18', '0', '2', '0', null);
-INSERT INTO `user` VALUES ('32', '某某', '$2a$10$ICCy4XFGO4Ph7euYpOxj..9arRm66VRTCy2TJZvzGXW9cblAyJM/a', '2019-02-21 11:21:11', '2019-02-21 14:06:22', '1', '2', '0', null);
-INSERT INTO `user` VALUES ('33', '某某', '$2a$10$WjEWmOoeAEPdgGUbxwnpv.MuDf1C4XX2CnCuYoMizthhxQ/s8/Y.C', '2019-02-21 11:24:16', '2019-02-21 14:06:20', '1', '2', '0', null);
+INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-06-04 16:38:41', '0', '1', '1', '32a56152-0941-442e-b8a7-155fe7aa5aee.jpg');
+INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', '6f213d71-825f-4e76-a128-6ba369162126.png');
+INSERT INTO `user` VALUES ('34', '张好', '$2a$10$MVfIGDyiNfLpnP4l8IAsZeaYjFbXnx3NiFah7li1xWC/pna0iwwOe', '2019-06-04 16:27:02', '2019-06-04 16:28:30', '0', '2', '1', null);
 
 -- ----------------------------
 -- Table structure for user_class
@@ -375,24 +389,12 @@ CREATE TABLE `user_role` (
   `user_id` bigint(11) DEFAULT NULL,
   `roles_id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
 INSERT INTO `user_role` VALUES ('1', '1', '1');
-INSERT INTO `user_role` VALUES ('2', '2', '2');
-INSERT INTO `user_role` VALUES ('3', '3', '2');
-INSERT INTO `user_role` VALUES ('4', '4', '2');
-INSERT INTO `user_role` VALUES ('5', '5', '2');
-INSERT INTO `user_role` VALUES ('6', '6', '2');
-INSERT INTO `user_role` VALUES ('7', '7', '2');
-INSERT INTO `user_role` VALUES ('8', '8', '2');
-INSERT INTO `user_role` VALUES ('9', '9', '2');
-INSERT INTO `user_role` VALUES ('10', '10', '2');
-INSERT INTO `user_role` VALUES ('11', '11', '2');
-INSERT INTO `user_role` VALUES ('12', '25', '3');
-INSERT INTO `user_role` VALUES ('13', '26', '3');
-INSERT INTO `user_role` VALUES ('14', '31', '2');
-INSERT INTO `user_role` VALUES ('15', '22', '3');
-INSERT INTO `user_role` VALUES ('16', '12', '2');
+INSERT INTO `user_role` VALUES ('17', '34', '3');
+INSERT INTO `user_role` VALUES ('18', '3', '2');
+INSERT INTO `user_role` VALUES ('19', '2', '2');
