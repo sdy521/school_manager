@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-06-14 16:36:36
+Date: 2019-06-04 16:39:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -121,7 +121,7 @@ CREATE TABLE `login_log` (
   `msg` varchar(255) DEFAULT NULL COMMENT '操作说明',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of login_log
@@ -178,15 +178,6 @@ INSERT INTO `login_log` VALUES ('49', '李小晴', '1', '0:0:0:0:0:0:0:1', '登�
 INSERT INTO `login_log` VALUES ('50', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:44');
 INSERT INTO `login_log` VALUES ('51', '李小晴', '1', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-04 16:38:52');
 INSERT INTO `login_log` VALUES ('52', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-04 16:38:56');
-INSERT INTO `login_log` VALUES ('53', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 14:08:25');
-INSERT INTO `login_log` VALUES ('54', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 14:38:20');
-INSERT INTO `login_log` VALUES ('55', 'sdy', '0', '0:0:0:0:0:0:0:1', '登出成功', '2019-06-14 14:41:25');
-INSERT INTO `login_log` VALUES ('56', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 14:41:26');
-INSERT INTO `login_log` VALUES ('57', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 15:07:39');
-INSERT INTO `login_log` VALUES ('58', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 15:31:24');
-INSERT INTO `login_log` VALUES ('59', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 15:53:21');
-INSERT INTO `login_log` VALUES ('60', 'sdy', '0', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 16:31:18');
-INSERT INTO `login_log` VALUES ('61', '李小晴', '1', '0:0:0:0:0:0:0:1', '登陆成功', '2019-06-14 16:31:52');
 
 -- ----------------------------
 -- Table structure for menu
@@ -205,7 +196,7 @@ CREATE TABLE `menu` (
   `icon` varchar(255) NOT NULL DEFAULT '' COMMENT '图标',
   `sort` int(5) NOT NULL DEFAULT '1' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
@@ -234,7 +225,6 @@ INSERT INTO `menu` VALUES ('21', '2019-05-14 13:40:46', '2019-05-14 13:47:16', '
 INSERT INTO `menu` VALUES ('22', '2019-05-14 22:33:54', '2019-05-14 22:33:54', '日志管理', '#', 'log', '0', '', '0', 'fa fa-edit', '9');
 INSERT INTO `menu` VALUES ('23', '2019-05-14 22:35:15', '2019-05-14 22:35:15', '操作日志', '/log/operationList', 'operaton', '0', 'log', '0', 'fa fa-hand-pointer-o', '1');
 INSERT INTO `menu` VALUES ('24', '2019-05-15 13:59:50', '2019-05-15 13:59:50', '登入日志', '/log/loginList', 'login', '0', 'log', '0', 'fa fa-child', '2');
-INSERT INTO `menu` VALUES ('25', '2019-06-14 14:41:22', '2019-06-14 14:41:22', '地图定位', '/map/list', 'map', '0', 'tool', '0', 'fa fa-maxcdn', '2');
 
 -- ----------------------------
 -- Table structure for notice
@@ -346,7 +336,7 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'sdy', '$2a$10$cg1yDuFH7lVcop25D5jofeNXf6k1hh0Zuh/haCcCaKBZ2w9cZx4tC', '2018-12-20 13:52:47', '2019-05-15 09:32:05', '0', '0', '1', '7f4e44df-1461-4aa8-883c-a72008a2a1f1.jpeg');
-INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$yNg.No9rUK9Aj7L2uOl1.uufshVqTuXJl9WvtdKcdrOOEtwOvFt.i', '2018-12-20 16:32:30', '2019-06-14 15:52:44', '0', '1', '1', '32a56152-0941-442e-b8a7-155fe7aa5aee.jpg');
+INSERT INTO `user` VALUES ('2', '李小晴', '$2a$10$xxL9kkxgsp2P4fBJOI7y/u5AVNefy4lQS31shjYHFjsy3TGVEQHsi', '2018-12-20 16:32:30', '2019-06-04 16:38:41', '0', '1', '1', '32a56152-0941-442e-b8a7-155fe7aa5aee.jpg');
 INSERT INTO `user` VALUES ('3', '孙红雷', '$2a$10$C7ZKo0I4KSYTZyuylRlzZewrgCbkSLkd7hJ6mYiH7d1ntGdQ2z7dm', '2018-12-25 12:46:52', '2019-01-02 11:14:15', '0', '1', '0', '6f213d71-825f-4e76-a128-6ba369162126.png');
 INSERT INTO `user` VALUES ('34', '张好', '$2a$10$MVfIGDyiNfLpnP4l8IAsZeaYjFbXnx3NiFah7li1xWC/pna0iwwOe', '2019-06-04 16:27:02', '2019-06-04 16:28:30', '0', '2', '1', null);
 
